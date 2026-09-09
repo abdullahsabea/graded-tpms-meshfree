@@ -1,0 +1,7 @@
+P actions make_etude
+P memory_limit 16000
+P time_limit 3600
+P mpi_nbcpu 1
+F comm /shared/homog.comm D 1
+F mail /shared/gyroid_printable_N96.mail D 20
+F mess /shared/out_printable_N96.mess R 6

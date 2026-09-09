@@ -1,0 +1,59 @@
+# N3a — code_aster KUBC homogenization of gyroid unit cell (eps_xx imposed)
+# Effective C1111 = total reaction on X1 / (eps * A), A = 1 (unit cube)
+from code_aster.Commands import *
+
+DEBUT()
+
+EPS = 1.0e-3
+
+mesh = LIRE_MAILLAGE(FORMAT='ASTER', UNITE=20)
+
+model = AFFE_MODELE(MAILLAGE=mesh,
+                    AFFE=_F(MODELISATION='3D', PHENOMENE='MECANIQUE', TOUT='OUI'))
+
+mat = DEFI_MATERIAU(ELAS=_F(E=1.0, NU=0.3))
+chmat = AFFE_MATERIAU(MAILLAGE=mesh, AFFE=_F(TOUT='OUI', MATER=mat))
+
+ux = FORMULE(VALE='0.001*X', NOM_PARA=('X', 'Y', 'Z'))
+f0 = FORMULE(VALE='0.0', NOM_PARA=('X', 'Y', 'Z'))
+
+bc_f = AFFE_CHAR_MECA_F(MODELE=model,
+                        DDL_IMPO=_F(GROUP_NO='BOUND', DX=ux, DY=f0, DZ=f0))
+
+res = MECA_STATIQUE(MODELE=model, CHAM_MATER=chmat,
+                    EXCIT=_F(CHARGE=bc_f))
+
+res = CALC_CHAMP(reuse=res, RESULTAT=res, FORCE='REAC_NODA')
+
+tab = POST_RELEVE_T(ACTION=_F(OPERATION='EXTRACTION',
+                              INTITULE='reacX1',
+                              RESULTAT=res,
+                              NOM_CHAM='REAC_NODA',
+                              GROUP_NO='X1',
+                              NOM_CMP=('DX',),
+                              TOUT_ORDRE='OUI'))
+
+vals = tab.EXTR_TABLE().values()
+import numpy as np
+arr = np.asarray(vals['DX'], dtype=float)
+print('TABLE_COLS =', list(vals.keys()))
+print('N_VALUES   =', arr.size)
+reac = float(arr.sum()) if arr.size > 24 else float(arr[-1])
+print('REACTION_SUM_CHECK = %.10e (sum) | %.10e (last)' % (arr.sum(), arr[-1]))
+c1111 = reac / EPS   # A = 1, unit cube
+print('REACTION_X1 = %.10e' % reac)
+print('C1111_KUBC  = %.10e' % c1111)
+
+# also C2111 (transverse response) for cross-checks
+tab2 = POST_RELEVE_T(ACTION=_F(OPERATION='EXTRACTION',
+                               INTITULE='reacY1',
+                               RESULTAT=res,
+                               NOM_CHAM='REAC_NODA',
+                               GROUP_NO='Y1',
+                               NOM_CMP=('DY',),
+                               TOUT_ORDRE='OUI'))
+reac_y = tab2.EXTR_TABLE().values()['DY'][-1]
+print('REACTION_Y1 = %.10e' % reac_y)
+print('C1211_transverse_DY = %.10e' % (reac_y / EPS))
+
+FIN()

@@ -1,0 +1,7 @@
+P actions make_etude
+P memory_limit 6000
+P time_limit 1800
+P mpi_nbcpu 1
+F comm /shared/homog.comm D 1
+F mail /shared/gyroid_N64_t0.2.mail D 20
+F mess /shared/out_t0.2_N64.mess R 6

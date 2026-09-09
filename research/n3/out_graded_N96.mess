@@ -1,0 +1,424 @@
+setting '--memory' value to 5400.00 MB (keyword RESERVE_MEMOIRE)
+copying '/shared/gyroid_graded_N96.mail' to 'fort.20'...
+checking MPI initialization...
+using COMM_WORLD.
+MPI is initialized.
+Ouverture en écriture du fichier ./vola.1
+
+<INFO> Démarrage de l'exécution.
+
+                        -- CODE_ASTER -- VERSION : EXPLOITATION (stable) --                         
+                               Version 17.4.0 modifiée le 02/01/2026                                
+                              révision spack-local - branche 'v17.4.0'                              
+                                   Copyright EDF R&D 1991 - 2026                                    
+                                                                                                    
+                              Exécution du : Thu Jul 30 10:40:11 2026                               
+                                  Nom de la machine : d4ca32ef0317                                  
+                                        Architecture : 64bit                                        
+                                    Type de processeur : x86_64                                     
+       Système d'exploitation : Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36        
+                                  Langue des messages : en (UTF-8)                                  
+                                    Version de Python : 3.11.14                                     
+                                     Version de NumPy : 1.26.4                                      
+                                      Parallélisme MPI : actif                                      
+                                   Rang du processeur courant : 0                                   
+                               Nombre de processeurs MPI utilisés : 1                               
+                                    Parallélisme OpenMP : actif                                     
+                              Nombre de processus OpenMP utilisés : 1                               
+                               Version de la librairie HDF5 : 1.10.7                                
+                                Version de la librairie MED : 4.2.0                                 
+                               Version de la librairie MFront : 5.0.0                               
+                               Version de la librairie MUMPS : 5.6.2                                
+                              Version de la librairie PETSc : 3.24.0p0                              
+                              Version de la librairie SCOTCH : 7.0.10                               
+
+starting the execution...
+Valeur initiale du temps CPU maximum =   1800 secondes
+  Valeur du temps CPU maximum passé aux commandes =   1620 secondes
+  Réserve CPU prévue = 180 secondes
+
+Ouverture en écriture du fichier ./glob.1
+
+Ouverture en écriture du fichier ./vola.1
+
+Ouverture en lecture du fichier
+/opt/spack/opt/spack/linux-zen2/code-aster-17.4.0-ecm2bfgr5obydotnlte6xilvggppqnap/lib64/aster/elem
+1
+
+Nom de la base                          :  ELEMBASE
+     Créée avec la version                   :  17.04.00
+     Nombre d'enregistrements utilisés       :  46
+     Nombre d'enregistrements maximum        :  512
+     Nombre d'enregistrements par fichier    :  512
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre d'identificateurs utilisés       :  123
+     Taille maximum du répertoire            :  300
+     Pourcentage d'utilisation du répertoire :  41 %
+
+Ouverture en lecture du fichier
+/opt/spack/opt/spack/linux-zen2/code-aster-17.4.0-ecm2bfgr5obydotnlte6xilvggppqnap/lib64/aster/elem
+1
+
+Nom de la base                          :  ELEMBASE
+     Nombre d'enregistrements utilisés       :  46
+     Nombre d'enregistrements maximum        :  512
+     Nombre d'enregistrements par fichier    :  512
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  64
+     Volume des accès en lecture             :         50.00 Mo.
+     Nombre total d'accès en écriture        :  0
+     Volume des accès en écriture            :          0.00 Mo.
+     Nombre d'identificateurs utilisés       :  123
+     Taille maximum du répertoire            :  300
+     Pourcentage d'utilisation du répertoire :  41 %
+
+Relecture des catalogues des éléments faite.
+
+Fin de lecture (durée  0.042772  s.) 
+
+                      Mémoire limite pour l'allocation dynamique : 5966.85 Mo                       
+                         ajouté à l'initialisation du processus : 648.45 Mo                         
+                               Limite cible du processus : 6615.30 Mo                               
+                         Taille limite des fichiers d'échange : 2048.00 Go                          
+# Mémoire (Mo) :   648.45 /   640.68 /   207.61 /   183.67 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0001   user+syst:        0.02s (syst:        0.36s, elaps:        0.38s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt9
+# ----------------------------------------------------------------------------------------------
+# Commande #0002 de /shared/homog.comm, ligne 9
+mesh = LIRE_MAILLAGE(FORMAT='ASTER',
+                     INFO=1,
+                     UNITE=20,
+                     VERI_MAIL=_F(APLAT=0.001,
+                                  VERIF='OUI'))
+
+Vérification du maillage.
+
+
+------------ MAILLAGE 00000001 - IMPRESSIONS NIVEAU  1 ------------
+
+GYROID N=96 T=-1.000                                                            
+
+NOMBRE DE NOEUDS                      221271
+
+NOMBRE DE MAILLES                     171456
+                              HEXA8              171456
+
+NOMBRE DE GROUPES DE NOEUDS                7
+
+NOMBRE DE GROUPES DE MAILLES               1
+
+--------------------------------------------------------------------------------
+
+# Résultat commande #0002 (LIRE_MAILLAGE): mesh ('<00000001>') de type <Mesh>
+# Mémoire (Mo) :   692.41 /   675.39 /   251.53 /   216.25 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0002   user+syst:        1.99s (syst:        0.10s, elaps:        2.10s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt11
+# ----------------------------------------------------------------------------------------------
+# Commande #0003 de /shared/homog.comm, ligne 11
+model = AFFE_MODELE(AFFE=_F(MODELISATION='3D',
+                            PHENOMENE='MECANIQUE',
+                            TOUT='OUI'),
+                    DISTRIBUTION=_F(METHODE='SOUS_DOMAINE',
+                                    PARTITIONNEUR='METIS'),
+                    INFO=1,
+                    MAILLAGE=mesh,
+                    VERI_FORMULATION_IFS='OUI',
+                    VERI_JACOBIEN='OUI',
+                    VERI_NORM_IFS='OUI',
+                    VERI_PLAN='OUI')
+
+Sur les 171456 mailles du maillage 00000001, on a demandé l'affectation de 171456, on a pu en
+affecter 171456.
+Modélisation     Formulation      Type maille  Élément fini     Nombre
+3D               _                HEXA8        MECA_HEXA8       171456
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.09      0.01      0.09
+# Résultat commande #0003 (AFFE_MODELE): model ('<00000002>') de type <Model>
+# Mémoire (Mo) :   837.35 /   828.29 /   255.93 /   229.65 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0003   user+syst:        0.63s (syst:        0.04s, elaps:        0.67s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt14
+# ----------------------------------------------------------------------------------------------
+# Commande #0004 de /shared/homog.comm, ligne 14
+mat = DEFI_MATERIAU(ELAS=_F(B_ENDOGE=0.0,
+                            COEF_AMOR=1.0,
+                            E=1.0,
+                            K_DESSIC=0.0,
+                            NU=0.3),
+                    INFO=1)
+
+# Résultat commande #0004 (DEFI_MATERIAU): mat ('<00000003>') de type <Material>
+# Mémoire (Mo) :   837.35 /   828.85 /   255.93 /   229.65 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0004   user+syst:        0.04s (syst:        0.00s, elaps:        0.04s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt15
+# ----------------------------------------------------------------------------------------------
+# Commande #0005 de /shared/homog.comm, ligne 15
+chmat = AFFE_MATERIAU(AFFE=_F(MATER=mat,
+                              TOUT='OUI'),
+                      INFO=1,
+                      MAILLAGE=mesh)
+
+# Résultat commande #0005 (AFFE_MATERIAU): chmat ('<00000004>') de type <MaterialField>
+# Mémoire (Mo) :   837.35 /   828.85 /   255.93 /   229.65 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0005   user+syst:        0.04s (syst:        0.00s, elaps:        0.03s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt17
+# ----------------------------------------------------------------------------------------------
+# Commande #0006 de /shared/homog.comm, ligne 17
+ux = FORMULE(NOM_PARA=('X', 'Y', 'Z'),
+             VALE='0.001*X')
+
+# Résultat commande #0006 (FORMULE): ux ('<00000005>') de type <Formula>
+# Mémoire (Mo) :   837.35 /   828.85 /   255.93 /   229.65 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0006   user+syst:        0.00s (syst:        0.00s, elaps:        0.00s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt18
+# ----------------------------------------------------------------------------------------------
+# Commande #0007 de /shared/homog.comm, ligne 18
+f0 = FORMULE(NOM_PARA=('X', 'Y', 'Z'),
+             VALE='0.0')
+
+# Résultat commande #0007 (FORMULE): f0 ('<00000006>') de type <Formula>
+# Mémoire (Mo) :   837.35 /   828.85 /   255.93 /   229.65 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0007   user+syst:        0.00s (syst:        0.00s, elaps:        0.00s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt20
+# ----------------------------------------------------------------------------------------------
+# Commande #0008 de /shared/homog.comm, ligne 20
+bc_f = AFFE_CHAR_MECA_F(DDL_IMPO=_F(DX=ux,
+                                    DY=f0,
+                                    DZ=f0,
+                                    GROUP_NO='BOUND'),
+                        DOUBLE_LAGRANGE='OUI',
+                        INFO=1,
+                        MODELE=model,
+                        VERI_NORM='OUI')
+
+# Résultat commande #0008 (AFFE_CHAR_MECA_F): bc_f ('<00000007>') de type <MechanicalLoadFunction>
+# Dépend de :
+# - ux ('<00000005>') de type <Formula>
+# - f0 ('<00000006>') de type <Formula>
+# Mémoire (Mo) :   865.61 /   865.61 /   282.25 /   229.65 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0008   user+syst:        0.20s (syst:        0.04s, elaps:        0.25s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt23
+# ----------------------------------------------------------------------------------------------
+# Commande #0009 de /shared/homog.comm, ligne 23
+res = MECA_STATIQUE(CHAM_MATER=chmat,
+                    EXCIT=_F(CHARGE=bc_f,
+                             TYPE_CHARGE='FIXE_CSTE'),
+                    INFO=1,
+                    INST=0.0,
+                    MODELE=model,
+                    OPTION='SIEF_ELGA',
+                    SOLVEUR=_F(ACCELERATION='AUTO',
+                               ELIM_LAGR='LAGR2',
+                               GESTION_MEMOIRE='AUTO',
+                               LOW_RANK_SEUIL=0.0,
+                               MATR_DISTRIBUEE='NON',
+                               METHODE='MUMPS',
+                               NB_RHS=1,
+                               NPREC=8,
+                               PCENT_PIVOT=35,
+                               POSTTRAITEMENTS='AUTO',
+                               PRETRAITEMENTS='AUTO',
+                               REDUCTION_MPI=0,
+                               RENUM='AUTO',
+                               RESI_RELA=1e-06,
+                               STOP_SINGULIER='OUI',
+                               TYPE_RESOL='AUTO'))
+
+Le système linéaire à résoudre a 739395 degrés de liberté:
+   - 663813 sont des degrés de liberté physiques
+     (ils sont portés par 221271 noeuds du maillage)
+   - 75582 sont les couples de paramètres de Lagrange associés
+     aux 37791 relations linéaires dualisées.
+La matrice est de taille 739395 équations.
+  Elle contient 23500116 termes non nuls si elle est symétrique et 46260837 termes non nuls si elle
+n'est pas symétrique.
+  Soit un taux de remplissage de   0.008 %.
+La mémoire consommée actuellement hors JEVEUX est de 1117.67 Mo.
+La mémoire limite pour l'allocation dynamique est fixée à 5497.64 Mo (-676.38 Mo).
+Cette valeur limite a été réactualisée lors de la mise en oeuvre d'un processus de libération.
+
+Champ stocké <DEPL> à l'instant  0.000000000000e+00 pour le numéro d'ordre 1
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      1.20      0.00      1.21
+# Résultat commande #0009 (MECA_STATIQUE): res ('<00000008>') de type <ElasticResult>
+# Mémoire (Mo) :  3206.11 /  1060.28 /  1021.38 /   584.94 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0009   user+syst:       43.80s (syst:       19.64s, elaps:       58.01s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt26
+# ----------------------------------------------------------------------------------------------
+# Commande #0011 de /shared/homog.comm, ligne 26
+res = CALC_CHAMP(CRITERE='RELATIF',
+                 FORCE='REAC_NODA',
+                 INFO=1,
+                 PARALLELISME_TEMPS='NON',
+                 PRECISION=1e-06,
+                 RESULTAT=res,
+                 reuse=res)
+
+Le système linéaire à résoudre a 739395 degrés de liberté:
+   - 663813 sont des degrés de liberté physiques
+     (ils sont portés par 221271 noeuds du maillage)
+   - 75582 sont les couples de paramètres de Lagrange associés
+     aux 37791 relations linéaires dualisées.
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.59      0.00      0.60
+# Résultat commande #0011 (CALC_CHAMP): res ('<00000008>') de type <ElasticResult>
+# Mémoire (Mo) :  3206.11 /  1060.28 /  1021.38 /   584.94 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0011   user+syst:        0.95s (syst:        0.03s, elaps:        0.97s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt28
+# ----------------------------------------------------------------------------------------------
+# Commande #0012 de /shared/homog.comm, ligne 28
+tab = POST_RELEVE_T(ACTION=_F(CRITERE='RELATIF',
+                              FORMAT_C='MODULE',
+                              GROUP_NO='X1',
+                              INTITULE='reacX1',
+                              MOYE_NOEUD='OUI',
+                              NOM_CHAM='REAC_NODA',
+                              NOM_CMP='DX',
+                              OPERATION='EXTRACTION',
+                              PRECISION=1e-06,
+                              REPERE='GLOBAL',
+                              RESULTAT=res,
+                              TOUT_ORDRE='OUI'),
+                    INFO=1)
+
+# Résultat commande #0012 (POST_RELEVE_T): tab ('<00000029>') de type <Table>
+# Mémoire (Mo) :  3206.11 /  1060.28 /  1021.38 /   584.94 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0012   user+syst:        0.34s (syst:        0.00s, elaps:        0.34s)
+# ----------------------------------------------------------------------------------------------
+TABLE_COLS = ['INTITULE', 'NOEUD', 'RESU', 'NOM_CHAM', 'NUME_ORDRE', 'INST', 'ABSC_CURV', 'COOR_X', 'COOR_Y', 'COOR_Z', 'DX']
+N_VALUES   = 1643
+REACTION_SUM_CHECK = 1.1699495943e-04 (sum) | 3.4152221445e-08 (last)
+REACTION_X1 = 1.1699495943e-04
+C1111_KUBC  = 1.1699495943e-01
+
+.. _stg1_txt48
+# ----------------------------------------------------------------------------------------------
+# Commande #0013 de /shared/homog.comm, ligne 48
+tab2 = POST_RELEVE_T(ACTION=_F(CRITERE='RELATIF',
+                               FORMAT_C='MODULE',
+                               GROUP_NO='Y1',
+                               INTITULE='reacY1',
+                               MOYE_NOEUD='OUI',
+                               NOM_CHAM='REAC_NODA',
+                               NOM_CMP='DY',
+                               OPERATION='EXTRACTION',
+                               PRECISION=1e-06,
+                               REPERE='GLOBAL',
+                               RESULTAT=res,
+                               TOUT_ORDRE='OUI'),
+                     INFO=1)
+
+# Résultat commande #0013 (POST_RELEVE_T): tab2 ('<0000002a>') de type <Table>
+# Mémoire (Mo) :  3206.11 /  1061.28 /  1021.38 /   584.94 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0013   user+syst:        0.42s (syst:        0.00s, elaps:        0.43s)
+# ----------------------------------------------------------------------------------------------
+REACTION_Y1 = 1.3313220453e-08
+C1211_transverse_DY = 1.3313220453e-05
+
+.. _stg1_txt76
+# ----------------------------------------------------------------------------------------------
+# Commande #0014 de /opt/spack/opt/spack/linux-zen2/code-aster-17.4
+0-ecm2bfgr5obydotnlte6xilvggppqnap/lib64/aster/code_aster/CodeCommands/fin.py, ligne 76
+FIN(INFO_RESU='NON',
+    RETASSAGE='NON')
+
+No database in results, objects not saved on processor #0
+
+ ╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+ ║ <I> <CATAMESS_89>                                                                              ║
+ ║                                                                                                ║
+ ║ Liste des alarmes émises lors de l'exécution du calcul.                                        ║
+ ║                                                                                                ║
+ ║     Les alarmes que vous avez choisies d'ignorer sont précédées de (*).                        ║
+ ║     Nombre d'occurrences pour chacune des alarmes :                                            ║
+ ║            aucune alarme                                                                       ║
+ ╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+<I> <FIN> ARRET NORMAL DANS "FIN" PAR APPEL A "JEFINI".
+  
+ <I> <FIN> MEMOIRE JEVEUX MINIMALE REQUISE POUR L'EXECUTION :                     584.94 Mo
+ <I> <FIN> MEMOIRE JEVEUX OPTIMALE REQUISE POUR L'EXECUTION :                    1021.38 Mo
+ <I> <FIN> MAXIMUM DE MEMOIRE UTILISEE PAR LE PROCESSUS LORS DE L'EXECUTION :    3206.11 Mo
+  
+ <I>       FERMETURE DES BASES EFFECTUEE
+  
+   STATISTIQUES CONCERNANT L'ALLOCATION DYNAMIQUE :
+     TAILLE CUMULEE MAXIMUM            :                 1021  Mo.
+     TAILLE CUMULEE LIBEREE            :                  482  Mo.
+     NOMBRE TOTAL D'ALLOCATIONS        :              2839900
+     NOMBRE TOTAL DE LIBERATIONS       :              2839515
+     APPELS AU MECANISME DE LIBERATION :                    1
+     TAILLE MEMOIRE CUMULEE RECUPEREE  :                  420  Mo.
+     VOLUME DES LECTURES               :                    0  Mo.
+     VOLUME DES ECRITURES              :                  441  Mo.
+  
+   MEMOIRE JEVEUX MINIMALE REQUISE POUR L'EXECUTION :     584.94 Mo
+     - IMPOSE DE NOMBREUX ACCES DISQUE
+     - RALENTIT LA VITESSE D'EXECUTION
+   MEMOIRE JEVEUX OPTIMALE REQUISE POUR L'EXECUTION :    1021.38 Mo
+     - LIMITE LES ACCES DISQUE
+     - AMELIORE LA VITESSE D'EXECUTION
+   MAXIMUM DE MEMOIRE UTILISEE PAR LE PROCESSUS     :    3206.11 Mo
+     - COMPREND LA MEMOIRE CONSOMMEE PAR  JEVEUX, 
+       LE SUPERVISEUR PYTHON, LES LIBRAIRIES EXTERNES
+  
+ <I>       FIN D'EXECUTION LE : JE-30-JUIL-2026 10:41:14
+INFO './glob.1' deleted
+Deleting './glob.2': No such file or directory
+INFO './vola.1' deleted
+Deleting './vola.2': No such file or directory
+
+ ********************************************************************************
+ * COMMAND                  :       USER :     SYSTEM :   USER+SYS :    ELAPSED *
+ ********************************************************************************
+ * DEBUT                    :       0.02 :       0.36 :       0.38 :       0.38 *
+ * LIRE_MAILLAGE            :       1.99 :       0.10 :       2.09 :       2.10 *
+ * AFFE_MODELE              :       0.63 :       0.04 :       0.67 :       0.67 *
+ * DEFI_MATERIAU            :       0.04 :       0.00 :       0.04 :       0.04 *
+ * AFFE_MATERIAU            :       0.04 :       0.00 :       0.04 :       0.03 *
+ * FORMULE                  :       0.00 :       0.00 :       0.00 :       0.00 *
+ * FORMULE                  :       0.00 :       0.00 :       0.00 :       0.00 *
+ * AFFE_CHAR_MECA_F         :       0.20 :       0.04 :       0.24 :       0.25 *
+ * MECA_STATIQUE            :      43.80 :      19.64 :      63.44 :      58.01 *
+ * CALC_CHAMP               :       0.95 :       0.03 :       0.98 :       0.97 *
+ * POST_RELEVE_T            :       0.34 :       0.00 :       0.34 :       0.34 *
+ * POST_RELEVE_T            :       0.42 :       0.00 :       0.42 :       0.43 *
+ * FIN                      :       0.04 :       0.00 :       0.04 :       0.05 *
+ *  . check syntax          :       0.02 :       0.00 :       0.02 :       0.00 *
+ *  . fortran               :       5.66 :       0.56 :       6.22 :       6.24 *
+ *  . cleanup               :       0.11 :       0.00 :       0.11 :       0.11 *
+ ********************************************************************************
+ * TOTAL_JOB                :      48.54 :      20.26 :      68.80 :      63.55 *
+ ********************************************************************************
+
+# Mémoire (Mo) :  3206.11 /  1069.98 /  1021.38 /   584.94 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0014   user+syst:        0.04s (syst:        0.00s, elaps:        0.05s)
+# ----------------------------------------------------------------------------------------------
+End of the Code_Aster execution
+Code_Aster MPI exits normally
+Exited
+
+EXECUTION_CODE_ASTER_EXIT_10=0
+
+
+
+------------------------------------------------------------
+--- DIAGNOSTIC JOB : OK
+------------------------------------------------------------
+

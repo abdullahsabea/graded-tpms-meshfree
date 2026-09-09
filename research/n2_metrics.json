@@ -1,0 +1,20 @@
+{
+  "U_fem": 18.908794229156808,
+  "U_dem": 21.930382480671472,
+  "U_dem_fine_quad": 21.93065292361787,
+  "energy_rel_err": 0.15979803973198164,
+  "l2_rel": 0.1781737154312091,
+  "tip_fem": -37.82364089331987,
+  "tip_beam": -35.12,
+  "adam_iters": 2200,
+  "lbfgs_iters": 80,
+  "grid": [
+    80,
+    40
+  ],
+  "fourier_sigma": 3.0,
+  "width": 128,
+  "depth": 4,
+  "pass_energy": false,
+  "pass_l2": false
+}
