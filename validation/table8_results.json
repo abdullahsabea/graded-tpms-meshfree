@@ -1,0 +1,225 @@
+{
+  "analysis": {
+    "source": "validation/experimental_data/*.csv",
+    "script": "validation/verify_experiment_stats.py",
+    "loading_branch_only": true,
+    "fit_force_window_N": [
+      150.0,
+      600.0
+    ],
+    "reference_span_mm": 100.0,
+    "reference_area_mm2": 450.0,
+    "note": "Supersedes the stale one-specimen optical-tracking intermediate preserved as table8_results_stale_optical_intermediate.json and the orphaned testdata/results_table8.json (whose writing script is not preserved)."
+  },
+  "per_specimen": {
+    "U1": {
+      "E_MPa": 135.40952057306828,
+      "r2": 0.9999553693233986,
+      "n_fit": 2221,
+      "peak_force_N": 1159.8,
+      "peak_disp_mm": 3.5048,
+      "executed_rate_mm_min": 0.9998192713782935,
+      "mass_g": 77.988
+    },
+    "U2": {
+      "E_MPa": 136.36703420052953,
+      "r2": 0.9999641882644767,
+      "n_fit": 736,
+      "peak_force_N": 1177.1000000000001,
+      "peak_disp_mm": 2.7137,
+      "executed_rate_mm_min": 2.9982313927781865,
+      "mass_g": 78.0985
+    },
+    "U3": {
+      "E_MPa": 133.80745638550965,
+      "r2": 0.99995772879807,
+      "n_fit": 748,
+      "peak_force_N": 1174.8,
+      "peak_disp_mm": 2.767,
+      "executed_rate_mm_min": 2.998373689916877,
+      "mass_g": 78.082
+    },
+    "U4": {
+      "E_MPa": 134.2513641918387,
+      "r2": 0.9999527212689026,
+      "n_fit": 746,
+      "peak_force_N": 1121.0,
+      "peak_disp_mm": 2.4291,
+      "executed_rate_mm_min": 2.99876492383697,
+      "mass_g": 77.8811
+    },
+    "O1": {
+      "E_MPa": 125.56727373827997,
+      "r2": 0.9998478800026909,
+      "n_fit": 800,
+      "peak_force_N": 894.8000000000001,
+      "peak_disp_mm": 2.8869,
+      "executed_rate_mm_min": 2.9982334603394527,
+      "mass_g": 78.39
+    },
+    "O2": {
+      "E_MPa": 122.24892505005815,
+      "r2": 0.9997860812346072,
+      "n_fit": 823,
+      "peak_force_N": 856.3,
+      "peak_disp_mm": 2.3311,
+      "executed_rate_mm_min": 2.997554697554698,
+      "mass_g": 78.0271
+    },
+    "O3": {
+      "E_MPa": 123.67798354271575,
+      "r2": 0.9998119667917021,
+      "n_fit": 813,
+      "peak_force_N": 881.0,
+      "peak_disp_mm": 3.2654,
+      "executed_rate_mm_min": 2.9983466013472144,
+      "mass_g": 78.188
+    },
+    "O4": {
+      "E_MPa": 124.34301424580443,
+      "r2": 0.9998261956391076,
+      "n_fit": 808,
+      "peak_force_N": 899.9,
+      "peak_disp_mm": 2.6177,
+      "executed_rate_mm_min": 2.9986249045072575,
+      "mass_g": 78.2517
+    }
+  },
+  "groups": {
+    "uniform": {
+      "mean_E_MPa": 134.95884383773654,
+      "sd_E_MPa": 1.1564788702692324,
+      "n": 4
+    },
+    "graded": {
+      "mean_E_MPa": 123.95929914421458,
+      "sd_E_MPa": 1.3829120945738538,
+      "n": 4
+    },
+    "ratio": {
+      "R": 0.9184970441303801,
+      "normal_95pct_CI": [
+        0.905834645970327,
+        0.9311594422904332
+      ],
+      "t_95pct_CI_df3": [
+        0.8979371450280845,
+        0.9390569432326757
+      ],
+      "bootstrap_95pct_CI": [
+        0.9077088933126803,
+        0.9293734015895495
+      ],
+      "leave_U1_out_rate_mismatch_sensitivity": {
+        "R": 0.9195205821766506,
+        "t_95pct_CI_df2": [
+          0.8875183330790115,
+          0.9515228312742896
+        ],
+        "n_uniform": 3,
+        "n_graded": 4,
+        "note": "Post hoc sensitivity only; excluding U1 does not remove the rate mismatch, single-build limitation, or other experimental limitations."
+      },
+      "mass_adjusted_R": 0.913743678064829,
+      "mass_adjustment": {
+        "method": "E*/(m/m_bar)^k quoted for k=1, k=2 (primary, bending-type lattice scaling), and the within-group-fitted exponent",
+        "variants": {
+          "k1_linear": {
+            "exponent": 1.0,
+            "R": 0.916116572126844
+          },
+          "k2_bending": {
+            "exponent": 2.0,
+            "R": 0.913743678064829
+          },
+          "within_group": {
+            "exponent": 4.5975050924715575,
+            "R": 0.9076152867803252
+          }
+        }
+      },
+      "window_sweep_100_800N": {
+        "100-550": {
+          "R": 0.924209,
+          "n_min": 732
+        },
+        "150-600": {
+          "R": 0.918497,
+          "n_min": 736
+        },
+        "200-650": {
+          "R": 0.910475,
+          "n_min": 738
+        },
+        "250-700": {
+          "R": 0.897588,
+          "n_min": 746
+        },
+        "300-750": {
+          "R": 0.874113,
+          "n_min": 755
+        },
+        "350-800": {
+          "R": 0.817871,
+          "n_min": 766
+        },
+        "100-200": {
+          "R": 0.941688,
+          "n_min": 162
+        },
+        "150-250": {
+          "R": 0.933756,
+          "n_min": 162
+        },
+        "200-300": {
+          "R": 0.930326,
+          "n_min": 161
+        },
+        "250-350": {
+          "R": 0.927994,
+          "n_min": 161
+        },
+        "300-400": {
+          "R": 0.923867,
+          "n_min": 161
+        },
+        "350-450": {
+          "R": 0.920282,
+          "n_min": 163
+        },
+        "400-500": {
+          "R": 0.913286,
+          "n_min": 165
+        },
+        "450-550": {
+          "R": 0.905532,
+          "n_min": 166
+        },
+        "500-600": {
+          "R": 0.890969,
+          "n_min": 167
+        },
+        "550-650": {
+          "R": 0.865184,
+          "n_min": 168
+        },
+        "600-700": {
+          "R": 0.830534,
+          "n_min": 172
+        },
+        "650-750": {
+          "R": 0.762678,
+          "n_min": 178
+        },
+        "700-800": {
+          "R": 0.614808,
+          "n_min": 180
+        }
+      },
+      "window_sweep_R_range_450N_family": [
+        0.817871,
+        0.924209
+      ]
+    }
+  }
+}

@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this reproducibility snapshot, please cite it."
+title: "Verification-guided mesh-free design optimization of graded TPMS metamaterials"
+version: "0.2.0-eabe-submission"
+date-released: 2026-09-21
+license: MIT
+authors:
+  - family-names: "El Sabea"
+    given-names: "Abdullah"
+  - family-names: "Moj"
+    given-names: "Kevin"
+  - family-names: "Kurek"
+    given-names: "Andrzej"
