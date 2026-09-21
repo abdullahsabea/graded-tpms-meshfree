@@ -133,7 +133,10 @@ def plot():
     axa.set_ylabel("force [N]")
     axa.set_xlim(0, 4.55)
     axa.set_ylim(0, None)
-    add_specimen_key(axa, [0.025, 0.72, 0.34, 0.24], c_u, c_o)
+    # The key occupies only the data-free upper-left region: its right edge
+    # stays left of the first high-load curves, and its lower edge stays above
+    # the initial loading traces.
+    add_specimen_key(axa, [0.018, 0.75, 0.27, 0.20], c_u, c_o)
     axa.text(
         4.42, 0.5 * (WINDOW[0] + WINDOW[1]), "150–600 N",
         fontsize=7.5, color="0.35", va="center", ha="right",
