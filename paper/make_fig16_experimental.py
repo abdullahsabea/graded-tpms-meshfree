@@ -38,37 +38,39 @@ def load_csv(path: Path):
 
 
 def add_specimen_key(ax, bounds, c_uniform, c_graded):
-    """Add compact schematic U/O coupon keys without altering plotted data."""
+    """Add compact, fixed-aspect U/O coupon keys without altering data."""
     key = ax.inset_axes(bounds)
     key.set_xlim(0, 1)
     key.set_ylim(0, 1)
     key.set_axis_off()
-    key.add_patch(FancyBboxPatch(
-        (0.0, 0.0), 1.0, 1.0, boxstyle="round,pad=0.025,rounding_size=0.04",
-        fc="white", ec="0.78", lw=0.45, alpha=0.96, zorder=0,
-    ))
-    key.text(0.50, 0.93, "specimen key (schematic)", ha="center", va="top",
+    key.text(0.02, 0.96, "specimen key (schematic)", ha="left", va="top",
              fontsize=5.6, color="0.30")
 
     def coupon(y, color, code, label, graded):
-        # Dog-bone outline: solid grips and a narrowed, lattice-like gauge.
-        x = np.array([0.06, 0.19, 0.27, 0.73, 0.81, 0.94])
-        top = y + np.array([0.095, 0.095, 0.052, 0.052, 0.095, 0.095])
-        bot = y - np.array([0.095, 0.095, 0.052, 0.052, 0.095, 0.095])
-        key.fill(np.r_[x, x[::-1]], np.r_[top, bot[::-1]],
-                 fc="white", ec=color, lw=0.85, zorder=2)
-        xx = np.linspace(0.30, 0.70, 100)
-        amp = 0.028 if not graded else 0.020 + 0.015 * (xx - 0.30) / 0.40
+        # Each icon has an equal drawing aspect, so the dog-bone outline is
+        # never stretched to fit the otherwise wide label area.
+        icon = key.inset_axes([0.03, y - 0.16, 0.22, 0.31])
+        icon.set_xlim(0, 1)
+        icon.set_ylim(0, 1)
+        icon.set_aspect("equal", adjustable="box")
+        icon.set_axis_off()
+        yy = np.array([0.05, 0.18, 0.30, 0.70, 0.82, 0.95])
+        left = 0.5 - np.array([0.22, 0.22, 0.12, 0.12, 0.22, 0.22])
+        right = 1.0 - left
+        icon.fill(np.r_[left, right[::-1]], np.r_[yy, yy[::-1]],
+                  fc="white", ec=color, lw=0.85, zorder=2)
+        yy_wave = np.linspace(0.30, 0.70, 100)
+        amp = 0.045 if not graded else 0.032 + 0.025 * (yy_wave - 0.30) / 0.40
         for offset in (-0.025, 0.025):
-            yy = y + offset + amp * np.sin(10 * np.pi * (xx - 0.30) / 0.40)
-            key.plot(xx, yy, color=color, lw=0.65, alpha=0.90, zorder=3)
-        key.text(0.015, y, code, ha="left", va="center", fontsize=6.6,
+            xx_wave = 0.50 + offset + amp * np.sin(10 * np.pi * (yy_wave - 0.30) / 0.40)
+            icon.plot(xx_wave, yy_wave, color=color, lw=0.65, alpha=0.90, zorder=3)
+        key.text(0.29, y, code, ha="left", va="center", fontsize=6.5,
                  fontweight="bold", color=color)
-        key.text(0.98, y, label, ha="right", va="center", fontsize=5.9,
+        key.text(0.40, y, label, ha="left", va="center", fontsize=5.9,
                  color="0.18")
 
     coupon(0.62, c_uniform, "U", r"uniform $t=0.30$", graded=False)
-    coupon(0.29, c_graded, "O", "constrained graded", graded=True)
+    coupon(0.27, c_graded, "O", "constrained graded", graded=True)
 
 
 def plot():
@@ -136,7 +138,7 @@ def plot():
     # The key occupies only the data-free upper-left region: its right edge
     # stays left of the first high-load curves, and its lower edge stays above
     # the initial loading traces.
-    add_specimen_key(axa, [0.018, 0.75, 0.27, 0.20], c_u, c_o)
+    add_specimen_key(axa, [0.018, 0.66, 0.29, 0.29], c_u, c_o)
     axa.text(
         4.42, 0.5 * (WINDOW[0] + WINDOW[1]), "150–600 N",
         fontsize=7.5, color="0.35", va="center", ha="right",
