@@ -1,0 +1,19 @@
+{
+ "design": "uniform",
+ "N_surface": 48,
+ "interior_M": 96,
+ "free_caps": false,
+ "refined_caps": true,
+ "nodes": 97890,
+ "tets": 516986,
+ "cap_triangles": {
+  "X0": 1925,
+  "X1": 1925,
+  "Y0": 1778,
+  "Y1": 1778,
+  "Z0": 1967,
+  "Z1": 1967
+ },
+ "solid_volume": 0.19388831570774542,
+ "surface_triangles": 58864
+}

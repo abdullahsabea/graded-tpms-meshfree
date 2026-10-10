@@ -1,0 +1,32 @@
+{
+ "uniform": {
+  "n_components": 3,
+  "solid_vf": 0.193390625,
+  "corner_vf": 3.41796875e-05,
+  "corner_share_of_solid": 0.00017673911287064716
+ },
+ "printable": {
+  "n_components": 3,
+  "solid_vf": 0.19461514282226564,
+  "corner_vf": 9.6282958984375e-05,
+  "corner_share_of_solid": 0.0004947351865230059
+ },
+ "vgmm": {
+  "n_components": 3,
+  "solid_vf": 0.19321759033203126,
+  "corner_vf": 0.000244476318359375,
+  "corner_share_of_solid": 0.001265290173318377
+ },
+ "fullfe": {
+  "n_components": 3,
+  "solid_vf": 0.19321368408203124,
+  "corner_vf": 0.000174530029296875,
+  "corner_share_of_solid": 0.0009033005613762643
+ },
+ "graded": {
+  "n_components": 3,
+  "solid_vf": 0.19341128540039063,
+  "corner_vf": 0.0002203369140625,
+  "corner_share_of_solid": 0.0011392143618009117
+ }
+}

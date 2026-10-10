@@ -1,0 +1,841 @@
+{
+  "protocol": "VG-MM per 04_preregistered_plan.md (frozen 2026-09-13)",
+  "search_N": 64,
+  "confirm_N": 96,
+  "uniform_64": 0.10528125601,
+  "uniform_96": 0.10572287959,
+  "theta_final": [
+    0.0,
+    0.0,
+    0.165,
+    -0.22,
+    0.165,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.05500000000000002
+  ],
+  "C_winner_search64": 0.11141717521,
+  "C_winner_confirm96": 0.11159901021,
+  "G_search64_pct": 5.828121198912339,
+  "G_confirm96_pct": 5.55805010494228,
+  "fe_calls_total": 26,
+  "fe_calls_new_solves": 20,
+  "accept_events": 6,
+  "reject_events": 18,
+  "calls": [
+    {
+      "N": 64,
+      "key": "4f7b73e28d20ae26",
+      "value": 0.10528125601,
+      "legacy": true,
+      "newly_solved": false,
+      "purpose": "baseline_uniform"
+    },
+    {
+      "N": 64,
+      "key": "b5fbcc0cbcebaa38",
+      "value": 0.085433450556,
+      "legacy": true,
+      "newly_solved": false,
+      "purpose": "checkpoint_s0_m0"
+    },
+    {
+      "N": 64,
+      "key": "59ba6d270cf0d3b6",
+      "value": 0.090846185923,
+      "legacy": true,
+      "newly_solved": false,
+      "purpose": "checkpoint_s0_m1"
+    },
+    {
+      "N": 64,
+      "key": "dd6911f7f24bdb68",
+      "value": 0.11018618557,
+      "legacy": true,
+      "newly_solved": false,
+      "purpose": "checkpoint_s0_m2"
+    },
+    {
+      "N": 64,
+      "key": "7e067f73768abe94",
+      "value": 0.11047006463,
+      "legacy": true,
+      "newly_solved": false,
+      "purpose": "checkpoint_s0_m3"
+    },
+    {
+      "N": 64,
+      "key": "2654b6046ee74cb0",
+      "value": 0.11066325166,
+      "legacy": true,
+      "newly_solved": false,
+      "purpose": "checkpoint_s0_m4"
+    },
+    {
+      "N": 64,
+      "key": "6fe857b4e72a339a",
+      "value": 0.11042085272,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s0_m5"
+    },
+    {
+      "N": 64,
+      "key": "f2df081cf9652211",
+      "value": 0.11015781636,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s0_m6"
+    },
+    {
+      "N": 64,
+      "key": "8089f77a87c886da",
+      "value": 0.10893099518,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s0_m7"
+    },
+    {
+      "N": 64,
+      "key": "8525eaf127456432",
+      "value": 0.10847973281,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s0_m8"
+    },
+    {
+      "N": 64,
+      "key": "127a0ed1663aa926",
+      "value": 0.10842389059,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s0_m9"
+    },
+    {
+      "N": 64,
+      "key": "e3c5829b189f3fbb",
+      "value": 0.10921256563,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s0_m10"
+    },
+    {
+      "N": 64,
+      "key": "ae4ee877c409d0a8",
+      "value": 0.11106574907,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s0_m11"
+    },
+    {
+      "N": 64,
+      "key": "033375899de9692c",
+      "value": 0.10897092513,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s1_m0"
+    },
+    {
+      "N": 64,
+      "key": "fd27d58aefde134a",
+      "value": 0.10875904604,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s1_m1"
+    },
+    {
+      "N": 64,
+      "key": "2cbf9dd508ca6583",
+      "value": 0.11126054614,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s1_m2"
+    },
+    {
+      "N": 64,
+      "key": "b0d31f211ee554c9",
+      "value": 0.10992711994,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s1_m3"
+    },
+    {
+      "N": 64,
+      "key": "6f8b70cc95b98805",
+      "value": 0.11141717521,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s1_m4"
+    },
+    {
+      "N": 64,
+      "key": "7f0ec83b4a040b17",
+      "value": 0.11028803666,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s1_m5"
+    },
+    {
+      "N": 64,
+      "key": "684f144753bddbd8",
+      "value": 0.10529686012,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s1_m6"
+    },
+    {
+      "N": 64,
+      "key": "deb2982b9e5a97da",
+      "value": 0.11010881537,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s1_m7"
+    },
+    {
+      "N": 64,
+      "key": "b1dde5798a9016f7",
+      "value": 0.11046065684,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s1_m8"
+    },
+    {
+      "N": 64,
+      "key": "4d667487334b0538",
+      "value": 0.10879367991,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s1_m9"
+    },
+    {
+      "N": 64,
+      "key": "d96e1de57dc358f0",
+      "value": 0.11045481563,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s1_m10"
+    },
+    {
+      "N": 64,
+      "key": "9d185f60178486e1",
+      "value": 0.11069910271,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "checkpoint_s1_m11"
+    },
+    {
+      "N": 96,
+      "key": "32a12f8ba3b1b2b6",
+      "value": 0.11159901021,
+      "legacy": false,
+      "newly_solved": true,
+      "purpose": "winner_confirm_96"
+    }
+  ],
+  "log": [
+    {
+      "sweep": 0,
+      "mode": 0,
+      "dem_rank_top3": [
+        [
+          0.124522,
+          -0.22
+        ],
+        [
+          0.123655,
+          0.22
+        ],
+        [
+          0.120578,
+          -0.165
+        ]
+      ],
+      "pick": -0.22,
+      "dem_score": 0.12452213923097588,
+      "fe_val": 0.085433450556,
+      "incumbent_FE": 0.10528125601,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": -18.852173887548208,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 0,
+      "mode": 1,
+      "dem_rank_top3": [
+        [
+          0.123259,
+          -0.22
+        ],
+        [
+          0.119906,
+          -0.165
+        ],
+        [
+          0.118576,
+          0.22
+        ]
+      ],
+      "pick": -0.22,
+      "dem_score": 0.12325874195084907,
+      "fe_val": 0.090846185923,
+      "incumbent_FE": 0.10528125601,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": -13.710959228705343,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 0,
+      "mode": 2,
+      "dem_rank_top3": [
+        [
+          0.129983,
+          0.22
+        ],
+        [
+          0.124467,
+          0.165
+        ],
+        [
+          0.118868,
+          0.11000000000000001
+        ]
+      ],
+      "pick": 0.22,
+      "dem_score": 0.12998259080632124,
+      "fe_val": 0.11018618557,
+      "incumbent_FE": 0.10528125601,
+      "action": "ACCEPT",
+      "gain_vs_uniform_pct": 4.6588820706452205,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 0,
+      "mode": 3,
+      "dem_rank_top3": [
+        [
+          0.131223,
+          -0.22
+        ],
+        [
+          0.130134,
+          -0.165
+        ],
+        [
+          0.129983,
+          0.0
+        ]
+      ],
+      "pick": -0.22,
+      "dem_score": 0.1312228323513409,
+      "fe_val": 0.11047006463,
+      "incumbent_FE": 0.11018618557,
+      "action": "ACCEPT",
+      "gain_vs_uniform_pct": 4.928520818090498,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 0,
+      "mode": 4,
+      "dem_rank_top3": [
+        [
+          0.131565,
+          0.22
+        ],
+        [
+          0.13137,
+          0.165
+        ],
+        [
+          0.131223,
+          0.0
+        ]
+      ],
+      "pick": 0.22,
+      "dem_score": 0.13156486602383666,
+      "fe_val": 0.11066325166,
+      "incumbent_FE": 0.11047006463,
+      "action": "ACCEPT",
+      "gain_vs_uniform_pct": 5.112016947716502,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 0,
+      "mode": 5,
+      "dem_rank_top3": [
+        [
+          0.131755,
+          0.05500000000000002
+        ],
+        [
+          0.131565,
+          0.0
+        ],
+        [
+          0.131425,
+          0.11000000000000001
+        ]
+      ],
+      "pick": 0.05500000000000002,
+      "dem_score": 0.13175527783459984,
+      "fe_val": 0.11042085272,
+      "incumbent_FE": 0.11066325166,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 4.881777540260179,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 0,
+      "mode": 6,
+      "dem_rank_top3": [
+        [
+          0.131565,
+          0.0
+        ],
+        [
+          0.131319,
+          0.05500000000000002
+        ],
+        [
+          0.131286,
+          -0.05499999999999999
+        ]
+      ],
+      "pick": 0.05500000000000002,
+      "dem_score": 0.13156486602383666,
+      "fe_val": 0.11015781636,
+      "incumbent_FE": 0.11066325166,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 4.631935954047495,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 0,
+      "mode": 7,
+      "dem_rank_top3": [
+        [
+          0.132302,
+          -0.165
+        ],
+        [
+          0.132076,
+          -0.22
+        ],
+        [
+          0.131995,
+          -0.11
+        ]
+      ],
+      "pick": -0.165,
+      "dem_score": 0.1323016385867959,
+      "fe_val": 0.10893099518,
+      "incumbent_FE": 0.11066325166,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 3.4666561820399844,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 0,
+      "mode": 8,
+      "dem_rank_top3": [
+        [
+          0.131709,
+          0.11000000000000001
+        ],
+        [
+          0.131661,
+          0.05500000000000002
+        ],
+        [
+          0.131565,
+          0.0
+        ]
+      ],
+      "pick": 0.11000000000000001,
+      "dem_score": 0.13170901183912065,
+      "fe_val": 0.10847973281,
+      "incumbent_FE": 0.11066325166,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 3.038030625029964,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 0,
+      "mode": 9,
+      "dem_rank_top3": [
+        [
+          0.133447,
+          -0.22
+        ],
+        [
+          0.133095,
+          -0.165
+        ],
+        [
+          0.13255,
+          -0.11
+        ]
+      ],
+      "pick": -0.22,
+      "dem_score": 0.13344703802431468,
+      "fe_val": 0.10842389059,
+      "incumbent_FE": 0.11066325166,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 2.984989635478419,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 0,
+      "mode": 10,
+      "dem_rank_top3": [
+        [
+          0.131937,
+          0.11000000000000001
+        ],
+        [
+          0.131877,
+          0.05500000000000002
+        ],
+        [
+          0.131652,
+          0.165
+        ]
+      ],
+      "pick": 0.11000000000000001,
+      "dem_score": 0.13193704944569618,
+      "fe_val": 0.10921256563,
+      "incumbent_FE": 0.11066325166,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 3.734102126998362,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 0,
+      "mode": 11,
+      "dem_rank_top3": [
+        [
+          0.131712,
+          0.05500000000000002
+        ],
+        [
+          0.131565,
+          0.0
+        ],
+        [
+          0.131388,
+          0.11000000000000001
+        ]
+      ],
+      "pick": 0.05500000000000002,
+      "dem_score": 0.13171202226658352,
+      "fe_val": 0.11106574907,
+      "incumbent_FE": 0.11066325166,
+      "action": "ACCEPT",
+      "gain_vs_uniform_pct": 5.49432375640595,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 1,
+      "mode": 0,
+      "dem_rank_top3": [
+        [
+          0.132105,
+          -0.11
+        ],
+        [
+          0.131989,
+          -0.165
+        ],
+        [
+          0.131923,
+          -0.05499999999999999
+        ]
+      ],
+      "pick": -0.11,
+      "dem_score": 0.13210524230089504,
+      "fe_val": 0.10897092513,
+      "incumbent_FE": 0.11106574907,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 3.5045831136831573,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 1,
+      "mode": 1,
+      "dem_rank_top3": [
+        [
+          0.134217,
+          -0.22
+        ],
+        [
+          0.133906,
+          -0.165
+        ],
+        [
+          0.13332,
+          -0.11
+        ]
+      ],
+      "pick": -0.22,
+      "dem_score": 0.13421672520053107,
+      "fe_val": 0.10875904604,
+      "incumbent_FE": 0.11106574907,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 3.3033325796091084,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 1,
+      "mode": 2,
+      "dem_rank_top3": [
+        [
+          0.131712,
+          0.22
+        ],
+        [
+          0.1307,
+          0.165
+        ],
+        [
+          0.129473,
+          0.11000000000000001
+        ]
+      ],
+      "pick": 0.165,
+      "dem_score": 0.13171202226658352,
+      "fe_val": 0.11126054614,
+      "incumbent_FE": 0.11106574907,
+      "action": "ACCEPT",
+      "gain_vs_uniform_pct": 5.679349161100489,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 1,
+      "mode": 3,
+      "dem_rank_top3": [
+        [
+          0.1307,
+          -0.22
+        ],
+        [
+          0.129699,
+          0.22
+        ],
+        [
+          0.129697,
+          -0.165
+        ]
+      ],
+      "pick": 0.22,
+      "dem_score": 0.13070006389170885,
+      "fe_val": 0.10992711994,
+      "incumbent_FE": 0.11126054614,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 4.412812029482915,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 1,
+      "mode": 4,
+      "dem_rank_top3": [
+        [
+          0.1307,
+          0.22
+        ],
+        [
+          0.129868,
+          0.165
+        ],
+        [
+          0.129468,
+          0.11000000000000001
+        ]
+      ],
+      "pick": 0.165,
+      "dem_score": 0.13070006389170885,
+      "fe_val": 0.11141717521,
+      "incumbent_FE": 0.11126054614,
+      "action": "ACCEPT",
+      "gain_vs_uniform_pct": 5.828121198912339,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 1,
+      "mode": 5,
+      "dem_rank_top3": [
+        [
+          0.130656,
+          0.165
+        ],
+        [
+          0.130643,
+          0.11000000000000001
+        ],
+        [
+          0.130454,
+          0.22
+        ]
+      ],
+      "pick": 0.165,
+      "dem_score": 0.13065568964520935,
+      "fe_val": 0.11028803666,
+      "incumbent_FE": 0.11141717521,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 4.75562397310727,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 1,
+      "mode": 6,
+      "dem_rank_top3": [
+        [
+          0.130063,
+          0.22
+        ],
+        [
+          0.129907,
+          0.165
+        ],
+        [
+          0.12987,
+          -0.05499999999999999
+        ]
+      ],
+      "pick": 0.22,
+      "dem_score": 0.13006250810576603,
+      "fe_val": 0.10529686012,
+      "incumbent_FE": 0.11141717521,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 0.014821356233163385,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 1,
+      "mode": 7,
+      "dem_rank_top3": [
+        [
+          0.130166,
+          -0.11
+        ],
+        [
+          0.130139,
+          -0.05499999999999999
+        ],
+        [
+          0.130031,
+          -0.165
+        ]
+      ],
+      "pick": -0.11,
+      "dem_score": 0.1301663269259734,
+      "fe_val": 0.11010881537,
+      "incumbent_FE": 0.11141717521,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 4.585393015772388,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 1,
+      "mode": 8,
+      "dem_rank_top3": [
+        [
+          0.130031,
+          0.05500000000000002
+        ],
+        [
+          0.12999,
+          -0.05499999999999999
+        ],
+        [
+          0.129868,
+          0.0
+        ]
+      ],
+      "pick": 0.05500000000000002,
+      "dem_score": 0.1300312487728661,
+      "fe_val": 0.11046065684,
+      "incumbent_FE": 0.11141717521,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 4.919584953952327,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 1,
+      "mode": 9,
+      "dem_rank_top3": [
+        [
+          0.131194,
+          -0.165
+        ],
+        [
+          0.131153,
+          -0.22
+        ],
+        [
+          0.13109,
+          -0.11
+        ]
+      ],
+      "pick": -0.165,
+      "dem_score": 0.1311943560722284,
+      "fe_val": 0.10879367991,
+      "incumbent_FE": 0.11141717521,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 3.336229100141397,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 1,
+      "mode": 10,
+      "dem_rank_top3": [
+        [
+          0.130247,
+          0.11000000000000001
+        ],
+        [
+          0.130152,
+          0.05500000000000002
+        ],
+        [
+          0.130089,
+          0.165
+        ]
+      ],
+      "pick": 0.11000000000000001,
+      "dem_score": 0.13024704458075576,
+      "fe_val": 0.11045481563,
+      "incumbent_FE": 0.11141717521,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 4.9140367583652145,
+      "fe_calls": 1
+    },
+    {
+      "sweep": 1,
+      "mode": 11,
+      "dem_rank_top3": [
+        [
+          0.130096,
+          0.0
+        ],
+        [
+          0.129868,
+          0.05500000000000002
+        ],
+        [
+          0.129747,
+          0.11000000000000001
+        ]
+      ],
+      "pick": 0.0,
+      "dem_score": 0.1300962958339369,
+      "fe_val": 0.11069910271,
+      "incumbent_FE": 0.11141717521,
+      "action": "REJECT",
+      "gain_vs_uniform_pct": 5.146069590474278,
+      "fe_calls": 1
+    }
+  ]
+}

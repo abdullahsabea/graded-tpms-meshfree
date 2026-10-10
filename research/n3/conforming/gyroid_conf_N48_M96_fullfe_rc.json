@@ -1,0 +1,19 @@
+{
+ "design": "fullfe",
+ "N_surface": 48,
+ "interior_M": 96,
+ "free_caps": false,
+ "refined_caps": true,
+ "nodes": 93346,
+ "tets": 487933,
+ "cap_triangles": {
+  "X0": 1979,
+  "X1": 1979,
+  "Y0": 2012,
+  "Y1": 2012,
+  "Z0": 1885,
+  "Z1": 1885
+ },
+ "solid_volume": 0.19343695639029534,
+ "surface_triangles": 59224
+}

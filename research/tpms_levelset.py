@@ -23,11 +23,15 @@ Self-test (python tpms_levelset.py):
   T3: gyroid volume fraction at t=0 must equal 0.5 (symmetry of |F|)
   T4: VF monotone increasing in t; matches independent voxel count
   T5: near-surface sampler respects the shell constraint
+  T6: dense-grid max|F| per family matches the 1.5 / 3 / sqrt(2) bounds
 """
 import sys, os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "pylibs"))
 import numpy as np
-import torch
+try:                      # prefer a working system install
+    import torch
+except Exception:         # fall back to the vendored CPU wheel in research/pylibs
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), "pylibs"))
+    import torch
 
 # ---------------------------------------------------------------------------
 # TPMS basis functions F(x) and exact first/second derivatives (torch, autodiff-free)
@@ -79,17 +83,31 @@ def _basis(name):
                     + torch.sin(x)*torch.cos(y)*torch.cos(z)
                     + torch.cos(x)*torch.sin(y)*torch.cos(z)
                     + torch.cos(x)*torch.cos(y)*torch.sin(z))
-        # first/second derivatives obtained via autodiff (still exact)
         def dF(X):
-            X = X.requires_grad_(True)
-            return torch.autograd.grad(F(X).sum(), X, create_graph=True)[0].detach()
+            x, y, z = X[..., 0], X[..., 1], X[..., 2]
+            sx, sy, sz = torch.sin(x), torch.sin(y), torch.sin(z)
+            cx, cy, cz = torch.cos(x), torch.cos(y), torch.cos(z)
+            fx = cx*sy*sz + cx*cy*cz - sx*sy*cz - sx*cy*sz
+            fy = sx*cy*sz - sx*sy*cz + cx*cy*cz - cx*sy*sz
+            fz = sx*sy*cz - sx*cy*sz - cx*sy*sz + cx*cy*cz
+            return torch.stack((fx, fy, fz), dim=-1)
         def ddF(X):
-            rows = []
-            for i in range(3):
-                Xi = X.requires_grad_(True)
-                g = torch.autograd.grad(F(Xi).sum(), Xi, create_graph=True)[0]
-                rows.append(torch.autograd.grad(g[..., i].sum(), Xi)[0])
-            return torch.stack(rows, dim=-1)
+            x, y, z = X[..., 0], X[..., 1], X[..., 2]
+            sx, sy, sz = torch.sin(x), torch.sin(y), torch.sin(z)
+            cx, cy, cz = torch.cos(x), torch.cos(y), torch.cos(z)
+            f = F(X)
+            hxy = cx*cy*sz - cx*sy*cz - sx*cy*cz + sx*sy*sz
+            hxz = cx*sy*cz - cx*cy*sz + sx*sy*sz - sx*cy*cz
+            hyz = sx*cy*cz + sx*sy*sz - cx*cy*sz - cx*sy*cz
+            H = torch.empty((*X.shape[:-1], 3, 3), dtype=X.dtype,
+                            device=X.device)
+            H[..., 0, 0] = -f
+            H[..., 1, 1] = -f
+            H[..., 2, 2] = -f
+            H[..., 0, 1] = H[..., 1, 0] = hxy
+            H[..., 0, 2] = H[..., 2, 0] = hxz
+            H[..., 1, 2] = H[..., 2, 1] = hyz
+            return H
         return F, dF, ddF
     raise ValueError(f"unknown TPMS '{name}'")
 
@@ -201,4 +219,21 @@ if __name__ == "__main__":
     p = tp.phi(pts)
     ok = ((p > -0.05) & (p < 0.0)).all().item()
     print(f"T5 shell sampler: phi in (-0.05, 0) for all 2000 pts -> {'PASS' if ok else 'FAIL'}")
+
+    # T6: per-family bound max|F| on a dense 255^3 grid (chunked, <100 MB):
+    #     the paper's thickness normalization assumes max|F| = 1.5 (gyroid),
+    #     3 (primitive), sqrt(2) (diamond).  The grid max must not exceed the
+    #     bound and must reach within 2% of it (i.e. the bound is tight).
+    Fb, _, _ = _basis(fam)
+    g1d = torch.linspace(0, 2 * np.pi, 257)[1:-1]      # 255 interior nodes
+    fmax = 0.0
+    for xi in g1d:
+        chunk = torch.stack(torch.meshgrid(xi, g1d, g1d, indexing="ij"),
+                            -1).reshape(-1, 3)
+        fmax = max(fmax, Fb(chunk).abs().max().item())
+    bound = {"gyroid": 1.5, "primitive": 3.0, "diamond": np.sqrt(2)}[fam]
+    ok = fmax <= bound + 1e-9 and fmax > 0.98 * bound
+    print(f"T6 max|F| on dense 255^3 grid = {fmax:.6f}  "
+          f"(bound {bound:.6f}, ratio {fmax / bound:.4f})  -> "
+          f"{'PASS' if ok else 'FAIL'}")
     print("N1 module self-tests complete.")

@@ -53,9 +53,39 @@ def build_graded(N, theta, mid, modes, t0, tmin, tmax):
     }
     return nodes, elems, groups, solid.mean()
 
+def solve_shift_for_vf(N, theta, modes, t0, tmin, tmax, vf_target, tol=1e-6):
+    """Volume-compensation bisection on delta-t0 against the DISCRETE voxel
+    volume fraction (see make_mesh_graded.solve_shift_for_vf)."""
+    h = 1.0 / N
+    c = (np.arange(N) + 0.5) * h
+    X, Y, Z = np.meshgrid(c, c, c, indexing="ij")
+    absF = np.abs(gyroid_F(X, Y, Z))
+    lo, hi = -0.3, 0.3
+    for _ in range(60):
+        mid = 0.5 * (lo + hi)
+        vf = ((absF - t_of(X, Y, Z, theta, mid, modes, t0, tmin, tmax)) < 0).mean()
+        if vf < vf_target:
+            lo = mid
+        else:
+            hi = mid
+        if hi - lo < tol:
+            break
+    return 0.5 * (lo + hi)
+
+
 if __name__ == "__main__":
     theta, mid, modes, t0, tmin, tmax = load()
     print(f"theta={np.round(theta,3).tolist()}  t0shift={mid:+.4f}  bounds=[{tmin},{tmax}]")
+    if len(sys.argv) > 1 and sys.argv[1] == "--vf":
+        vf_target = float(sys.argv[2])
+        for N in [int(x) for x in sys.argv[3].split(",")]:
+            shift = solve_shift_for_vf(N, theta, modes, t0, tmin, tmax, vf_target)
+            nodes, elems, groups, vf = build_graded(N, theta, shift, modes, t0, tmin, tmax)
+            write_mail(f"gyroid_printable_N{N}_vf{vf_target}.mail", nodes, elems,
+                       groups, vf, N, -1)
+            print(f"   calibrated t0shift={shift:+.6f} -> discrete VF={vf:.6f} "
+                  f"(target {vf_target})")
+        sys.exit(0)
     Ns = [int(x) for x in sys.argv[1].split(",")] if len(sys.argv) > 1 else [64]
     for N in Ns:
         nodes, elems, groups, vf = build_graded(N, theta, mid, modes, t0, tmin, tmax)

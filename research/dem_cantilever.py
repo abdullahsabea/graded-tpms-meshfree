@@ -156,7 +156,13 @@ def main():
     t0 = time.time()
     print("FEM reference (160x80 Q4)...")
     fem = fem_reference()
-    d_beam = P * L**3 / (3 * E * I) + 6 * P * L * (1 + NU) / (5 * E * H)  # Timoshenko
+    # Timoshenko tip deflection: bending + shear, kappa=5/6 rectangular
+    # shear correction factor => shear term coefficient 12/5, not 6/5
+    # (a coefficient-of-2 error in an earlier version of this line was
+    # caught during manuscript repair 2026-08-25: it silently halved the
+    # shear term, giving tip=35.12 instead of the correct 38.24; the
+    # printed order-of-magnitude check only, no effect on U_dem/U_fem).
+    d_beam = P * L**3 / (3 * E * I) + 12 * P * L * (1 + NU) / (5 * E * H)  # Timoshenko
     print(f"  FEM strain energy U = {fem['energy']:.6f}   tip uy = {fem['tip']:.6f}")
     print(f"  Timoshenko beam tip = {-d_beam:.6f} (order check only)")
 

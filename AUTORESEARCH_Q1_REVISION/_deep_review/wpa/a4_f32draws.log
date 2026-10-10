@@ -1,0 +1,6 @@
+VALIDATION unconstrained (no shift): {'vf': 0.195335, 'C_frozen': 0.13632530768151763, 'se_frozen': np.float64(0.0004582805652419473), 'C_chain': 0.13656919967429862, 'se_chain': np.float64(0.0004587569209916425)}
+uniform {'shift': 0.0, 'lo': 0.12, 'hi': 0.55, 'vf': 0.19308, 'C_frozen': 0.11389, 'se_frozen': np.float64(0.00032), 'C_chain': 0.11389, 'se_chain': np.float64(0.00032), 'score_frozen': 0.11545, 'score_chain': 0.11545}
+band {'shift': -0.00472, 'lo': 0.2, 'hi': 0.45, 'vf': 0.194, 'C_frozen': 0.12326, 'se_frozen': np.float64(0.00036), 'C_chain': 0.12341, 'se_chain': np.float64(0.00036), 'score_frozen': 0.12478, 'score_chain': 0.12493}
+unconstrained {'shift': -0.00936, 'lo': 0.12, 'hi': 0.55, 'vf': 0.19259, 'C_frozen': 0.13436, 'se_frozen': np.float64(0.00045), 'C_chain': 0.1346, 'se_chain': np.float64(0.00045), 'score_frozen': 0.13439, 'score_chain': 0.13465}
+vgmm_seed11 {'shift': -0.0361, 'lo': 0.12, 'hi': 0.55, 'vf': 0.19273, 'C_frozen': 0.1287, 'se_frozen': np.float64(0.00043), 'C_chain': 0.12876, 'se_chain': np.float64(0.00043), 'score_frozen': 0.12924, 'score_chain': 0.12931}
+fullfe {'shift': -0.02849, 'lo': 0.12, 'hi': 0.55, 'vf': 0.19244, 'C_frozen': 0.12976, 'se_frozen': np.float64(0.00043), 'C_chain': 0.12977, 'se_chain': np.float64(0.00043), 'score_frozen': 0.13126, 'score_chain': 0.13127}

@@ -1,0 +1,3 @@
+parsing switches
+success
+{"design": "graded", "N_surface": 72, "interior_M": 96, "free_caps": false, "refined_caps": true, "nodes": 152955, "tets": 761354, "cap_triangles": {"X0": 2983, "X1": 2983, "Y0": 3000, "Y1": 2998, "Z0": 3076, "Z1": 3076}, "solid_volume": 0.19363152463417918, "surface_triangles": 122314}

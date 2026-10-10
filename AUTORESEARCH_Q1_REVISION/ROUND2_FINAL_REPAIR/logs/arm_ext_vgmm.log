@@ -1,0 +1,532 @@
+=== vgmm seed 14 ===
+s0 m 0: pick -0.220 FE 0.085433 (REJECT) best 0.105281 (25s)
+s0 m 1: pick -0.220 FE 0.090846 (REJECT) best 0.105281 (45s)
+s0 m 2: pick +0.220 FE 0.110186 (ACCEPT) best 0.110186 (67s)
+s0 m 3: pick +0.220 FE 0.110470 (ACCEPT) best 0.110470 (89s)
+s0 m 4: pick +0.055 FE 0.111054 (ACCEPT) best 0.111054 (110s)
+s0 m 5: pick -0.055 FE 0.110731 (REJECT) best 0.111054 (131s)
+s0 m 6: pick +0.055 FE 0.110498 (REJECT) best 0.111054 (169s)
+s0 m 7: pick +0.055 FE 0.110897 (REJECT) best 0.111054 (206s)
+s0 m 8: pick -0.055 FE 0.111027 (REJECT) best 0.111054 (246s)
+s0 m 9: pick +0.055 FE 0.111368 (ACCEPT) best 0.111368 (288s)
+s0 m10: pick +0.055 FE 0.111454 (ACCEPT) best 0.111454 (329s)
+s0 m11: pick +0.055 FE 0.111302 (REJECT) best 0.111454 (369s)
+s1 m 0: pick -0.110 FE 0.108774 (REJECT) best 0.111454 (407s)
+s1 m 1: pick +0.055 FE 0.111456 (ACCEPT) best 0.111456 (446s)
+s1 m 2: pick +0.165 FE 0.110855 (REJECT) best 0.111456 (486s)
+s1 m 3: pick +0.165 FE 0.110693 (REJECT) best 0.111456 (527s)
+s1 m 4: pick +0.110 FE 0.111374 (REJECT) best 0.111456 (564s)
+s1 m 5: pick +0.055 FE 0.111340 (REJECT) best 0.111456 (602s)
+s1 m 6: pick +0.110 FE 0.110052 (REJECT) best 0.111456 (640s)
+s1 m 7: pick +0.055 FE 0.111513 (ACCEPT) best 0.111513 (678s)
+s1 m 8: pick +0.055 FE 0.110841 (REJECT) best 0.111513 (715s)
+s1 m 9: pick +0.000 FE 0.111350 (REJECT) best 0.111513 (752s)
+s1 m10: pick +0.110 FE 0.111380 (REJECT) best 0.111513 (790s)
+s1 m11: pick -0.055 FE 0.110902 (REJECT) best 0.111513 (827s)
+{
+  "arm": "vgmm14",
+  "policy": "vgmm",
+  "seed": 14,
+  "plan": "ROUND2_PLAN.md (frozen 2026-09-13T14:41:05Z sha256=e56fdf7f882a45d39c57a921b2c1be6c8f3377dc55ee93eec5f15995947d9cb5)",
+  "theta_final": [
+    0.0,
+    0.05500000000000002,
+    0.22,
+    0.22,
+    0.05500000000000002,
+    0.0,
+    0.0,
+    0.05500000000000002,
+    0.0,
+    0.05500000000000002,
+    0.05500000000000002,
+    0.0
+  ],
+  "C_final_64": 0.11151299248,
+  "C_final_96": 0.11171489807,
+  "G26_pct": 5.919131957741919,
+  "G_confirm96_pct": 5.6676648453366285,
+  "calls_in_budget": 26,
+  "raw_query_invocations": 26,
+  "unique_problems_queried": 26,
+  "new_solves": 19,
+  "accepted": 7,
+  "rejected": 17,
+  "harmful_rejected": [
+    {
+      "sweep": 0,
+      "mode": 0,
+      "gain_pct": -18.852173887548208
+    },
+    {
+      "sweep": 0,
+      "mode": 1,
+      "gain_pct": -13.710959228705343
+    }
+  ],
+  "timing_s": {
+    "score_s": 43.78,
+    "bisect_s": 409.62,
+    "mesh_s": 29.47,
+    "solve_s": 377.34,
+    "cache_s": 7.03,
+    "scorer_init_s": 0.01
+  },
+  "wall_s": 914.9
+}
+=== vgmm seed 15 ===
+s0 m 0: pick -0.220 FE 0.085433 (REJECT) best 0.105281 (27s)
+s0 m 1: pick -0.220 FE 0.090846 (REJECT) best 0.105281 (50s)
+s0 m 2: pick +0.220 FE 0.110186 (ACCEPT) best 0.110186 (78s)
+s0 m 3: pick +0.220 FE 0.110470 (ACCEPT) best 0.110470 (104s)
+s0 m 4: pick +0.220 FE 0.110663 (ACCEPT) best 0.110663 (146s)
+s0 m 5: pick +0.055 FE 0.110878 (ACCEPT) best 0.110878 (188s)
+s0 m 6: pick +0.220 FE 0.105446 (REJECT) best 0.110878 (227s)
+s0 m 7: pick -0.055 FE 0.109880 (REJECT) best 0.110878 (267s)
+s0 m 8: pick +0.220 FE 0.104381 (REJECT) best 0.110878 (307s)
+s0 m 9: pick +0.220 FE 0.108477 (REJECT) best 0.110878 (348s)
+s0 m10: pick -0.055 FE 0.111610 (ACCEPT) best 0.111610 (387s)
+s0 m11: pick +0.220 FE 0.108718 (REJECT) best 0.111610 (425s)
+s1 m 0: pick +0.220 FE 0.105159 (REJECT) best 0.111610 (465s)
+s1 m 1: pick +0.165 FE 0.110123 (REJECT) best 0.111610 (506s)
+s1 m 2: pick +0.165 FE 0.111709 (ACCEPT) best 0.111709 (548s)
+s1 m 3: pick +0.165 FE 0.111208 (REJECT) best 0.111709 (588s)
+s1 m 4: pick +0.165 FE 0.111162 (REJECT) best 0.111709 (628s)
+s1 m 5: pick +0.000 FE 0.111043 (REJECT) best 0.111709 (667s)
+s1 m 6: pick +0.055 FE 0.111066 (REJECT) best 0.111709 (707s)
+s1 m 7: pick +0.055 FE 0.111569 (REJECT) best 0.111709 (748s)
+s1 m 8: pick +0.055 FE 0.110584 (REJECT) best 0.111709 (788s)
+s1 m 9: pick +0.165 FE 0.109939 (REJECT) best 0.111709 (826s)
+s1 m10: pick +0.000 FE 0.110961 (REJECT) best 0.111709 (866s)
+s1 m11: pick +0.110 FE 0.110057 (REJECT) best 0.111709 (908s)
+{
+  "arm": "vgmm15",
+  "policy": "vgmm",
+  "seed": 15,
+  "plan": "ROUND2_PLAN.md (frozen 2026-09-13T14:41:05Z sha256=e56fdf7f882a45d39c57a921b2c1be6c8f3377dc55ee93eec5f15995947d9cb5)",
+  "theta_final": [
+    0.0,
+    0.0,
+    0.165,
+    0.22,
+    0.22,
+    0.05500000000000002,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -0.05499999999999999,
+    0.0
+  ],
+  "C_final_64": 0.11170875338,
+  "C_final_96": 0.11191793013,
+  "G26_pct": 6.105072843535875,
+  "G_confirm96_pct": 5.859706587660862,
+  "calls_in_budget": 26,
+  "raw_query_invocations": 26,
+  "unique_problems_queried": 26,
+  "new_solves": 21,
+  "accepted": 6,
+  "rejected": 18,
+  "harmful_rejected": [
+    {
+      "sweep": 0,
+      "mode": 0,
+      "gain_pct": -18.852173887548208
+    },
+    {
+      "sweep": 0,
+      "mode": 1,
+      "gain_pct": -13.710959228705343
+    }
+  ],
+  "timing_s": {
+    "score_s": 42.11,
+    "bisect_s": 456.64,
+    "mesh_s": 36.69,
+    "solve_s": 400.48,
+    "cache_s": 7.06,
+    "scorer_init_s": 0.01
+  },
+  "wall_s": 998.9
+}
+=== vgmm seed 16 ===
+s0 m 0: pick -0.220 FE 0.085433 (REJECT) best 0.105281 (27s)
+s0 m 1: pick -0.220 FE 0.090846 (REJECT) best 0.105281 (50s)
+s0 m 2: pick +0.220 FE 0.110186 (ACCEPT) best 0.110186 (73s)
+s0 m 3: pick +0.220 FE 0.110470 (ACCEPT) best 0.110470 (97s)
+s0 m 4: pick +0.055 FE 0.111054 (ACCEPT) best 0.111054 (120s)
+s0 m 5: pick +0.110 FE 0.111057 (ACCEPT) best 0.111057 (162s)
+s0 m 6: pick +0.220 FE 0.105279 (REJECT) best 0.111057 (204s)
+s0 m 7: pick -0.220 FE 0.105147 (REJECT) best 0.111057 (245s)
+s0 m 8: pick +0.055 FE 0.110142 (REJECT) best 0.111057 (284s)
+s0 m 9: pick +0.220 FE 0.107719 (REJECT) best 0.111057 (322s)
+s0 m10: pick -0.055 FE 0.110954 (REJECT) best 0.111057 (362s)
+s0 m11: pick +0.220 FE 0.109720 (REJECT) best 0.111057 (401s)
+s1 m 0: pick -0.055 FE 0.110521 (REJECT) best 0.111057 (437s)
+s1 m 1: pick +0.165 FE 0.108479 (REJECT) best 0.111057 (477s)
+s1 m 2: pick +0.165 FE 0.110306 (REJECT) best 0.111057 (516s)
+s1 m 3: pick +0.165 FE 0.110727 (REJECT) best 0.111057 (555s)
+s1 m 4: pick +0.000 FE 0.110647 (REJECT) best 0.111057 (594s)
+s1 m 5: pick +0.055 FE 0.111022 (REJECT) best 0.111057 (630s)
+s1 m 6: pick +0.220 FE 0.105279 (REJECT) best 0.111057 (654s)
+s1 m 7: pick -0.220 FE 0.105147 (REJECT) best 0.111057 (675s)
+s1 m 8: pick +0.055 FE 0.110142 (REJECT) best 0.111057 (695s)
+s1 m 9: pick +0.220 FE 0.107719 (REJECT) best 0.111057 (715s)
+s1 m10: pick -0.055 FE 0.110954 (REJECT) best 0.111057 (735s)
+s1 m11: pick +0.220 FE 0.109720 (REJECT) best 0.111057 (755s)
+{
+  "arm": "vgmm16",
+  "policy": "vgmm",
+  "seed": 16,
+  "plan": "ROUND2_PLAN.md (frozen 2026-09-13T14:41:05Z sha256=e56fdf7f882a45d39c57a921b2c1be6c8f3377dc55ee93eec5f15995947d9cb5)",
+  "theta_final": [
+    0.0,
+    0.0,
+    0.22,
+    0.22,
+    0.05500000000000002,
+    0.11000000000000001,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "C_final_64": 0.11105742985,
+  "C_final_96": 0.11130617832,
+  "G26_pct": 5.486421855996237,
+  "G_confirm96_pct": 5.281069482454881,
+  "calls_in_budget": 26,
+  "raw_query_invocations": 26,
+  "unique_problems_queried": 20,
+  "new_solves": 8,
+  "accepted": 4,
+  "rejected": 20,
+  "harmful_rejected": [
+    {
+      "sweep": 0,
+      "mode": 0,
+      "gain_pct": -18.852173887548208
+    },
+    {
+      "sweep": 0,
+      "mode": 1,
+      "gain_pct": -13.710959228705343
+    }
+  ],
+  "timing_s": {
+    "score_s": 41.21,
+    "bisect_s": 424.15,
+    "mesh_s": 32.29,
+    "solve_s": 290.53,
+    "cache_s": 14.59,
+    "scorer_init_s": 0.01
+  },
+  "wall_s": 844.7
+}
+=== vgmm seed 17 ===
+s0 m 0: pick -0.220 FE 0.085433 (REJECT) best 0.105281 (25s)
+s0 m 1: pick -0.220 FE 0.090846 (REJECT) best 0.105281 (46s)
+s0 m 2: pick +0.220 FE 0.110186 (ACCEPT) best 0.110186 (67s)
+s0 m 3: pick +0.220 FE 0.110470 (ACCEPT) best 0.110470 (89s)
+s0 m 4: pick +0.055 FE 0.111054 (ACCEPT) best 0.111054 (110s)
+s0 m 5: pick +0.055 FE 0.111022 (REJECT) best 0.111054 (131s)
+s0 m 6: pick +0.055 FE 0.110498 (REJECT) best 0.111054 (151s)
+s0 m 7: pick -0.110 FE 0.109007 (REJECT) best 0.111054 (188s)
+s0 m 8: pick +0.055 FE 0.110140 (REJECT) best 0.111054 (209s)
+s0 m 9: pick +0.220 FE 0.107515 (REJECT) best 0.111054 (229s)
+s0 m10: pick +0.055 FE 0.111122 (ACCEPT) best 0.111122 (250s)
+s0 m11: pick -0.110 FE 0.111044 (REJECT) best 0.111122 (272s)
+s1 m 0: pick -0.055 FE 0.110062 (REJECT) best 0.111122 (309s)
+s1 m 1: pick +0.110 FE 0.110708 (REJECT) best 0.111122 (330s)
+s1 m 2: pick +0.165 FE 0.110219 (REJECT) best 0.111122 (352s)
+s1 m 3: pick +0.165 FE 0.110540 (REJECT) best 0.111122 (373s)
+s1 m 4: pick +0.000 FE 0.110839 (REJECT) best 0.111122 (395s)
+s1 m 5: pick -0.055 FE 0.110555 (REJECT) best 0.111122 (416s)
+s1 m 6: pick +0.055 FE 0.110237 (REJECT) best 0.111122 (455s)
+s1 m 7: pick -0.055 FE 0.109855 (REJECT) best 0.111122 (476s)
+s1 m 8: pick +0.055 FE 0.109827 (REJECT) best 0.111122 (496s)
+s1 m 9: pick +0.220 FE 0.107634 (REJECT) best 0.111122 (533s)
+s1 m10: pick +0.110 FE 0.110493 (REJECT) best 0.111122 (570s)
+s1 m11: pick -0.110 FE 0.111044 (REJECT) best 0.111122 (590s)
+{
+  "arm": "vgmm17",
+  "policy": "vgmm",
+  "seed": 17,
+  "plan": "ROUND2_PLAN.md (frozen 2026-09-13T14:41:05Z sha256=e56fdf7f882a45d39c57a921b2c1be6c8f3377dc55ee93eec5f15995947d9cb5)",
+  "theta_final": [
+    0.0,
+    0.0,
+    0.22,
+    0.22,
+    0.05500000000000002,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.05500000000000002,
+    0.0
+  ],
+  "C_final_64": 0.11112195921,
+  "C_final_96": 0.11123002696,
+  "G26_pct": 5.547714209873433,
+  "G_confirm96_pct": 5.209040267685738,
+  "calls_in_budget": 26,
+  "raw_query_invocations": 26,
+  "unique_problems_queried": 25,
+  "new_solves": 5,
+  "accepted": 4,
+  "rejected": 20,
+  "harmful_rejected": [
+    {
+      "sweep": 0,
+      "mode": 0,
+      "gain_pct": -18.852173887548208
+    },
+    {
+      "sweep": 0,
+      "mode": 1,
+      "gain_pct": -13.710959228705343
+    }
+  ],
+  "timing_s": {
+    "score_s": 40.57,
+    "bisect_s": 395.76,
+    "mesh_s": 29.41,
+    "solve_s": 82.35,
+    "cache_s": 25.3,
+    "scorer_init_s": 0.01
+  },
+  "wall_s": 600.6
+}
+=== vgmm seed 18 ===
+s0 m 0: pick +0.220 FE 0.085721 (REJECT) best 0.105281 (23s)
+s0 m 1: pick -0.220 FE 0.090846 (REJECT) best 0.105281 (44s)
+s0 m 2: pick +0.220 FE 0.110186 (ACCEPT) best 0.110186 (64s)
+s0 m 3: pick +0.220 FE 0.110470 (ACCEPT) best 0.110470 (84s)
+s0 m 4: pick +0.055 FE 0.111054 (ACCEPT) best 0.111054 (105s)
+s0 m 5: pick +0.055 FE 0.111022 (REJECT) best 0.111054 (125s)
+s0 m 6: pick +0.110 FE 0.109483 (REJECT) best 0.111054 (145s)
+s0 m 7: pick -0.110 FE 0.109007 (REJECT) best 0.111054 (166s)
+s0 m 8: pick +0.055 FE 0.110140 (REJECT) best 0.111054 (186s)
+s0 m 9: pick +0.110 FE 0.111044 (REJECT) best 0.111054 (225s)
+s0 m10: pick -0.055 FE 0.110790 (REJECT) best 0.111054 (264s)
+s0 m11: pick -0.110 FE 0.110893 (REJECT) best 0.111054 (303s)
+s1 m 0: pick +0.055 FE 0.110569 (REJECT) best 0.111054 (344s)
+s1 m 1: pick +0.165 FE 0.109030 (REJECT) best 0.111054 (382s)
+s1 m 2: pick +0.165 FE 0.110262 (REJECT) best 0.111054 (420s)
+s1 m 3: pick -0.220 FE 0.111054 (REJECT) best 0.111054 (440s)
+s1 m 4: pick +0.000 FE 0.110470 (REJECT) best 0.111054 (460s)
+s1 m 5: pick +0.055 FE 0.111022 (REJECT) best 0.111054 (480s)
+s1 m 6: pick +0.110 FE 0.109483 (REJECT) best 0.111054 (501s)
+s1 m 7: pick -0.110 FE 0.109007 (REJECT) best 0.111054 (522s)
+s1 m 8: pick +0.055 FE 0.110140 (REJECT) best 0.111054 (544s)
+s1 m 9: pick +0.110 FE 0.111044 (REJECT) best 0.111054 (565s)
+s1 m10: pick -0.055 FE 0.110790 (REJECT) best 0.111054 (585s)
+s1 m11: pick -0.110 FE 0.110893 (REJECT) best 0.111054 (606s)
+{
+  "arm": "vgmm18",
+  "policy": "vgmm",
+  "seed": 18,
+  "plan": "ROUND2_PLAN.md (frozen 2026-09-13T14:41:05Z sha256=e56fdf7f882a45d39c57a921b2c1be6c8f3377dc55ee93eec5f15995947d9cb5)",
+  "theta_final": [
+    0.0,
+    0.0,
+    0.22,
+    0.22,
+    0.05500000000000002,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "C_final_64": 0.11105374474,
+  "C_final_96": 0.11133644369,
+  "G26_pct": 5.482921603302016,
+  "G_confirm96_pct": 5.309696559315968,
+  "calls_in_budget": 26,
+  "raw_query_invocations": 26,
+  "unique_problems_queried": 18,
+  "new_solves": 4,
+  "accepted": 3,
+  "rejected": 21,
+  "harmful_rejected": [
+    {
+      "sweep": 0,
+      "mode": 0,
+      "gain_pct": -18.57944482932656
+    },
+    {
+      "sweep": 0,
+      "mode": 1,
+      "gain_pct": -13.710959228705343
+    }
+  ],
+  "timing_s": {
+    "score_s": 39.92,
+    "bisect_s": 393.06,
+    "mesh_s": 28.53,
+    "solve_s": 181.5,
+    "cache_s": 19.7,
+    "scorer_init_s": 0.01
+  },
+  "wall_s": 694.6
+}
+=== vgmm seed 19 ===
+s0 m 0: pick -0.220 FE 0.085433 (REJECT) best 0.105281 (25s)
+s0 m 1: pick -0.220 FE 0.090846 (REJECT) best 0.105281 (45s)
+s0 m 2: pick +0.220 FE 0.110186 (ACCEPT) best 0.110186 (65s)
+s0 m 3: pick +0.220 FE 0.110470 (ACCEPT) best 0.110470 (87s)
+s0 m 4: pick +0.220 FE 0.110663 (ACCEPT) best 0.110663 (107s)
+s0 m 5: pick +0.055 FE 0.110878 (ACCEPT) best 0.110878 (126s)
+s0 m 6: pick +0.055 FE 0.110267 (REJECT) best 0.110878 (161s)
+s0 m 7: pick +0.055 FE 0.111181 (ACCEPT) best 0.111181 (197s)
+s0 m 8: pick +0.220 FE 0.104972 (REJECT) best 0.111181 (235s)
+s0 m 9: pick +0.055 FE 0.111543 (ACCEPT) best 0.111543 (275s)
+s0 m10: pick -0.055 FE 0.111964 (ACCEPT) best 0.111964 (315s)
+s0 m11: pick +0.220 FE 0.109221 (REJECT) best 0.111964 (352s)
+s1 m 0: pick +0.055 FE 0.111266 (REJECT) best 0.111964 (390s)
+s1 m 1: pick +0.110 FE 0.110973 (REJECT) best 0.111964 (427s)
+s1 m 2: pick +0.165 FE 0.111899 (REJECT) best 0.111964 (462s)
+s1 m 3: pick +0.165 FE 0.111580 (REJECT) best 0.111964 (501s)
+s1 m 4: pick +0.165 FE 0.111745 (REJECT) best 0.111964 (538s)
+s1 m 5: pick +0.110 FE 0.111794 (REJECT) best 0.111964 (576s)
+s1 m 6: pick +0.055 FE 0.111371 (REJECT) best 0.111964 (612s)
+s1 m 7: pick -0.055 FE 0.111115 (REJECT) best 0.111964 (647s)
+s1 m 8: pick +0.110 FE 0.110152 (REJECT) best 0.111964 (682s)
+s1 m 9: pick +0.110 FE 0.111422 (REJECT) best 0.111964 (717s)
+s1 m10: pick +0.000 FE 0.111543 (REJECT) best 0.111964 (737s)
+s1 m11: pick +0.220 FE 0.109221 (REJECT) best 0.111964 (756s)
+{
+  "arm": "vgmm19",
+  "policy": "vgmm",
+  "seed": 19,
+  "plan": "ROUND2_PLAN.md (frozen 2026-09-13T14:41:05Z sha256=e56fdf7f882a45d39c57a921b2c1be6c8f3377dc55ee93eec5f15995947d9cb5)",
+  "theta_final": [
+    0.0,
+    0.0,
+    0.22,
+    0.22,
+    0.22,
+    0.05500000000000002,
+    0.0,
+    0.05500000000000002,
+    0.0,
+    0.05500000000000002,
+    -0.05499999999999999,
+    0.0
+  ],
+  "C_final_64": 0.1119644233,
+  "C_final_96": 0.11230237261,
+  "G26_pct": 6.347917514742796,
+  "G_confirm96_pct": 6.22333883215791,
+  "calls_in_budget": 26,
+  "raw_query_invocations": 26,
+  "unique_problems_queried": 24,
+  "new_solves": 15,
+  "accepted": 7,
+  "rejected": 17,
+  "harmful_rejected": [
+    {
+      "sweep": 0,
+      "mode": 0,
+      "gain_pct": -18.852173887548208
+    },
+    {
+      "sweep": 0,
+      "mode": 1,
+      "gain_pct": -13.710959228705343
+    }
+  ],
+  "timing_s": {
+    "score_s": 40.97,
+    "bisect_s": 384.29,
+    "mesh_s": 27.81,
+    "solve_s": 334.55,
+    "cache_s": 8.88,
+    "scorer_init_s": 0.01
+  },
+  "wall_s": 839.9
+}
+=== vgmm seed 20 ===
+s0 m 0: pick -0.220 FE 0.085433 (REJECT) best 0.105281 (23s)
+s0 m 1: pick -0.220 FE 0.090846 (REJECT) best 0.105281 (42s)
+s0 m 2: pick +0.220 FE 0.110186 (ACCEPT) best 0.110186 (62s)
+s0 m 3: pick +0.220 FE 0.110470 (ACCEPT) best 0.110470 (82s)
+s0 m 4: pick +0.220 FE 0.110663 (ACCEPT) best 0.110663 (102s)
+s0 m 5: pick +0.110 FE 0.111011 (ACCEPT) best 0.111011 (140s)
+s0 m 6: pick +0.055 FE 0.110456 (REJECT) best 0.111011 (178s)
+s0 m 7: pick -0.220 FE 0.104445 (REJECT) best 0.111011 (217s)
+s0 m 8: pick -0.165 FE 0.108319 (REJECT) best 0.111011 (256s)
+s0 m 9: pick +0.220 FE 0.108607 (REJECT) best 0.111011 (297s)
+s0 m10: pick -0.055 FE 0.111700 (ACCEPT) best 0.111700 (334s)
+s0 m11: pick +0.220 FE 0.109700 (REJECT) best 0.111700 (374s)
+s1 m 0: pick +0.220 FE 0.105408 (REJECT) best 0.111700 (417s)
+s1 m 1: pick +0.220 FE 0.109032 (REJECT) best 0.111700 (457s)
+s1 m 2: pick +0.165 FE 0.111629 (REJECT) best 0.111700 (496s)
+s1 m 3: pick -0.220 FE 0.110283 (REJECT) best 0.111700 (534s)
+s1 m 4: pick +0.165 FE 0.111274 (REJECT) best 0.111700 (572s)
+s1 m 5: pick +0.165 FE 0.111452 (REJECT) best 0.111700 (608s)
+s1 m 6: pick +0.055 FE 0.111255 (REJECT) best 0.111700 (643s)
+s1 m 7: pick +0.055 FE 0.111429 (REJECT) best 0.111700 (678s)
+s1 m 8: pick -0.110 FE 0.110598 (REJECT) best 0.111700 (714s)
+s1 m 9: pick +0.220 FE 0.108884 (REJECT) best 0.111700 (751s)
+s1 m10: pick -0.110 FE 0.112028 (ACCEPT) best 0.112028 (785s)
+s1 m11: pick +0.220 FE 0.110125 (REJECT) best 0.112028 (823s)
+{
+  "arm": "vgmm20",
+  "policy": "vgmm",
+  "seed": 20,
+  "plan": "ROUND2_PLAN.md (frozen 2026-09-13T14:41:05Z sha256=e56fdf7f882a45d39c57a921b2c1be6c8f3377dc55ee93eec5f15995947d9cb5)",
+  "theta_final": [
+    0.0,
+    0.0,
+    0.22,
+    0.22,
+    0.22,
+    0.11000000000000001,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -0.11,
+    0.0
+  ],
+  "C_final_64": 0.11202825097,
+  "C_final_96": 0.11252238368,
+  "G26_pct": 6.408543377711173,
+  "G_confirm96_pct": 6.431440494592011,
+  "calls_in_budget": 26,
+  "raw_query_invocations": 26,
+  "unique_problems_queried": 26,
+  "new_solves": 20,
+  "accepted": 6,
+  "rejected": 18,
+  "harmful_rejected": [
+    {
+      "sweep": 0,
+      "mode": 0,
+      "gain_pct": -18.852173887548208
+    },
+    {
+      "sweep": 0,
+      "mode": 1,
+      "gain_pct": -13.710959228705343
+    }
+  ],
+  "timing_s": {
+    "score_s": 41.63,
+    "bisect_s": 389.28,
+    "mesh_s": 28.93,
+    "solve_s": 391.65,
+    "cache_s": 5.59,
+    "scorer_init_s": 0.0
+  },
+  "wall_s": 905.9
+}

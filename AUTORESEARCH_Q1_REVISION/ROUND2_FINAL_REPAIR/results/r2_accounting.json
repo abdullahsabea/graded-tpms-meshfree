@@ -1,0 +1,190 @@
+{
+  "delta_pp": 1.0,
+  "primary_endpoint": "G26 = 100*(C_final_64/0.10528125601 - 1) at exactly 26 counted calls per arm",
+  "families_complete": {
+    "vgmm": true,
+    "rand": true,
+    "det": true,
+    "demonly": true
+  },
+  "branch_primary": "MIXED",
+  "branch_interpretation": "Mixed outcome: report each pairwise comparison by its own branch; no causal equivalence or general superiority claim.",
+  "pairwise": {
+    "vg_vs_rand": {
+      "all_pairwise_diffs_pp": {
+        "vg11_minus_rand11": 1.1958014823459262,
+        "vg11_minus_rand12": 0.5951506979936516,
+        "vg11_minus_rand13": 0.6147912691490953,
+        "vg12_minus_rand11": 1.0159453643850958,
+        "vg12_minus_rand12": 0.41529458003282116,
+        "vg12_minus_rand13": 0.43493515118826487,
+        "vg13_minus_rand11": 0.9153944933070202,
+        "vg13_minus_rand12": 0.31474370895474557,
+        "vg13_minus_rand13": 0.3343842801101893
+      },
+      "min_diff_pp": 0.31474370895474557,
+      "max_diff_pp": 1.1958014823459262,
+      "mean_diff_pp": 0.6484934474963122,
+      "min_vg": 5.547714209873433,
+      "max_rand": 5.232970500918688,
+      "worst_case_margin_pp": 0.31474370895474557,
+      "best_case_margin_pp": 1.1958014823459262,
+      "all_exceed_delta": false,
+      "all_within_delta": false
+    },
+    "vg_vs_det": {
+      "min_vg": 5.547714209873433,
+      "det": 1.8827555588923905,
+      "diff_pp": 3.664958650981043,
+      "beyond_delta": true
+    }
+  },
+  "family_values": {
+    "vgmm": {
+      "11": 5.828121198912339,
+      "12": 5.648265080951509,
+      "13": 5.547714209873433
+    },
+    "rand": {
+      "11": 4.632319716566413,
+      "12": 5.232970500918688,
+      "13": 5.213329929763244
+    },
+    "det": {
+      "det": 1.8827555588923905
+    },
+    "demonly": {
+      "11": -5.071327055114994,
+      "12": -6.63704303768593,
+      "13": -1.7807047721979496
+    }
+  },
+  "variability": {
+    "vgmm_range_pp": 0.28040698903890604,
+    "rand_range_pp": 0.6006507843522746
+  },
+  "accounting_conventions": {
+    "shared_setup": "every arm queries the SAME uniform64 baseline as call 1 (cached value; counted identically)",
+    "inclusive": "inclusive unique-problem count adds the archived uniform96 (available to all arms externally): VG-MM(11) historical = 27 unique; full-FE = 194",
+    "demonly": "0 in-loop FE; 2 endpoint-audit solves outside the 26-call budget (declared in plan)"
+  },
+  "table": [
+    {
+      "arm": "VG-MM(11)",
+      "G26": 5.828121198912339,
+      "G96": 5.55805010494228,
+      "calls": 26,
+      "new_solves": 20,
+      "accepts": 6,
+      "rejects": 18,
+      "harmful_rejected": null,
+      "wall_s": null
+    },
+    {
+      "arm": "VG-MM(12)",
+      "G26": 5.648265080951509,
+      "G96": 5.578131425165811,
+      "calls": 26,
+      "new_solves": 18,
+      "accepts": 5,
+      "rejects": 19,
+      "harmful_rejected": 2,
+      "wall_s": 819.6
+    },
+    {
+      "arm": "VG-MM(13)",
+      "G26": 5.547714209873433,
+      "G96": 5.209040267685738,
+      "calls": 26,
+      "new_solves": 17,
+      "accepts": 4,
+      "rejects": 20,
+      "harmful_rejected": 2,
+      "wall_s": 819.7
+    },
+    {
+      "arm": "RAND(11)",
+      "G26": 4.632319716566413,
+      "G96": 4.430581779616083,
+      "calls": 26,
+      "new_solves": 22,
+      "accepts": 5,
+      "rejects": 19,
+      "harmful_rejected": 3,
+      "wall_s": 472.0
+    },
+    {
+      "arm": "RAND(12)",
+      "G26": 5.232970500918688,
+      "G96": 5.273991147066148,
+      "calls": 26,
+      "new_solves": 20,
+      "accepts": 4,
+      "rejects": 20,
+      "harmful_rejected": 0,
+      "wall_s": 444.5
+    },
+    {
+      "arm": "RAND(13)",
+      "G26": 5.213329929763244,
+      "G96": 5.30375965140697,
+      "calls": 26,
+      "new_solves": 21,
+      "accepts": 5,
+      "rejects": 19,
+      "harmful_rejected": 2,
+      "wall_s": 460.4
+    },
+    {
+      "arm": "DET(det)",
+      "G26": 1.8827555588923905,
+      "G96": 1.8107642616471686,
+      "calls": 26,
+      "new_solves": 22,
+      "accepts": 5,
+      "rejects": 19,
+      "harmful_rejected": 4,
+      "wall_s": 500.3
+    },
+    {
+      "arm": "DEMONLY(11)",
+      "G26": -5.071327055114994,
+      "G96": -4.9135383089691675,
+      "calls": 0,
+      "new_solves": 2,
+      "note": "no FE in loop; endpoint audits only"
+    },
+    {
+      "arm": "DEMONLY(12)",
+      "G26": -6.63704303768593,
+      "G96": -6.597033551344644,
+      "calls": 0,
+      "new_solves": 2,
+      "note": "no FE in loop; endpoint audits only"
+    },
+    {
+      "arm": "DEMONLY(13)",
+      "G26": -1.7807047721979496,
+      "G96": -1.8927970915666226,
+      "calls": 0,
+      "new_solves": 2,
+      "note": "no FE in loop; endpoint audits only"
+    },
+    {
+      "arm": "FULLFE-truncated",
+      "G26": 4.928520818090498,
+      "G96": null,
+      "calls": 26,
+      "note": "call 26 falls inside incomplete scan 4 (batch ends at 33); batch-complete frontier at 25 unique designs (3 complete scans) reported alongside; batch-complete frontier 4.659% at 25 unique"
+    },
+    {
+      "arm": "FULLFE-complete(archived)",
+      "G26": 6.550275662882443,
+      "G96": 6.339071302248089,
+      "calls": 194,
+      "new_solves": 0,
+      "note": "194 unique problems (192 search incl uniform64 + uniform96 + winner96); 244 raw queries; wall time NOT recoverable -> unavailable"
+    }
+  ],
+  "scope_limits": "monotonicity only for same-grid accepted FE objective; no universal-safety claim; gain and cost reported separately; lower-cost/lower-gain arms are NOT called dominated"
+}

@@ -1,0 +1,147 @@
+{
+  "uniform": {
+    "Vf_grid": 0.1937578125,
+    "x1": {
+      "t_plane_near_faces": 0.29999999999999993,
+      "t_plane_core": 0.2999999999999999,
+      "solid_share_near_faces": 0.18643401475746946,
+      "t_plane_min": 0.29999999999999993,
+      "t_plane_max": 0.29999999999999993
+    },
+    "x2": {
+      "t_plane_near_faces": 0.3,
+      "t_plane_core": 0.29999999999999993,
+      "solid_share_near_faces": 0.18643401475746946,
+      "t_plane_min": 0.3,
+      "t_plane_max": 0.3
+    },
+    "x3": {
+      "t_plane_near_faces": 0.30000000000012483,
+      "t_plane_core": 0.30000000000012494,
+      "solid_share_near_faces": 0.18643401475746946,
+      "t_plane_min": 0.30000000000012483,
+      "t_plane_max": 0.30000000000012483
+    },
+    "t_on_solid_p5_p95": [
+      0.3,
+      0.3
+    ],
+    "frac_at_lower_bound": 0.0
+  },
+  "printable": {
+    "Vf_grid": 0.194879638671875,
+    "x1": {
+      "t_plane_near_faces": 0.2715042209181124,
+      "t_plane_core": 0.3103462622321358,
+      "solid_share_near_faces": 0.16898952303041617,
+      "t_plane_min": 0.24107228394369073,
+      "t_plane_max": 0.3642731619600139
+    },
+    "x2": {
+      "t_plane_near_faces": 0.36107238140060405,
+      "t_plane_core": 0.28795422211151284,
+      "solid_share_near_faces": 0.22242169207506138,
+      "t_plane_min": 0.21853732989608993,
+      "t_plane_max": 0.3708542022075109
+    },
+    "x3": {
+      "t_plane_near_faces": 0.36199034410058034,
+      "t_plane_core": 0.2877247314364827,
+      "solid_share_near_faces": 0.231718546228078,
+      "t_plane_min": 0.24506783649354918,
+      "t_plane_max": 0.3710401342422602
+    },
+    "t_on_solid_p5_p95": [
+      0.2,
+      0.45
+    ],
+    "frac_at_lower_bound": 0.315780029296875
+  },
+  "vgmm": {
+    "Vf_grid": 0.19326318359375,
+    "x1": {
+      "t_plane_near_faces": 0.2999631383428054,
+      "t_plane_core": 0.2999631383428055,
+      "solid_share_near_faces": 0.18856097604111136,
+      "t_plane_min": 0.2999631383428054,
+      "t_plane_max": 0.2999631383428054
+    },
+    "x2": {
+      "t_plane_near_faces": 0.40660930015395325,
+      "t_plane_core": 0.2733015978900185,
+      "solid_share_near_faces": 0.25772669737217757,
+      "t_plane_min": 0.13488447612842266,
+      "t_plane_max": 0.5049155461673508
+    },
+    "x3": {
+      "t_plane_near_faces": 0.39674850326680267,
+      "t_plane_core": 0.2757667971117762,
+      "solid_share_near_faces": 0.2528050570612148,
+      "t_plane_min": 0.21111544228139223,
+      "t_plane_max": 0.40531492043944506
+    },
+    "t_on_solid_p5_p95": [
+      0.12,
+      0.55
+    ],
+    "frac_at_lower_bound": 0.2751953125
+  },
+  "fullfe": {
+    "Vf_grid": 0.19320751953125,
+    "x1": {
+      "t_plane_near_faces": 0.290944082953132,
+      "t_plane_core": 0.29431492345441823,
+      "solid_share_near_faces": 0.18893626054805668,
+      "t_plane_min": 0.2907811839443886,
+      "t_plane_max": 0.2969674684981929
+    },
+    "x2": {
+      "t_plane_near_faces": 0.44555341667979786,
+      "t_plane_core": 0.2556625900227517,
+      "solid_share_near_faces": 0.2880949432508864,
+      "t_plane_min": 0.11999999999999975,
+      "t_plane_max": 0.5021993852842762
+    },
+    "x3": {
+      "t_plane_near_faces": 0.326828154844253,
+      "t_plane_core": 0.2853439054816189,
+      "solid_share_near_faces": 0.21670048952586501,
+      "t_plane_min": 0.21258971213772113,
+      "t_plane_max": 0.35813959162642545
+    },
+    "t_on_solid_p5_p95": [
+      0.12,
+      0.55
+    ],
+    "frac_at_lower_bound": 0.344505615234375
+  },
+  "graded": {
+    "Vf_grid": 0.1934443359375,
+    "x1": {
+      "t_plane_near_faces": 0.2764861194275757,
+      "t_plane_core": 0.311224044701667,
+      "solid_share_near_faces": 0.1669922811693852,
+      "t_plane_min": 0.2316167702208839,
+      "t_plane_max": 0.3873555445049084
+    },
+    "x2": {
+      "t_plane_near_faces": 0.40080682073207385,
+      "t_plane_core": 0.2801438693755425,
+      "solid_share_near_faces": 0.25376980821558204,
+      "t_plane_min": 0.16094887437865332,
+      "t_plane_max": 0.4263161934898993
+    },
+    "x3": {
+      "t_plane_near_faces": 0.38627821410063035,
+      "t_plane_core": 0.28377602103340926,
+      "solid_share_near_faces": 0.2538127186539248,
+      "t_plane_min": 0.23614318264732248,
+      "t_plane_max": 0.3950244637613542
+    },
+    "t_on_solid_p5_p95": [
+      0.12,
+      0.55
+    ],
+    "frac_at_lower_bound": 0.323357177734375
+  }
+}

@@ -1,0 +1,46 @@
+{
+ "file": "resid_gyroid_conf_N72_M96_vgmm_rc.med",
+ "eps": 0.001,
+ "n_nodes": 1128847,
+ "max_abs_w": 0.00022433555105248529,
+ "faces": {
+  "x": {
+   "n_slave": 6956,
+   "n_inside": 6233,
+   "n_projected": 723,
+   "max_over_epsL": 3.7888506780395304e-07,
+   "p99_over_epsL": 1.2707054590719924e-07,
+   "median_over_epsL": 4.338925755574552e-17,
+   "projected_max_over_epsL": 1.6326002700526162e-06,
+   "projected_p99_over_epsL": 2.620027019881519e-07,
+   "projected_max_distance": 3.830142113002254e-06,
+   "max_over_maxw": 1.6889211987417436e-06
+  },
+  "y": {
+   "n_slave": 7035,
+   "n_inside": 6299,
+   "n_projected": 736,
+   "max_over_epsL": 4.7671505912436e-07,
+   "p99_over_epsL": 1.6230048958771295e-07,
+   "median_over_epsL": 5.463198353652111e-17,
+   "projected_max_over_epsL": 2.374345216399705e-05,
+   "projected_p99_over_epsL": 8.487424750336702e-07,
+   "projected_max_distance": 2.4660065466138374e-05,
+   "max_over_maxw": 2.125008973779766e-06
+  },
+  "z": {
+   "n_slave": 7446,
+   "n_inside": 6682,
+   "n_projected": 764,
+   "max_over_epsL": 3.4797100410897195e-07,
+   "p99_over_epsL": 1.5017367452206567e-07,
+   "median_over_epsL": 4.0106804813911357e-17,
+   "projected_max_over_epsL": 3.49076165768619e-05,
+   "projected_p99_over_epsL": 2.5090927235011617e-07,
+   "projected_max_distance": 2.9677705851087995e-05,
+   "max_over_maxw": 1.5511184138066511e-06
+  }
+ },
+ "overall_max_over_epsL": 3.49076165768619e-05,
+ "overall_max_over_maxw": 0.00015560447915228092
+}

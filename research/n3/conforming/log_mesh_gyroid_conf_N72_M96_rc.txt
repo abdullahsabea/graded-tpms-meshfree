@@ -1,0 +1,3 @@
+parsing switches
+success
+{"design": "uniform", "N_surface": 72, "interior_M": 96, "free_caps": false, "refined_caps": true, "nodes": 155605, "tets": 778632, "cap_triangles": {"X0": 3020, "X1": 3020, "Y0": 2856, "Y1": 2856, "Z0": 3045, "Z1": 3045}, "solid_volume": 0.1936421990167058, "surface_triangles": 121880}

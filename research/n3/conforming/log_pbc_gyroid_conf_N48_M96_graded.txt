@@ -1,0 +1,858 @@
+
+# ------------------------------------------------------------------------------
+Execution of code_aster
+
+# ------------------------------------------------------------------------------
+Prepare environment in /tmp/run_aster_wruex0wd/proc.0
+
+# ------------------------------------------------------------------------------
+Command file #1 / 1
+
+Content of the file to execute:
+# coding=utf-8
+# Periodic-BC apparent C1111 on a body-fitted mesh (energy basis).
+# u = eps_bar x + w with w periodic: the macro strain enters as a uniform initial
+# strain (PRE_EPSI), so the unknown is w alone and opposite faces are tied by
+# w(slave) = w(master image) with LIAISON_MAIL (non-matching triangulations).
+# Slave sets exclude nodes already slaved by an earlier pair (edges/corners).
+# The energy sign of eps_bar is irrelevant (U is even in eps_bar).
+from code_aster.Commands import *
+import numpy as np
+
+DEBUT()
+
+EPS = 1.0e-3
+mesh0 = LIRE_MAILLAGE(FORMAT='ASTER', UNITE=20)
+mesh = CREA_MAILLAGE(MAILLAGE=mesh0, LINE_QUAD=_F(TOUT='OUI'))
+FACES = ('X0', 'X1', 'Y0', 'Y1', 'Z0', 'Z1')
+mesh = DEFI_GROUP(reuse=mesh, MAILLAGE=mesh, CREA_GROUP_NO=tuple(_F(GROUP_MA=g) for g in FACES))
+mesh = DEFI_GROUP(reuse=mesh, MAILLAGE=mesh, CREA_GROUP_NO=(
+    _F(NOM='SY1', DIFFE=('Y1', 'X1')),
+    _F(NOM='SZ1A', DIFFE=('Z1', 'X1')),
+))
+mesh = DEFI_GROUP(reuse=mesh, MAILLAGE=mesh, CREA_GROUP_NO=(
+    _F(NOM='SZ1', DIFFE=('SZ1A', 'Y1')),
+    _F(NOM='PIN', GROUP_NO='X0', NUME_INIT=1, NUME_FIN=1),  # one node: removes rigid translation
+))
+
+model = AFFE_MODELE(MAILLAGE=mesh, AFFE=_F(MODELISATION='3D', PHENOMENE='MECANIQUE', GROUP_MA='SOLID'))
+mat = DEFI_MATERIAU(ELAS=_F(E=1.0, NU=0.3, RHO=1.0))
+LAM, MU = 0.3 / (1.3 * 0.4), 1.0 / 2.6
+C11 = LAM + 2.0 * MU
+chmat = AFFE_MATERIAU(MAILLAGE=mesh, AFFE=_F(GROUP_MA='SOLID', MATER=mat))
+
+per = AFFE_CHAR_MECA(MODELE=model, LIAISON_MAIL=(
+    _F(GROUP_MA_MAIT='SOLID', GROUP_NO_ESCL='X1', TRAN=(-1.0, 0.0, 0.0)),
+    _F(GROUP_MA_MAIT='SOLID', GROUP_NO_ESCL='SY1', TRAN=(0.0, -1.0, 0.0)),
+    _F(GROUP_MA_MAIT='SOLID', GROUP_NO_ESCL='SZ1', TRAN=(0.0, 0.0, -1.0)),
+))
+pin = AFFE_CHAR_MECA(MODELE=model, DDL_IMPO=_F(GROUP_NO='PIN', DX=0.0, DY=0.0, DZ=0.0))
+load = AFFE_CHAR_MECA(MODELE=model, PRE_EPSI=_F(GROUP_MA='SOLID', EPXX=EPS))
+
+res = MECA_STATIQUE(MODELE=model, CHAM_MATER=chmat,
+                    EXCIT=(_F(CHARGE=per), _F(CHARGE=pin), _F(CHARGE=load)),
+                    SOLVEUR=_F(METHODE='MUMPS', STOP_SINGULIER='NON', RESI_RELA=1.0e-6))  # sliver tets on cut faces trip the 8-digit pivot test; Hill-Mandel route agreement checks the solution
+# PRE_EPSI enters as an equivalent load; code_aster reports sigma(u) = C eps(u)
+# and ENER_ELAS = 1/2 int eps(u):C:eps(u). The true field is C(eps(u) - eps0):
+#   stress route : C1111 = |int sigma11(u) - C11 eps0 Vs| / eps0
+#   energy route : U = E1 - eps0 int sigma11(u) + 1/2 C11 eps0^2 Vs,  C1111 = 2U/eps0^2
+# Hill-Mandel requires the two to agree under periodic BC.
+res = CALC_CHAMP(reuse=res, RESULTAT=res, CONTRAINTE=('SIEF_ELGA',))
+tab = POST_ELEM(RESULTAT=res, MODELE=model,
+                INTEGRALE=_F(GROUP_MA='SOLID', NOM_CHAM='SIEF_ELGA', NOM_CMP='SIXX', TYPE_MAILLE='3D'))
+vals = tab.EXTR_TABLE().values()
+S = float(np.asarray(vals[[k for k in vals if k.startswith('INTE_SIXX')][0]], dtype=float)[-1])
+ener = POST_ELEM(RESULTAT=res, MODELE=model, ENER_ELAS=_F(GROUP_MA='SOLID'))
+E1 = float(np.asarray(ener.EXTR_TABLE().values()['TOTALE'], dtype=float)[-1])
+mass = POST_ELEM(MODELE=model, CHAM_MATER=chmat, MASS_INER=_F(GROUP_MA='SOLID'))
+Vs = float(np.asarray(mass.EXTR_TABLE().values()['MASSE'], dtype=float)[-1])
+c_stress = abs(S - C11 * EPS * Vs) / EPS
+U = E1 - EPS * S + 0.5 * C11 * EPS**2 * Vs
+print('SOLID_VOLUME = %.10e' % Vs)
+print('C1111_PBC    = %.10e' % c_stress)
+print('C1111_PBC_EN = %.10e' % (2.0 * U / EPS**2))
+
+FIN()
+
+
+
+# ------------------------------------------------------------------------------
+Command line #1:
+    ulimit -c unlimited ; ulimit -t 25000 ; ( /opt/spack/opt/spack/linux-zen2/python-3.11.14-crxgllx4ijrk74sukxvebk3ulzuavesl/bin/python3 -m mpi4py "/shared/research/n3/conforming/homog_conf_pbc.comm" --last --link="F::mail::/shared/research/n3/conforming/gyroid_conf_N48_M96_graded.mail::D::20" --memory 40000.0 --tpmax 20000 ; echo $? > _exit_code_ ) 2>&1 | tee -a fort.6
+setting '--memory' value to 36000.00 MB (keyword RESERVE_MEMOIRE)
+copying '/shared/research/n3/conforming/gyroid_conf_N48_M96_graded.mail' to 'fort.20'...
+checking MPI initialization...
+using COMM_WORLD.
+MPI is initialized.
+Ouverture en écriture du fichier ./vola.1
+
+<INFO> Démarrage de l'exécution.
+
+                        -- CODE_ASTER -- VERSION : EXPLOITATION (stable) --                         
+                               Version 17.4.0 modifiée le 02/01/2026                                
+                              révision spack-local - branche 'v17.4.0'                              
+                                   Copyright EDF R&D 1991 - 2026                                    
+                                                                                                    
+                              Exécution du : Tue Oct  6 21:26:40 2026                               
+                                  Nom de la machine : 7f0217c644fc                                  
+                                        Architecture : 64bit                                        
+                                    Type de processeur : x86_64                                     
+       Système d'exploitation : Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36        
+                                  Langue des messages : en (UTF-8)                                  
+                                    Version de Python : 3.11.14                                     
+                                     Version de NumPy : 1.26.4                                      
+                                      Parallélisme MPI : actif                                      
+                                   Rang du processeur courant : 0                                   
+                               Nombre de processeurs MPI utilisés : 1                               
+                                    Parallélisme OpenMP : actif                                     
+                              Nombre de processus OpenMP utilisés : 1                               
+                               Version de la librairie HDF5 : 1.10.7                                
+                                Version de la librairie MED : 4.2.0                                 
+                               Version de la librairie MFront : 5.0.0                               
+                               Version de la librairie MUMPS : 5.6.2                                
+                              Version de la librairie PETSc : 3.24.0p0                              
+                              Version de la librairie SCOTCH : 7.0.10                               
+
+starting the execution...
+Valeur initiale du temps CPU maximum =   20000 secondes
+  Valeur du temps CPU maximum passé aux commandes =   18000 secondes
+  Réserve CPU prévue = 2000 secondes
+
+Ouverture en écriture du fichier ./glob.1
+
+Ouverture en écriture du fichier ./vola.1
+
+Ouverture en lecture du fichier
+/opt/spack/opt/spack/linux-zen2/code-aster-17.4.0-ecm2bfgr5obydotnlte6xilvggppqnap/lib64/aster/elem
+1
+
+Nom de la base                          :  ELEMBASE
+     Créée avec la version                   :  17.04.00
+     Nombre d'enregistrements utilisés       :  46
+     Nombre d'enregistrements maximum        :  512
+     Nombre d'enregistrements par fichier    :  512
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre d'identificateurs utilisés       :  123
+     Taille maximum du répertoire            :  300
+     Pourcentage d'utilisation du répertoire :  41 %
+
+Ouverture en lecture du fichier
+/opt/spack/opt/spack/linux-zen2/code-aster-17.4.0-ecm2bfgr5obydotnlte6xilvggppqnap/lib64/aster/elem
+1
+
+Nom de la base                          :  ELEMBASE
+     Nombre d'enregistrements utilisés       :  46
+     Nombre d'enregistrements maximum        :  512
+     Nombre d'enregistrements par fichier    :  512
+     Longueur d'enregistrement (octets)      :  819200
+     Nombre total d'accès en lecture         :  64
+     Volume des accès en lecture             :         50.00 Mo.
+     Nombre total d'accès en écriture        :  0
+     Volume des accès en écriture            :          0.00 Mo.
+     Nombre d'identificateurs utilisés       :  123
+     Taille maximum du répertoire            :  300
+     Pourcentage d'utilisation du répertoire :  41 %
+
+Relecture des catalogues des éléments faite.
+
+Fin de lecture (durée  0.038784  s.) 
+
+                      Mémoire limite pour l'allocation dynamique : 36566.85 Mo                      
+                         ajouté à l'initialisation du processus : 648.32 Mo                         
+                              Limite cible du processus : 37215.16 Mo                               
+                         Taille limite des fichiers d'échange : 2048.00 Go                          
+# Mémoire (Mo) :   648.32 /   640.55 /   207.61 /   183.67 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0001   user+syst:        0.04s (syst:        0.32s, elaps:        0.35s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt13
+# ----------------------------------------------------------------------------------------------
+# Commande #0002 de /shared/research/n3/conforming/homog_conf_pbc.comm, ligne 13
+mesh0 = LIRE_MAILLAGE(FORMAT='ASTER',
+                      INFO=1,
+                      UNITE=20,
+                      VERI_MAIL=_F(APLAT=0.001,
+                                   VERIF='OUI'))
+
+Vérification du maillage.
+
+
+ ╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+ ║ <A> <MODELISA8_10>                                                                             ║
+ ║                                                                                                ║
+ ║ Le noeud 82667 connecte plus de 200 mailles.                                                   ║
+ ║                                                                                                ║
+ ║                                                                                                ║
+ ║ Ceci est une alarme. Si vous ne comprenez pas le sens de cette                                 ║
+ ║ alarme, vous pouvez obtenir des résultats inattendus !                                         ║
+ ╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+ ╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+ ║ <A> <MODELISA4_7>                                                                              ║
+ ║                                                                                                ║
+ ║ certains noeuds connectent plus de 200 mailles. ces mailles ne sont pas vérifiées.             ║
+ ║                                                                                                ║
+ ║                                                                                                ║
+ ║ Ceci est une alarme. Si vous ne comprenez pas le sens de cette                                 ║
+ ║ alarme, vous pouvez obtenir des résultats inattendus !                                         ║
+ ╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+ ╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+ ║ <A> <MODELISA8_15>                                                                             ║
+ ║                                                                                                ║
+ ║ La maille 1885 possède des noeuds confondus géométriquement.                                   ║
+ ║     Rapport entre le plus petit côté et le plus grand = 0.000402, type de maille : TETRA4      ║
+ ║                                                                                                ║
+ ║                                                                                                ║
+ ║ Ceci est une alarme. Si vous ne comprenez pas le sens de cette                                 ║
+ ║ alarme, vous pouvez obtenir des résultats inattendus !                                         ║
+ ╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+ ╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+ ║ <A> <MODELISA8_15>                                                                             ║
+ ║                                                                                                ║
+ ║ La maille 12059 possède des noeuds confondus géométriquement.                                  ║
+ ║     Rapport entre le plus petit côté et le plus grand = 0.000656, type de maille : TETRA4      ║
+ ║                                                                                                ║
+ ║                                                                                                ║
+ ║ Ceci est une alarme. Si vous ne comprenez pas le sens de cette                                 ║
+ ║ alarme, vous pouvez obtenir des résultats inattendus !                                         ║
+ ╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+ ╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+ ║ <A> <MODELISA8_15>                                                                             ║
+ ║                                                                                                ║
+ ║ La maille 12395 possède des noeuds confondus géométriquement.                                  ║
+ ║     Rapport entre le plus petit côté et le plus grand = 0.000458, type de maille : TETRA4      ║
+ ║                                                                                                ║
+ ║                                                                                                ║
+ ║ Ceci est une alarme. Si vous ne comprenez pas le sens de cette                                 ║
+ ║ alarme, vous pouvez obtenir des résultats inattendus !                                         ║
+ ╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+ ╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+ ║ <A> <MODELISA8_15>                                                                             ║
+ ║                                                                                                ║
+ ║ La maille 14293 possède des noeuds confondus géométriquement.                                  ║
+ ║     Rapport entre le plus petit côté et le plus grand = 0.000949, type de maille : TETRA4      ║
+ ║                                                                                                ║
+ ║                                                                                                ║
+ ║ Ceci est une alarme. Si vous ne comprenez pas le sens de cette                                 ║
+ ║ alarme, vous pouvez obtenir des résultats inattendus !                                         ║
+ ╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+ ╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+ ║ <A> <MODELISA8_15>                                                                             ║
+ ║                                                                                                ║
+ ║ La maille 17028 possède des noeuds confondus géométriquement.                                  ║
+ ║     Rapport entre le plus petit côté et le plus grand = 0.000876, type de maille : TETRA4      ║
+ ║                                                                                                ║
+ ║                                                                                                ║
+ ║ Ceci est une alarme. Si vous ne comprenez pas le sens de cette                                 ║
+ ║ alarme, vous pouvez obtenir des résultats inattendus !                                         ║
+ ╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+ ╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+ ║ <A> <CATAMESS_41>                                                                              ║
+ ║                                                                                                ║
+ ║ Le message d'alarme 'MODELISA8_15' a été émis 5 fois, il ne sera plus affiché.                 ║
+ ║                                                                                                ║
+ ║                                                                                                ║
+ ║ Ceci est une alarme. Si vous ne comprenez pas le sens de cette                                 ║
+ ║ alarme, vous pouvez obtenir des résultats inattendus !                                         ║
+ ╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+ ╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+ ║ <A> <MODELISA4_9>                                                                              ║
+ ║                                                                                                ║
+ ║ -> Phase de vérification du maillage : présence de mailles dégénérées.                         ║
+ ║      Le rapport entre la plus petite arête sur la plus grande est inférieur à 1.000e-03        ║
+ ║                                                                                                ║
+ ║   -> Risque & Conseil :                                                                        ║
+ ║      Vérifiez votre maillage. La présence de telles mailles peut conduire à des                ║
+ ║      problèmes de convergence et nuire à la qualité des résultats.                             ║
+ ║                                                                                                ║
+ ║                                                                                                ║
+ ║ Ceci est une alarme. Si vous ne comprenez pas le sens de cette                                 ║
+ ║ alarme, vous pouvez obtenir des résultats inattendus !                                         ║
+ ╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+------------ MAILLAGE 00000001 - IMPRESSIONS NIVEAU  1 ------------
+
+GYROID CONFORMING                                                               
+
+NOMBRE DE NOEUDS                       82781
+
+NOMBRE DE MAILLES                     440408
+                              TRIA3                3611
+                              TETRA4             436797
+
+NOMBRE DE GROUPES DE MAILLES               7
+
+--------------------------------------------------------------------------------
+
+# Résultat commande #0002 (LIRE_MAILLAGE): mesh0 ('<00000001>') de type <Mesh>
+# Mémoire (Mo) :   723.91 /   705.53 /   282.76 /   250.66 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0002   user+syst:        4.62s (syst:        0.11s, elaps:        4.73s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt14
+# ----------------------------------------------------------------------------------------------
+# Commande #0003 de /shared/research/n3/conforming/homog_conf_pbc.comm, ligne 14
+mesh = CREA_MAILLAGE(INFO=1,
+                     LINE_QUAD=_F(TOUT='OUI'),
+                     MAILLAGE=mesh0)
+
+
+------------ MAILLAGE 00000002 - IMPRESSIONS NIVEAU  1 ------------
+
+ASTER 17.04.00 CONCEPT 00000002 CALCULE LE 06/10/2026 A 21:26:51 DE TYPE        
+MAILLAGE_SDASTER                                                                
+
+NOMBRE DE NOEUDS                      627891
+
+NOMBRE DE MAILLES                     440408
+                              TRIA6                3611
+                              TETRA10            436797
+
+NOMBRE DE GROUPES DE MAILLES               7
+
+--------------------------------------------------------------------------------
+
+# Résultat commande #0003 (CREA_MAILLAGE): mesh ('<00000002>') de type <Mesh>
+# Mémoire (Mo) :  2691.39 /   805.08 /   299.56 /   267.45 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0003   user+syst:        4.44s (syst:        2.36s, elaps:        6.80s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt16
+# ----------------------------------------------------------------------------------------------
+# Commande #0004 de /shared/research/n3/conforming/homog_conf_pbc.comm, ligne 16
+mesh = DEFI_GROUP(ALARME='OUI',
+                  CREA_GROUP_NO=(_F(CRIT_NOEUD='TOUS',
+                                    GROUP_MA='X0'),
+                                 _F(CRIT_NOEUD='TOUS',
+                                    GROUP_MA='X1'),
+                                 _F(CRIT_NOEUD='TOUS',
+                                    GROUP_MA='Y0'),
+                                 _F(CRIT_NOEUD='TOUS',
+                                    GROUP_MA='Y1'),
+                                 _F(CRIT_NOEUD='TOUS',
+                                    GROUP_MA='Z0'),
+                                 _F(CRIT_NOEUD='TOUS',
+                                    GROUP_MA='Z1')),
+                  MAILLAGE=mesh,
+                  reuse=mesh)
+
+
+
+NOMBRE  DE GROUPES DE NOEUDS CREES :      6
+=======================================
+
+               ------------------------------------------------------
+               !         NOM DU GROUPE         ! NBRE DE NOEUDS DU  !
+               !            NOEUDS             !      GROUPE_NO     !
+               ------------------------------------------------------
+               !  X0                           !      1839          !
+               !  X1                           !      1839          !
+               !  Y0                           !      1752          !
+               !  Y1                           !      1760          !
+               !  Z0                           !      1863          !
+               !  Z1                           !      1866          !
+               ------------------------------------------------------
+
+# Résultat commande #0004 (DEFI_GROUP): mesh ('<00000002>') de type <Mesh>
+# Mémoire (Mo) :  2691.39 /   805.34 /   305.87 /   267.45 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0004   user+syst:        0.03s (syst:        0.03s, elaps:        0.06s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt17
+# ----------------------------------------------------------------------------------------------
+# Commande #0005 de /shared/research/n3/conforming/homog_conf_pbc.comm, ligne 17
+mesh = DEFI_GROUP(ALARME='OUI',
+                  CREA_GROUP_NO=(_F(DIFFE=('Y1', 'X1'),
+                                    NOM='SY1'),
+                                 _F(DIFFE=('Z1', 'X1'),
+                                    NOM='SZ1A')),
+                  MAILLAGE=mesh,
+                  reuse=mesh)
+
+
+
+NOMBRE  DE GROUPES DE NOEUDS CREES :      2
+=======================================
+
+               ------------------------------------------------------
+               !         NOM DU GROUPE         ! NBRE DE NOEUDS DU  !
+               !            NOEUDS             !      GROUPE_NO     !
+               ------------------------------------------------------
+               !  SY1                          !      1751          !
+               !  SZ1A                         !      1857          !
+               ------------------------------------------------------
+
+# Résultat commande #0005 (DEFI_GROUP): mesh ('<00000002>') de type <Mesh>
+# Mémoire (Mo) :  2691.39 /   805.47 /   305.87 /   267.45 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0005   user+syst:        0.00s (syst:        0.00s, elaps:        0.00s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt21
+# ----------------------------------------------------------------------------------------------
+# Commande #0006 de /shared/research/n3/conforming/homog_conf_pbc.comm, ligne 21
+mesh = DEFI_GROUP(ALARME='OUI',
+                  CREA_GROUP_NO=(_F(DIFFE=('SZ1A', 'Y1'),
+                                    NOM='SZ1'),
+                                 _F(GROUP_NO='X0',
+                                    NOM='PIN',
+                                    NUME_FIN=1,
+                                    NUME_INIT=1)),
+                  MAILLAGE=mesh,
+                  reuse=mesh)
+
+
+
+NOMBRE  DE GROUPES DE NOEUDS CREES :      2
+=======================================
+
+               ------------------------------------------------------
+               !         NOM DU GROUPE         ! NBRE DE NOEUDS DU  !
+               !            NOEUDS             !      GROUPE_NO     !
+               ------------------------------------------------------
+               !  SZ1                          !      1849          !
+               !  PIN                          !         1          !
+               ------------------------------------------------------
+
+# Résultat commande #0006 (DEFI_GROUP): mesh ('<00000002>') de type <Mesh>
+# Mémoire (Mo) :  2691.39 /   805.47 /   305.87 /   267.45 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0006   user+syst:        0.01s (syst:        0.00s, elaps:        0.01s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt26
+# ----------------------------------------------------------------------------------------------
+# Commande #0007 de /shared/research/n3/conforming/homog_conf_pbc.comm, ligne 26
+model = AFFE_MODELE(AFFE=_F(GROUP_MA='SOLID',
+                            MODELISATION='3D',
+                            PHENOMENE='MECANIQUE'),
+                    DISTRIBUTION=_F(METHODE='SOUS_DOMAINE',
+                                    PARTITIONNEUR='METIS'),
+                    INFO=1,
+                    MAILLAGE=mesh,
+                    VERI_FORMULATION_IFS='OUI',
+                    VERI_JACOBIEN='OUI',
+                    VERI_NORM_IFS='OUI',
+                    VERI_PLAN='OUI')
+
+Sur les 440408 mailles du maillage 00000002, on a demandé l'affectation de 436797, on a pu en
+affecter 436797.
+Modélisation     Formulation      Type maille  Élément fini     Nombre
+3D               _                TETRA10      MECA_TETRA10     436797
+#2      Calculs elementaires et assemblages               CPU (USER+SYST/SYST/ELAPS):      0.31      0.02      0.30
+# Résultat commande #0007 (AFFE_MODELE): model ('<00000003>') de type <Model>
+# Mémoire (Mo) :  2691.39 /  1000.53 /   385.94 /   308.84 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0007   user+syst:        1.83s (syst:        0.07s, elaps:        1.91s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt27
+# ----------------------------------------------------------------------------------------------
+# Commande #0008 de /shared/research/n3/conforming/homog_conf_pbc.comm, ligne 27
+mat = DEFI_MATERIAU(ELAS=_F(B_ENDOGE=0.0,
+                            COEF_AMOR=1.0,
+                            E=1.0,
+                            K_DESSIC=0.0,
+                            NU=0.3,
+                            RHO=1.0),
+                    INFO=1)
+
+# Résultat commande #0008 (DEFI_MATERIAU): mat ('<00000004>') de type <Material>
+# Mémoire (Mo) :  2691.39 /  1001.23 /   385.94 /   308.84 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0008   user+syst:        0.04s (syst:        0.00s, elaps:        0.05s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt30
+# ----------------------------------------------------------------------------------------------
+# Commande #0009 de /shared/research/n3/conforming/homog_conf_pbc.comm, ligne 30
+chmat = AFFE_MATERIAU(AFFE=_F(GROUP_MA='SOLID',
+                              MATER=mat),
+                      INFO=1,
+                      MAILLAGE=mesh)
+
+# Résultat commande #0009 (AFFE_MATERIAU): chmat ('<00000005>') de type <MaterialField>
+# Mémoire (Mo) :  2691.39 /  1004.57 /   385.94 /   308.84 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0009   user+syst:        0.04s (syst:        0.01s, elaps:        0.05s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt32
+# ----------------------------------------------------------------------------------------------
+# Commande #0010 de /shared/research/n3/conforming/homog_conf_pbc.comm, ligne 32
+per = AFFE_CHAR_MECA(DOUBLE_LAGRANGE='OUI',
+                     INFO=1,
+                     LIAISON_MAIL=(_F(ELIM_MULT='OUI',
+                                      GROUP_MA_MAIT='SOLID',
+                                      GROUP_NO_ESCL='X1',
+                                      TRAN=(-1.0, 0.0, 0.0),
+                                      TYPE_RACCORD='MASSIF'),
+                                   _F(ELIM_MULT='OUI',
+                                      GROUP_MA_MAIT='SOLID',
+                                      GROUP_NO_ESCL='SY1',
+                                      TRAN=(0.0, -1.0, 0.0),
+                                      TYPE_RACCORD='MASSIF'),
+                                   _F(ELIM_MULT='OUI',
+                                      GROUP_MA_MAIT='SOLID',
+                                      GROUP_NO_ESCL='SZ1',
+                                      TRAN=(0.0, 0.0, -1.0),
+                                      TYPE_RACCORD='MASSIF')),
+                     MODELE=model,
+                     SYNTAXE='NON',
+                     VERI_AFFE='OUI',
+                     VERI_NORM='OUI')
+
+PROJ_CHAMP (ou LIAISON_MAILLE) :
+  Le noeud 25445 de coordonnées (9.331610e-01,0.000000e+00,9.749997e-01) est projeté à la distance
+3.166508e-08
+
+ ╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+ ║ <A> <CALCULEL5_48>                                                                             ║
+ ║                                                                                                ║
+ ║ Vous utilisez la commande PROJ_CHAMP ou un mot clé nécessitant de "projeter"                   ║
+ ║  des noeuds sur des mailles (par exemple LIAISON_MAIL).                                        ║
+ ║  Il y a 1 noeuds qui ont été projetés sur des mailles jugées distantes.                        ║
+ ║                                                                                                ║
+ ║  Les noeuds sont jugés distants si :                                                           ║
+ ║   * la distance à la maille la plus proche est supérieure à DISTANCE_ALARME                    ║
+ ║     (si ce mot clé est utilisé).                                                               ║
+ ║   * ou si la distance à la maille la plus proche est supérieure à 1/10ème                      ║
+ ║     de la taille de cette maille (si le mot clé DISTANCE_ALARME n'est pas utilisé).            ║
+ ║                                                                                                ║
+ ║  Les 1 noeuds les plus éloignés ont été imprimés ci-dessus.                                    ║
+ ║                                                                                                ║
+ ║ Risques et conseils :                                                                          ║
+ ║   * Un maillage constitué des noeuds distants a été imprimé au format MED.                     ║
+ ║     La visualisation de ce maillage pourra vous rassurer (ou non).                             ║
+ ║     Le nom du fichier MED est : REPE_OUT/maillage_proj_loin_00000001.med                       ║
+ ║   * Le mot clé DISTANCE_MAX permet d'éviter que les noeuds trop distants ne soient             ║
+ ║     projetés (ou "liés" quand on utilise le mot clé LIAISON_MAIL).                             ║
+ ║   * Le mot clé DISTANCE_ALARME permet d'éviter cette alarme.                                   ║
+ ║                                                                                                ║
+ ║                                                                                                ║
+ ║                                                                                                ║
+ ║ Ceci est une alarme. Si vous ne comprenez pas le sens de cette                                 ║
+ ║ alarme, vous pouvez obtenir des résultats inattendus !                                         ║
+ ╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+#4      Communications MPI                                CPU (USER+SYST/SYST/ELAPS):      0.00      0.00      0.00
+# Résultat commande #0010 (AFFE_CHAR_MECA): per ('<00000006>') de type <MechanicalLoadReal>
+# Mémoire (Mo) :  2691.39 /  1075.50 /   518.43 /   389.42 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0010   user+syst:        1.16s (syst:        0.38s, elaps:        1.54s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt37
+# ----------------------------------------------------------------------------------------------
+# Commande #0011 de /shared/research/n3/conforming/homog_conf_pbc.comm, ligne 37
+pin = AFFE_CHAR_MECA(DDL_IMPO=_F(DX=0.0,
+                                 DY=0.0,
+                                 DZ=0.0,
+                                 GROUP_NO='PIN'),
+                     DOUBLE_LAGRANGE='OUI',
+                     INFO=1,
+                     MODELE=model,
+                     SYNTAXE='NON',
+                     VERI_AFFE='OUI',
+                     VERI_NORM='OUI')
+
+# Résultat commande #0011 (AFFE_CHAR_MECA): pin ('<00000007>') de type <MechanicalLoadReal>
+# Mémoire (Mo) :  2691.39 /  1128.19 /   518.43 /   389.42 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0011   user+syst:        0.01s (syst:        0.05s, elaps:        0.06s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt38
+# ----------------------------------------------------------------------------------------------
+# Commande #0012 de /shared/research/n3/conforming/homog_conf_pbc.comm, ligne 38
+load = AFFE_CHAR_MECA(DOUBLE_LAGRANGE='OUI',
+                      INFO=1,
+                      MODELE=model,
+                      PRE_EPSI=_F(EPXX=0.001,
+                                  GROUP_MA='SOLID'),
+                      SYNTAXE='NON',
+                      VERI_AFFE='OUI',
+                      VERI_NORM='OUI')
+
+# Résultat commande #0012 (AFFE_CHAR_MECA): load ('<00000008>') de type <MechanicalLoadReal>
+# Mémoire (Mo) :  2691.39 /  1131.53 /   518.43 /   389.42 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0012   user+syst:        1.16s (syst:        0.02s, elaps:        1.17s)
+# ----------------------------------------------------------------------------------------------
+
+.. _stg1_txt40
+# ----------------------------------------------------------------------------------------------
+# Commande #0013 de /shared/research/n3/conforming/homog_conf_pbc.comm, ligne 40
+res = MECA_STATIQUE(CHAM_MATER=chmat,
+                    EXCIT=(_F(CHARGE=per,
+                              TYPE_CHARGE='FIXE_CSTE'),
+                           _F(CHARGE=pin,
+                              TYPE_CHARGE='FIXE_CSTE'),
+                           _F(CHARGE=load,
+                              TYPE_CHARGE='FIXE_CSTE')),
+                    INFO=1,
+                    INST=0.0,
+                    MODELE=model,
+                    OPTION='SIEF_ELGA',
+                    SOLVEUR=_F(ACCELERATION='AUTO',
+                               ELIM_LAGR='LAGR2',
+                               GESTION_MEMOIRE='AUTO',
+                               LOW_RANK_SEUIL=0.0,
+                               MATR_DISTRIBUEE='NON',
+                               METHODE='MUMPS',
+                               NB_RHS=1,
+                               NPREC=8,
+                               PCENT_PIVOT=35,
+                               POSTTRAITEMENTS='AUTO',
+                               PRETRAITEMENTS='AUTO',
+                               REDUCTION_MPI=0,
+                               RENUM='AUTO',
+                               RESI_RELA=1e-06,
+                               STOP_SINGULIER='NON',
+                               TYPE_RESOL='AUTO'))
+
+Le système linéaire à résoudre a 1916313 degrés de liberté:
+   - 1883673 sont des degrés de liberté physiques
+     (ils sont portés par 627891 noeuds du maillage)
+   - 32640 sont les couples de paramètres de Lagrange associés
+     aux 16320 relations linéaires dualisées.
+La matrice est de taille 1916313 équations.
+  Elle contient 79192053 termes non nuls si elle est symétrique et 156467793 termes non nuls si elle
+n'est pas symétrique.
+  Soit un taux de remplissage de   0.004 %.
+Degré de liberté physique associé au noeud 83115 et à la composante DZ.
+
+
+ ╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+ ║ <A> <FACTOR_11>                                                                                ║
+ ║                                                                                                ║
+ ║ Problème : la matrice est singulière ou presque singulière :                                   ║
+ ║   Lors de la factorisation de la matrice, on a rencontré un problème                           ║
+ ║   (pivot nul ou presque nul) à la ligne 263640 qui correspond au degré de liberté donné        ║
+ ║ ci-dessus.                                                                                     ║
+ ║                                                                                                ║
+ ║ Risques et conseils :                                                                          ║
+ ║    * Si la ligne correspond a un degré de liberté physique, il s'agit probablement d'un        ║
+ ║ mouvement                                                                                      ║
+ ║      de corps rigide mal bloqué.                                                               ║
+ ║      Vérifiez les conditions aux limites.                                                      ║
+ ║      Si vous faites du contact, il ne faut pas que la structure ne "tienne" que par le         ║
+ ║ contact.                                                                                       ║
+ ║      Vérifiez également les caractéristiques matériaux (module d'Young, ...).                  ║
+ ║                                                                                                ║
+ ║    * Si la ligne correspond a un degré de liberté de Lagrange, il s'agit sans doute d'une      ║
+ ║ condition                                                                                      ║
+ ║      limite redondante.                                                                        ║
+ ║      En particulier, il se peut que la relation linéaire surabondante provienne des conditions ║
+ ║ de contact.                                                                                    ║
+ ║      Peut-être devriez vous exclure certains noeuds des conditions de contact                  ║
+ ║      (mots clés SANS_NOEUD et SANS_GROUP_NO).                                                  ║
+ ║                                                                                                ║
+ ║    * Si le solveur utilisé est LDLT ou MULT_FRONT, vous pouvez utiliser le solveur MUMPS       ║
+ ║      car celui-ci est le seul à pouvoir factoriser les matrices qui ne sont pas définies       ║
+ ║ positives.                                                                                     ║
+ ║                                                                                                ║
+ ║    * Parfois, en parallèle, le critère de détection de singularité de MUMPS est trop           ║
+ ║ pessimiste ! Il reste néanmoins souvent                                                        ║
+ ║      possible de faire passer le calcul complet en relaxant ce critère (augmenter de 1 ou 2 la ║
+ ║ valeur du mot-clé NPREC) ou                                                                    ║
+ ║      en le débranchant (valeur du mot-clé NPREC=-1) ou en relançant le calcul sur moins de     ║
+ ║ processeurs.                                                                                   ║
+ ║                                                                                                ║
+ ║    * Il se peut aussi que ce phénomène soit tout à fait normal avec X-FEM si la fissure passe  ║
+ ║      très près d'un noeud.                                                                     ║
+ ║      Si le nombre de décimales perdues n'est pas trop grand (max 10 décimales),                ║
+ ║      vous pouvez relancer le calcul en augmentant le nombre de décimales perdues autorisé :    ║
+ ║      mot-clé NPREC du mot clé facteur SOLVEUR.                                                 ║
+ ║      Sinon, contactez l'équipe de développement.                                               ║
+ ║                                                                                                ║
+ ║                                                                                                ║
+ ║                                                                                                ║
+ ║ Ceci est une alarme. Si vous ne comprenez pas le sens de cette                                 ║
+ ║ alarme, vous pouvez obtenir des résultats inattendus !                                         ║
+ ╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+ ╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+ ║ <EXCEPTION> <FACTOR_57>                                                                        ║
+ ║                                                                                                ║
+ ║ Solveur MUMPS :                                                                                ║
+ ║   La solution du système linéaire est trop imprécise :                                         ║
+ ║   Erreur calculée   : 222139                                                                   ║
+ ║   Erreur acceptable : 1e-06   (RESI_RELA)                                                      ║
+ ║                                                                                                ║
+ ║ Conseils :                                                                                     ║
+ ║   On peut augmenter la valeur du mot clé SOLVEUR/RESI_RELA.                                    ║
+ ╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+# Mémoire (Mo) : 14418.69 /  2795.60 /  3133.83 /  1553.50 (VmPeak / VmSize / Optimum / Minimum)
+# Fin commande #0013   user+syst:      434.47s (syst:       99.41s, elaps:      509.79s)
+# ----------------------------------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/spack/var/spack/environments/simvia_env/.spack-env/view/lib/python3.11/site-packages/mpi4py/__main__.py", line 7, in <module>
+    main()
+  File "/opt/spack/var/spack/environments/simvia_env/.spack-env/view/lib/python3.11/site-packages/mpi4py/run.py", line 230, in main
+    run_command_line(args)
+  File "/opt/spack/var/spack/environments/simvia_env/.spack-env/view/lib/python3.11/site-packages/mpi4py/run.py", line 47, in run_command_line
+    run_path(sys.argv[0], run_name='__main__')
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/shared/research/n3/conforming/homog_conf_pbc.comm", line 40, in <module>
+    res = MECA_STATIQUE(MODELE=model, CHAM_MATER=chmat,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/spack/opt/spack/linux-zen2/code-aster-17.4.0-ecm2bfgr5obydotnlte6xilvggppqnap/lib64/aster/code_aster/Supervis/ExecuteCommand.py", line 183, in run
+    return cmd.run_(**kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/opt/spack/opt/spack/linux-zen2/code-aster-17.4.0-ecm2bfgr5obydotnlte6xilvggppqnap/lib64/aster/code_aster/Supervis/ExecuteCommand.py", line 226, in run_
+    self.exec_(keywords)
+  File "/opt/spack/opt/spack/linux-zen2/code-aster-17.4.0-ecm2bfgr5obydotnlte6xilvggppqnap/lib64/aster/code_aster/Supervis/ExecuteCommand.py", line 742, in exec_
+    output = self._op(self, **keywords)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/spack/opt/spack/linux-zen2/code-aster-17.4.0-ecm2bfgr5obydotnlte6xilvggppqnap/lib64/aster/code_aster/MacroCommands/meca_statique_ops.py", line 266, in meca_statique_ops
+    phys_state.primal_curr = linear_solver.solve(rhs, diriBCs)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/spack/opt/spack/linux-zen2/code-aster-17.4.0-ecm2bfgr5obydotnlte6xilvggppqnap/lib64/aster/code_aster/Utilities/statistics_manager.py", line 54, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+libaster.AsterError: 
+ ╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+ ║ <EXCEPTION> <FACTOR_57>                                                                        ║
+ ║                                                                                                ║
+ ║ Solveur MUMPS :                                                                                ║
+ ║   La solution du système linéaire est trop imprécise :                                         ║
+ ║   Erreur calculée   : 222139                                                                   ║
+ ║   Erreur acceptable : 1e-06   (RESI_RELA)                                                      ║
+ ║                                                                                                ║
+ ║ Conseils :                                                                                     ║
+ ║   On peut augmenter la valeur du mot clé SOLVEUR/RESI_RELA.                                    ║
+ ╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+
+Exception: Trying to close the database after an uncaught exception...
+
+
+Publishing the result of the current command MECA_STATIQUE...
+
+No database in results, objects not saved on processor #0
+
+ ╔════════════════════════════════════════════════════════════════════════════════════════════════╗
+ ║ <I> <CATAMESS_89>                                                                              ║
+ ║                                                                                                ║
+ ║ Liste des alarmes émises lors de l'exécution du calcul.                                        ║
+ ║                                                                                                ║
+ ║     Les alarmes que vous avez choisies d'ignorer sont précédées de (*).                        ║
+ ║     Nombre d'occurrences pour chacune des alarmes :                                            ║
+ ║            CALCULEL5_48         émise    1 fois                                                ║
+ ║            FACTOR_11            émise    1 fois                                                ║
+ ║            MODELISA4_7          émise    1 fois                                                ║
+ ║            MODELISA4_9          émise    1 fois                                                ║
+ ║            MODELISA8_10         émise    1 fois                                                ║
+ ║            MODELISA8_15         émise  121 fois                                                ║
+ ╚════════════════════════════════════════════════════════════════════════════════════════════════╝
+
+<I> <FIN> ARRET NORMAL DANS "FIN" PAR APPEL A "JEFINI".
+  
+ <I> <FIN> MEMOIRE JEVEUX MINIMALE REQUISE POUR L'EXECUTION :                    1553.50 Mo
+ <I> <FIN> MEMOIRE JEVEUX OPTIMALE REQUISE POUR L'EXECUTION :                    3133.83 Mo
+ <I> <FIN> MAXIMUM DE MEMOIRE UTILISEE PAR LE PROCESSUS LORS DE L'EXECUTION :   14418.69 Mo
+  
+ <I>       FERMETURE DES BASES EFFECTUEE
+  
+   STATISTIQUES CONCERNANT L'ALLOCATION DYNAMIQUE :
+     TAILLE CUMULEE MAXIMUM            :                 3134  Mo.
+     TAILLE CUMULEE LIBEREE            :                 1769  Mo.
+     NOMBRE TOTAL D'ALLOCATIONS        :             11555507
+     NOMBRE TOTAL DE LIBERATIONS       :             11555084
+     APPELS AU MECANISME DE LIBERATION :                    1
+     TAILLE MEMOIRE CUMULEE RECUPEREE  :                 1292  Mo.
+     VOLUME DES LECTURES               :                    0  Mo.
+     VOLUME DES ECRITURES              :                 1316  Mo.
+  
+   MEMOIRE JEVEUX MINIMALE REQUISE POUR L'EXECUTION :    1553.50 Mo
+     - IMPOSE DE NOMBREUX ACCES DISQUE
+     - RALENTIT LA VITESSE D'EXECUTION
+   MEMOIRE JEVEUX OPTIMALE REQUISE POUR L'EXECUTION :    3133.83 Mo
+     - LIMITE LES ACCES DISQUE
+     - AMELIORE LA VITESSE D'EXECUTION
+   MAXIMUM DE MEMOIRE UTILISEE PAR LE PROCESSUS     :   14418.69 Mo
+     - COMPREND LA MEMOIRE CONSOMMEE PAR  JEVEUX, 
+       LE SUPERVISEUR PYTHON, LES LIBRAIRIES EXTERNES
+  
+ <I>       FIN D'EXECUTION LE : MA-06-OCTO-2026 21:35:27
+INFO './glob.1' deleted
+Deleting './glob.2': No such file or directory
+INFO './vola.1' deleted
+Deleting './vola.2': No such file or directory
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI_COMM_WORLD
+  Proc: [[52040,0],0]
+  Errorcode: 1
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+
+EXECUTION_CODE_ASTER_EXIT_10=1
+
+
+execution ended (command file #1): <S>_ERROR
+
+# ------------------------------------------------------------------------------
+Content of /tmp/run_aster_wruex0wd/proc.0 after execution:
+.:
+total 20770104
+-rw-r--r-- 1 user user        357 Oct  6 21:26 10.export
+drwxr-xr-x 2 user user       4096 Oct  6 21:26 REPE_IN
+drwxr-xr-x 2 user user       4096 Oct  6 21:26 REPE_OUT
+-rwxrwxrwx 1 user user   25210294 Oct  6 18:09 fort.20
+-rw-r--r-- 1 user user      53229 Oct  6 21:35 fort.6
+-rw-r--r-- 1 user user          0 Oct  6 21:26 fort.8
+-rw-r--r-- 1 user user          0 Oct  6 21:26 fort.9
+-rw------- 1 user user 1879048192 Oct  6 21:28 mumps_0_0J2gh1
+-rw------- 1 user user 1879048192 Oct  6 21:28 mumps_0_16aLN4
+-rw------- 1 user user 1879048192 Oct  6 21:32 mumps_0_JjbT5Z
+-rw------- 1 user user 1879048192 Oct  6 21:29 mumps_0_KNog3c
+-rw------- 1 user user 1879048192 Oct  6 21:27 mumps_0_RTiYiR
+-rw------- 1 user user 1879048192 Oct  6 21:28 mumps_0_fh4qPx
+-rw------- 1 user user 1879048192 Oct  6 21:33 mumps_0_hW86RV
+-rw------- 1 user user 1879048192 Oct  6 21:31 mumps_0_jPqlKJ
+-rw------- 1 user user 1879048192 Oct  6 21:30 mumps_0_kD3SdE
+-rw------- 1 user user  573728040 Oct  6 21:33 mumps_0_ran1X7
+-rw------- 1 user user 1879048192 Oct  6 21:30 mumps_0_vJi6ee
+-rw------- 1 user user 1879048192 Oct  6 21:31 mumps_0_zCOKA7
+
+REPE_OUT:
+total 0
+
+
+# ------------------------------------------------------------------------------
+Copying results
+copying 'fort.6' to '/shared/research/n3/conforming/out_pbc_gyroid_conf_N48_M96_graded.mess'...
+
+# ------------------------------------------------------------------------------
+Execution summary
+                                      cpu     system    cpu+sys    elapsed
+--------------------------------------------------------------------------------
+Preparation of environment           0.00       0.00       0.00       0.01
+Execution of code_aster            449.53     103.68     553.21     529.47
+Copying results                      0.01       0.01       0.02       0.01
+--------------------------------------------------------------------------------
+Total                              449.54     103.69     553.23     529.49
+--------------------------------------------------------------------------------
+
+------------------------------------------------------------
+--- DIAGNOSTIC JOB : <S>_ERROR
+------------------------------------------------------------
+

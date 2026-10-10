@@ -1,13 +1,26 @@
 cff-version: 1.2.0
-message: "If you use this reproducibility snapshot, please cite it."
-title: "Verification-guided mesh-free design optimization of graded TPMS metamaterials"
-version: "0.2.2-eabe-submission"
-date-released: 2026-09-21
-license: MIT
+message: "If you use this archive, please cite it and the associated article."
+title: "Replication archive: Surrogate and boundary-condition errors in graded gyroid-sheet optimization: an independent verification study"
+type: dataset
 authors:
-  - family-names: "El Sabea"
-    given-names: "Abdullah"
-  - family-names: "Moj"
-    given-names: "Kevin"
-  - family-names: "Kurek"
-    given-names: "Andrzej"
+  - family-names: El Sabea
+    given-names: Abdullah
+    affiliation: "Opole University of Technology"
+  - family-names: Moj
+    given-names: Kevin
+    affiliation: "Opole University of Technology"
+  - family-names: Kurek
+    given-names: Andrzej
+    affiliation: "Opole University of Technology"
+license:
+  - MIT
+  - CC-BY-4.0
+version: "1.0.0"
+keywords:
+  - gyroid
+  - graded lattice
+  - deep energy method
+  - homogenization
+  - periodic boundary conditions
+  - verification
+# doi: added by Zenodo at publication

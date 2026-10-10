@@ -1,0 +1,147 @@
+{
+  "summary": "The scorer differentiates u(x,t) with respect to x at fixed local thickness t(x) and omits the chain-rule term (du/dt)(grad t)^T. It is an approximate LOCAL score -- the locally-frozen uniform-cell solution family weighted by smoothed membership -- not the strain energy of a coupled graded equilibrium solution. The historical scorer is unchanged; this audit quantifies the omitted term only.",
+  "code_references": {
+    "training_fixed_t": "research/n3/e3_conditional.py:87-95 (strain_energy differentiates x at fixed t)",
+    "scorer_partial": "AUTORESEARCH_Q1_REVISION/code/vgmm_common.py: strain_xt -> jacrev(full_xt)(xt)[:, :, :3]",
+    "membership": "vgmm_common.make_scorer: w=sigmoid((t-|F|)/0.02)"
+  },
+  "constants": {
+    "EPS": 0.01,
+    "LAM": 0.5769230769230769,
+    "MU": 0.3846153846153846,
+    "T_MIN": 0.12,
+    "T_MAX": 0.55,
+    "T0": 0.3,
+    "TAU": 0.02
+  },
+  "designs": {
+    "uniform": {
+      "theta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "shift": 0.002362779155373573,
+      "frac_cloud_clipped": 0.0,
+      "ratio_omitted_over_used_F_norm_pct": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mean_ratio_pct": 0.0,
+      "unclipped_count": 50000,
+      "unclipped_mean_ratio_pct": 0.0,
+      "unclipped_ratio_quantiles_pct": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "note": "r(x)=||(du/dt)(x)grad t(x)^T||_F / ||du/dx||_F on the frozen cloud; the scorer uses only du/dx (partial at fixed local t)"
+    },
+    "vgmm_round1_winner": {
+      "theta": [
+        0.0,
+        0.0,
+        0.165,
+        -0.22,
+        0.165,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.055
+      ],
+      "shift": -0.03610247857868672,
+      "frac_cloud_clipped": 0.39038,
+      "ratio_omitted_over_used_F_norm_pct": [
+        0.07843052595853806,
+        0.7636815905570984,
+        1.8235541582107544
+      ],
+      "mean_ratio_pct": 0.2557150423526764,
+      "unclipped_count": 30481,
+      "unclipped_mean_ratio_pct": 0.4194663465023041,
+      "unclipped_ratio_quantiles_pct": [
+        0.27805840969085693,
+        0.9814496040344238,
+        2.073546886444092
+      ],
+      "note": "r(x)=||(du/dt)(x)grad t(x)^T||_F / ||du/dx||_F on the frozen cloud; the scorer uses only du/dx (partial at fixed local t)"
+    },
+    "demonly_graded_archived": {
+      "theta": [
+        -0.06,
+        -0.16,
+        0.16,
+        -0.16,
+        0.16,
+        0.0,
+        -0.14,
+        -0.12,
+        0.14,
+        0.14,
+        0.04,
+        -0.08
+      ],
+      "shift": -0.009356680512701134,
+      "frac_cloud_clipped": 0.5484,
+      "ratio_omitted_over_used_F_norm_pct": [
+        0.0,
+        1.0925394296646118,
+        2.839284658432007
+      ],
+      "mean_ratio_pct": 0.3284812867641449,
+      "unclipped_count": 22580,
+      "unclipped_mean_ratio_pct": 0.7273721694946289,
+      "unclipped_ratio_quantiles_pct": [
+        0.4835085868835449,
+        1.713898777961731,
+        3.5671050548553467
+      ],
+      "note": "r(x)=||(du/dt)(x)grad t(x)^T||_F / ||du/dx||_F on the frozen cloud; the scorer uses only du/dx (partial at fixed local t)"
+    },
+    "band_restricted_printable": {
+      "theta": [
+        -0.055,
+        -0.11,
+        0.11,
+        -0.055,
+        0.11,
+        -0.055,
+        -0.055,
+        -0.055,
+        0.0,
+        0.055,
+        0.0,
+        -0.055
+      ],
+      "shift": -0.00099337063729763,
+      "frac_cloud_clipped": 0.23836,
+      "ratio_omitted_over_used_F_norm_pct": [
+        0.173295795917511,
+        0.7499123215675354,
+        1.587110996246338
+      ],
+      "mean_ratio_pct": 0.2890029847621918,
+      "unclipped_count": 38082,
+      "unclipped_mean_ratio_pct": 0.3794482946395874,
+      "unclipped_ratio_quantiles_pct": [
+        0.27361953258514404,
+        0.8511854410171509,
+        1.6865020990371704
+      ],
+      "note": "r(x)=||(du/dt)(x)grad t(x)^T||_F / ||du/dx||_F on the frozen cloud; the scorer uses only du/dx (partial at fixed local t)"
+    }
+  }
+}

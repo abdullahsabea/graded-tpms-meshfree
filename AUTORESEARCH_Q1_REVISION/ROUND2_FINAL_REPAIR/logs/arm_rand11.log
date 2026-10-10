@@ -1,0 +1,79 @@
+s0 m 0: pick -0.165 FE 0.091896 (REJECT) best 0.105281 (5s)
+s0 m 1: pick -0.165 FE 0.095037 (REJECT) best 0.105281 (8s)
+s0 m 2: pick +0.165 FE 0.109197 (ACCEPT) best 0.109197 (10s)
+s0 m 3: pick -0.055 FE 0.109392 (ACCEPT) best 0.109392 (28s)
+s0 m 4: pick +0.055 FE 0.109556 (ACCEPT) best 0.109556 (45s)
+s0 m 5: pick +0.055 FE 0.109443 (REJECT) best 0.109556 (63s)
+s0 m 6: pick +0.110 FE 0.107015 (REJECT) best 0.109556 (80s)
+s0 m 7: pick -0.220 FE 0.099571 (REJECT) best 0.109556 (98s)
+s0 m 8: pick -0.055 FE 0.109799 (ACCEPT) best 0.109799 (116s)
+s0 m 9: pick -0.165 FE 0.104235 (REJECT) best 0.109799 (134s)
+s0 m10: pick -0.055 FE 0.109578 (REJECT) best 0.109799 (152s)
+s0 m11: pick +0.220 FE 0.105915 (REJECT) best 0.109799 (170s)
+s1 m 0: pick +0.055 FE 0.108238 (REJECT) best 0.109799 (186s)
+s1 m 1: pick -0.220 FE 0.100077 (REJECT) best 0.109799 (205s)
+s1 m 2: pick +0.000 FE 0.105004 (REJECT) best 0.109799 (223s)
+s1 m 3: pick -0.165 FE 0.110158 (ACCEPT) best 0.110158 (242s)
+s1 m 4: pick +0.165 FE 0.110091 (REJECT) best 0.110158 (259s)
+s1 m 5: pick +0.220 FE 0.109166 (REJECT) best 0.110158 (278s)
+s1 m 6: pick +0.220 FE 0.102949 (REJECT) best 0.110158 (297s)
+s1 m 7: pick +0.055 FE 0.109557 (REJECT) best 0.110158 (315s)
+s1 m 8: pick +0.165 FE 0.103982 (REJECT) best 0.110158 (333s)
+s1 m 9: pick -0.110 FE 0.108808 (REJECT) best 0.110158 (351s)
+s1 m10: pick -0.165 FE 0.109533 (REJECT) best 0.110158 (370s)
+s1 m11: pick +0.055 FE 0.109906 (REJECT) best 0.110158 (389s)
+{
+  "arm": "rand11",
+  "policy": "rand",
+  "seed": 11,
+  "plan": "ROUND2_PLAN.md (frozen 2026-09-13T14:41:05Z sha256=e56fdf7f882a45d39c57a921b2c1be6c8f3377dc55ee93eec5f15995947d9cb5)",
+  "theta_final": [
+    0.0,
+    0.0,
+    0.165,
+    -0.165,
+    0.05500000000000002,
+    0.0,
+    0.0,
+    0.0,
+    -0.05499999999999999,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "C_final_64": 0.11015822039,
+  "C_final_96": 0.11040701823,
+  "G26_pct": 4.632319716566413,
+  "G_confirm96_pct": 4.430581779616083,
+  "calls_in_budget": 26,
+  "raw_query_invocations": 26,
+  "unique_problems_queried": 26,
+  "new_solves": 22,
+  "accepted": 5,
+  "rejected": 19,
+  "harmful_rejected": [
+    {
+      "sweep": 0,
+      "mode": 0,
+      "gain_pct": -12.713873131156994
+    },
+    {
+      "sweep": 0,
+      "mode": 1,
+      "gain_pct": -9.730613151145295
+    },
+    {
+      "sweep": 0,
+      "mode": 7,
+      "gain_pct": -5.423928954131785
+    }
+  ],
+  "timing_s": {
+    "score_s": 0.0,
+    "bisect_s": 1.6,
+    "mesh_s": 25.29,
+    "solve_s": 396.85,
+    "cache_s": 3.59
+  },
+  "wall_s": 472.0
+}

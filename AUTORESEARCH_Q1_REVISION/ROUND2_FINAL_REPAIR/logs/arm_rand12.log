@@ -1,0 +1,63 @@
+s0 m 0: pick +0.055 FE 0.104274 (REJECT) best 0.105281 (5s)
+s0 m 1: pick -0.110 FE 0.101217 (REJECT) best 0.105281 (8s)
+s0 m 2: pick +0.220 FE 0.110186 (ACCEPT) best 0.110186 (10s)
+s0 m 3: pick +0.220 FE 0.110470 (ACCEPT) best 0.110470 (13s)
+s0 m 4: pick -0.220 FE 0.107115 (REJECT) best 0.110470 (31s)
+s0 m 5: pick -0.165 FE 0.109863 (REJECT) best 0.110470 (50s)
+s0 m 6: pick -0.165 FE 0.106739 (REJECT) best 0.110470 (68s)
+s0 m 7: pick -0.165 FE 0.107229 (REJECT) best 0.110470 (86s)
+s0 m 8: pick +0.055 FE 0.110043 (REJECT) best 0.110470 (105s)
+s0 m 9: pick -0.110 FE 0.107807 (REJECT) best 0.110470 (123s)
+s0 m10: pick -0.055 FE 0.110671 (ACCEPT) best 0.110671 (142s)
+s0 m11: pick -0.165 FE 0.108604 (REJECT) best 0.110671 (160s)
+s1 m 0: pick +0.220 FE 0.102598 (REJECT) best 0.110671 (178s)
+s1 m 1: pick +0.110 FE 0.108584 (REJECT) best 0.110671 (196s)
+s1 m 2: pick +0.055 FE 0.107453 (REJECT) best 0.110671 (214s)
+s1 m 3: pick -0.220 FE 0.110671 (REJECT) best 0.110671 (233s)
+s1 m 4: pick -0.165 FE 0.107818 (REJECT) best 0.110671 (251s)
+s1 m 5: pick +0.220 FE 0.109774 (REJECT) best 0.110671 (269s)
+s1 m 6: pick -0.110 FE 0.108285 (REJECT) best 0.110671 (288s)
+s1 m 7: pick +0.165 FE 0.105692 (REJECT) best 0.110671 (305s)
+s1 m 8: pick +0.165 FE 0.106056 (REJECT) best 0.110671 (324s)
+s1 m 9: pick -0.220 FE 0.102418 (REJECT) best 0.110671 (341s)
+s1 m10: pick +0.000 FE 0.110470 (REJECT) best 0.110671 (344s)
+s1 m11: pick +0.055 FE 0.110791 (ACCEPT) best 0.110791 (362s)
+{
+  "arm": "rand12",
+  "policy": "rand",
+  "seed": 12,
+  "plan": "ROUND2_PLAN.md (frozen 2026-09-13T14:41:05Z sha256=e56fdf7f882a45d39c57a921b2c1be6c8f3377dc55ee93eec5f15995947d9cb5)",
+  "theta_final": [
+    0.0,
+    0.0,
+    0.22,
+    0.22,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -0.05499999999999999,
+    0.05500000000000002
+  ],
+  "C_final_64": 0.11079059308,
+  "C_final_96": 0.1112986949,
+  "G26_pct": 5.232970500918688,
+  "G_confirm96_pct": 5.273991147066148,
+  "calls_in_budget": 26,
+  "raw_query_invocations": 26,
+  "unique_problems_queried": 25,
+  "new_solves": 20,
+  "accepted": 4,
+  "rejected": 20,
+  "harmful_rejected": [],
+  "timing_s": {
+    "score_s": 0.0,
+    "bisect_s": 1.58,
+    "mesh_s": 25.47,
+    "solve_s": 369.57,
+    "cache_s": 5.43
+  },
+  "wall_s": 444.5
+}

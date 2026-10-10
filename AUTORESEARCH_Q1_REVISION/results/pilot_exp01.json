@@ -1,0 +1,45 @@
+{
+  "P1": {
+    "archived_soft_C": 0.13524633646011353,
+    "recomputed_soft_C": 0.13524632777262013,
+    "rel_diff_pct": 6.423459310409566e-06,
+    "scorer_seconds": 1.2748081684112549
+  },
+  "P2": {
+    "shift": 0.002362779155373573,
+    "key": "4f7b73e28d20ae26",
+    "value": 0.10528125601,
+    "archived": 0.10528125601,
+    "abs_diff": 0.0,
+    "from_legacy_cache": true,
+    "newly_solved": false
+  },
+  "P3": {
+    "theta": [
+      0.0,
+      0.0,
+      0.075,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "shift": 2.2080168128013612e-05,
+    "key": "8a316a5e30afef13",
+    "C1111": 0.10744203935,
+    "pre_existing": false,
+    "newly_solved": true,
+    "solve_seconds": 23.417603969573975
+  },
+  "GATE": {
+    "P1_scorer_pass": true,
+    "P2_cache_pass": true,
+    "P3_docker_pass": true,
+    "PILOT_PASS": true
+  }
+}

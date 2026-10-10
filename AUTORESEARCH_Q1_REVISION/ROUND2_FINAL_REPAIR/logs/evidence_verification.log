@@ -1,0 +1,269 @@
+evidence_verification run at 2026-09-14T11:13:21.089296+00:00
+sources checked: 18
+CURRENT missing (fails the run): 0
+retired historical citations still absent (informational only, does not fail the run): ['results/c1111_vs_vf.json', 'results/cross_family_benchmarks.json', 'results/experimental_coupon_data.json']
+trajectory reconstruction cross-check failures (fails the run): []
+
+canonical values written to C:\Users\Admin\Desktop\Abdullah\Topology_Optimisaiton_AI\AUTORESEARCH_Q1_REVISION\ROUND2_FINAL_REPAIR\results\evidence_verification.json
+{
+ "r1_endpoints_pct": {
+  "VG-MM(11)": {
+   "G26": 5.828121,
+   "G96": 5.55805
+  },
+  "VG-MM(12)": {
+   "G26": 5.648265,
+   "G96": 5.578131
+  },
+  "VG-MM(13)": {
+   "G26": 5.547714,
+   "G96": 5.20904
+  },
+  "RAND(11)": {
+   "G26": 4.63232,
+   "G96": 4.430582
+  },
+  "RAND(12)": {
+   "G26": 5.232971,
+   "G96": 5.273991
+  },
+  "RAND(13)": {
+   "G26": 5.21333,
+   "G96": 5.30376
+  },
+  "DET(det)": {
+   "G26": 1.882756,
+   "G96": 1.810764
+  },
+  "DEMONLY(11)": {
+   "G26": -5.071327,
+   "G96": -4.913538
+  },
+  "DEMONLY(12)": {
+   "G26": -6.637043,
+   "G96": -6.597034
+  },
+  "DEMONLY(13)": {
+   "G26": -1.780705,
+   "G96": -1.892797
+  },
+  "FULLFE-truncated": {
+   "G26": 4.928521,
+   "G96": null
+  },
+  "FULLFE-complete(archived)": {
+   "G26": 6.550276,
+   "G96": 6.339071
+  }
+ },
+ "r1_fullfe_complete_calls": 194,
+ "r1_fullfe_complete_raw_note": "194 unique problems (192 search incl uniform64 + uniform96 + winner96); 244 raw queries; wall time NOT recoverable -> unavailable",
+ "r1_pairwise_vg_vs_rand": {
+  "all_pairwise_diffs_pp": {
+   "vg11_minus_rand11": 1.1958014823459262,
+   "vg11_minus_rand12": 0.5951506979936516,
+   "vg11_minus_rand13": 0.6147912691490953,
+   "vg12_minus_rand11": 1.0159453643850958,
+   "vg12_minus_rand12": 0.41529458003282116,
+   "vg12_minus_rand13": 0.43493515118826487,
+   "vg13_minus_rand11": 0.9153944933070202,
+   "vg13_minus_rand12": 0.31474370895474557,
+   "vg13_minus_rand13": 0.3343842801101893
+  },
+  "min_diff_pp": 0.31474370895474557,
+  "max_diff_pp": 1.1958014823459262,
+  "mean_diff_pp": 0.6484934474963122,
+  "min_vg": 5.547714209873433,
+  "max_rand": 5.232970500918688,
+  "worst_case_margin_pp": 0.31474370895474557,
+  "best_case_margin_pp": 1.1958014823459262,
+  "all_exceed_delta": false,
+  "all_within_delta": false
+ },
+ "r1_branch_primary": "MIXED",
+ "r2_pool_diag": {
+  "spearman": 0.664443,
+  "kendall": 0.478123,
+  "scan_groups": 24,
+  "scan_groups_dem_top1_wrong": 21,
+  "of_which_material_ranking_loss": 21,
+  "of_which_different_id_only": 0,
+  "pool_size": 192
+ },
+ "mechanics_vgmm_winner": {
+  "frac_cloud_clipped_pct": 39.038,
+  "all_cloud_mean_pct": 0.255715,
+  "all_cloud_p50_pct": 0.078431,
+  "all_cloud_p90_pct": 0.763682,
+  "all_cloud_p99_pct": 1.823554,
+  "unclipped_mean_pct": 0.419466,
+  "unclipped_p50_pct": 0.278058,
+  "unclipped_p90_pct": 0.98145,
+  "unclipped_p99_pct": 2.073547,
+  "unclipped_count": 30481,
+  "note": "quantiles are [p50, p90, p99]; no maximum is computed by r2_mechanics_audit.py"
+ },
+ "mesh_convergence_pct_change_from_64": {
+  "gyroid_t0.30": {
+   "96": 0.4195,
+   "128": 0.4559
+  },
+  "diamond_t0.236": {
+   "96": 0.6423,
+   "128": 0.908
+  },
+  "primitive_t0.3387_noncalibrated64": {
+   "96": -1.2601,
+   "128": -0.9014
+  },
+  "primitive_calibrated_ladder_mean": 0.10243,
+  "primitive_calibrated_ladder_scatter_pct": 0.181,
+  "gyroid_t0.20": {
+   "96": 1.0434,
+   "128": 1.7463
+  }
+ },
+ "fig5_cross_family": {
+  "gyroid": {
+   "dem_dev_pct_vs_mean": 6.7818,
+   "fe_scatter_pct": 0.227386
+  },
+  "primitive": {
+   "dem_dev_pct_vs_mean": 2.314521,
+   "fe_scatter_pct": 0.181325
+  },
+  "diamond": {
+   "dem_dev_pct_vs_mean": 3.966451,
+   "fe_scatter_pct": 0.835351
+  }
+ },
+ "fig5_cross_family_note": "paper_numbers.json['families'] has exactly 3 entries (['diamond', 'gyroid', 'primitive']); a prior FIGURE_AUDIT.csv row claimed 6 families (adding Neovius, IWP, Split-P) with specific C1111 values at Vf=0.19328 -- no such values exist in this file or any other source found in this workspace.",
+ "fig4_c1111_vs_vf": {
+  "vf_anchors": [
+   0.1287,
+   0.1933,
+   0.2911
+  ],
+  "fem_mean": [
+   0.06526,
+   0.10554,
+   0.17515
+  ],
+  "fem_half_range": [
+   0.00134,
+   0.00024,
+   0.00023
+  ],
+  "dem_single_thickness": [
+   0.0705,
+   0.1127,
+   0.1856
+  ],
+  "note": "no Gibson-Ashby power-law exponent is fit or stored anywhere in these sources; a prior audit row's claimed exponent range [1.8, 2.1] is not verifiable from this data and is not reproduced here"
+ },
+ "fig6_e3_result": {
+  "VF_target": 0.19328,
+  "search_N": 64,
+  "confirm_N": 96,
+  "gain_search_pct": 6.550276,
+  "gain_confirm_pct": 6.339071,
+  "note": "'macro_vf' is not a key in e3_fe_baseline.json; a prior audit row cited 'e3_fe_baseline.json:macro_vf=0.19328', which does not exist. VF_target is used instead."
+ },
+ "fig14_geometry_realized_vf_at_search_grid": {
+  "Uniform": {
+   "grid_N": 64,
+   "shift": 0.002362779,
+   "realized_Vf": 0.19348
+  },
+  "VG-MM winner": {
+   "grid_N": 64,
+   "shift": -0.036102479,
+   "realized_Vf": 0.19328
+  },
+  "Full-FE winner": {
+   "grid_N": 64,
+   "shift": -0.028491601,
+   "realized_Vf": 0.19328
+  }
+ },
+ "fig14_geometry_note": "RESOLVED 2026-09-14 (PI decision): fig_r5() now renders each design at N=64 (the actual search grid) using its saved 64^3 search shift, and the title's realized-Vf number is computed directly from that same plotted mask (discrete_mask(64, theta, shift).mean()), reproduced independently above. This differs from the PREVIOUS caption numbers (0.19332/0.19328/0.19328), which were N=96-recalibrated values (bisect_shift_discrete(96, theta)) attached to an image that was actually rendered at N=96 with the 64^3 shift (neither the search design nor the confirmation design). 96^3 confirmation is now reported as a stiffness/gain number only, with an explicit note that its geometry is separately calibrated and not the one pictured.",
+ "r1_unique_search_counts_independent_check": {
+  "det": {
+   "unique_search_count_replay": 25,
+   "unique_search_count_calls_list_N64": 25,
+   "cross_check_ok": true
+  },
+  "rand11": {
+   "unique_search_count_replay": 25,
+   "unique_search_count_calls_list_N64": 25,
+   "cross_check_ok": true
+  },
+  "rand12": {
+   "unique_search_count_replay": 24,
+   "unique_search_count_calls_list_N64": 24,
+   "cross_check_ok": true
+  },
+  "rand13": {
+   "unique_search_count_replay": 25,
+   "unique_search_count_calls_list_N64": 25,
+   "cross_check_ok": true
+  },
+  "vgmm12": {
+   "unique_search_count_replay": 25,
+   "unique_search_count_calls_list_N64": 25,
+   "cross_check_ok": true
+  },
+  "vgmm13": {
+   "unique_search_count_replay": 23,
+   "unique_search_count_calls_list_N64": 23,
+   "cross_check_ok": true
+  },
+  "vgmm11_historical": {
+   "unique_search_count_replay": 25,
+   "unique_search_count_calls_list_N64": 25,
+   "cross_check_ok": true
+  }
+ },
+ "r1_pi_targets_cross_check": {
+  "rand12_expected_24": 24,
+  "vgmm13_expected_23": 23
+ },
+ "r1_duplicate_checkpoint_identities": {
+  "rand12": {
+   "23": {
+    "repeats_checkpoint": 4,
+    "fe_val_matches": true
+   }
+  },
+  "vgmm13": {
+   "23": {
+    "repeats_checkpoint": 5,
+    "fe_val_matches": true
+   },
+   "24": {
+    "repeats_checkpoint": 12,
+    "fe_val_matches": true
+   }
+  },
+  "rand11": {},
+  "rand13": {},
+  "vgmm12": {},
+  "det": {}
+ },
+ "r1_pi_duplicate_claims_verified": {
+  "claims": {
+   "rand12_checkpoint_23_repeats_4": 4,
+   "vgmm13_checkpoint_23_repeats_5": 5,
+   "vgmm13_checkpoint_24_repeats_12": 12
+  },
+  "all_confirmed": true,
+  "note": "Checkpoint numbering is 1-based and excludes the initial baseline call, per the PI's stated convention. Verified by replaying arm_<name>.json['log'] and matching full 12-dimensional candidate designs (current incumbent theta with the log row's changed coordinate); every match is corroborated by an exact fe_val equality between the duplicate checkpoint and the checkpoint it repeats (same content-addressed FE solve)."
+ },
+ "fig16_expresult": {
+  "n_specimens": 8,
+  "U_group_E_MPa_mean": 134.959,
+  "O_group_E_MPa_mean": 123.959,
+  "O_vs_U_pct": -8.15,
+  "source_note": "real source is validation/table8_results.json (analysis.script=paper/verify_experiment_stats.py); a prior audit row cited the nonexistent results/experimental_coupon_data.json and a make_figs_v2.py line range (730-800) that actually corresponds to fig_field_verification(), not an experimental-result figure."
+ }
+}

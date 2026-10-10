@@ -1,0 +1,19 @@
+{
+ "design": "vgmm",
+ "N_surface": 72,
+ "interior_M": 96,
+ "free_caps": false,
+ "refined_caps": true,
+ "nodes": 153015,
+ "tets": 761416,
+ "cap_triangles": {
+  "X0": 3015,
+  "X1": 3015,
+  "Y0": 3076,
+  "Y1": 3076,
+  "Z0": 3261,
+  "Z1": 3257
+ },
+ "solid_volume": 0.19342476968875166,
+ "surface_triangles": 122800
+}

@@ -1,0 +1,58 @@
+# N3/E3 field export — same KUBC homogenization as homog.comm, but the
+# displacement, von Mises stress and elastic energy density fields are written
+# to MED so that the mesh-free solution can be compared field by field and not
+# only through the integral C1111.
+from code_aster.Commands import *
+
+DEBUT()
+
+EPS = 1.0e-3
+
+mesh = LIRE_MAILLAGE(FORMAT='ASTER', UNITE=20)
+
+model = AFFE_MODELE(MAILLAGE=mesh,
+                    AFFE=_F(MODELISATION='3D', PHENOMENE='MECANIQUE', TOUT='OUI'))
+
+mat = DEFI_MATERIAU(ELAS=_F(E=1.0, NU=0.3))
+chmat = AFFE_MATERIAU(MAILLAGE=mesh, AFFE=_F(TOUT='OUI', MATER=mat))
+
+ux = FORMULE(VALE='0.001*X', NOM_PARA=('X', 'Y', 'Z'))
+f0 = FORMULE(VALE='0.0', NOM_PARA=('X', 'Y', 'Z'))
+
+bc_f = AFFE_CHAR_MECA_F(MODELE=model,
+                        DDL_IMPO=_F(GROUP_NO='BOUND', DX=ux, DY=f0, DZ=f0))
+
+res = MECA_STATIQUE(MODELE=model, CHAM_MATER=chmat,
+                    EXCIT=_F(CHARGE=bc_f))
+
+# nodal fields (NOEU) rather than ELNO: one value per node, directly griddable
+res = CALC_CHAMP(reuse=res, RESULTAT=res,
+                 CONTRAINTE=('SIGM_ELNO', 'SIGM_NOEU'),
+                 CRITERES=('SIEQ_ELNO', 'SIEQ_NOEU'),
+                 ENERGIE=('ENEL_ELEM', 'ENEL_ELNO', 'ENEL_NOEU'),
+                 FORCE='REAC_NODA')
+
+# ENEL_ELEM is the per-element energy density. Every voxel has the same volume,
+# so element values are an unbiased, volume-weighted sample of the solid,
+# whereas nodal fields over-weight surface nodes by a family-dependent amount
+# (up to 19% for the primitive). Statistics use ENEL_ELEM; the nodal fields are
+# kept for slice visualization only.
+IMPR_RESU(FORMAT='MED', UNITE=80,
+          RESU=_F(RESULTAT=res,
+                  NOM_CHAM=('DEPL', 'SIEQ_NOEU', 'ENEL_NOEU', 'ENEL_ELEM')))
+
+# the scalar gate, unchanged, so the field run also re-confirms C1111
+tab = POST_RELEVE_T(ACTION=_F(OPERATION='EXTRACTION',
+                              INTITULE='reacX1',
+                              RESULTAT=res,
+                              NOM_CHAM='REAC_NODA',
+                              GROUP_NO='X1',
+                              NOM_CMP=('DX',),
+                              TOUT_ORDRE='OUI'))
+vals = tab.EXTR_TABLE().values()
+import numpy as np
+arr = np.asarray(vals['DX'], dtype=float)
+reac = float(arr.sum()) if arr.size > 24 else float(arr[-1])
+print('C1111_KUBC  = %.10e' % (reac / EPS))
+
+FIN()

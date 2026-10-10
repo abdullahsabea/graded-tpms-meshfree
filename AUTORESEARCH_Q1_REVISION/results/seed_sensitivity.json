@@ -1,0 +1,50 @@
+{
+  "seeds": {
+    "12": {
+      "checkpoints": 24,
+      "pick_agreement_with_seed11": 8,
+      "pick_agreement_rate": 0.3333333333333333,
+      "final_theta": [
+        -0.11,
+        -0.165,
+        0.165,
+        -0.11,
+        0.165,
+        0.05500000000000002,
+        -0.165,
+        -0.165,
+        0.05500000000000002,
+        0.22,
+        0.0,
+        0.0
+      ],
+      "final_theta_same_as_seed11": false,
+      "final_dem_score": 0.13481280802807305,
+      "final_dem_score_implied_gain_pct": 17.945351313907754
+    },
+    "13": {
+      "checkpoints": 24,
+      "pick_agreement_with_seed11": 8,
+      "pick_agreement_rate": 0.3333333333333333,
+      "final_theta": [
+        0.165,
+        -0.165,
+        0.165,
+        -0.165,
+        0.165,
+        -0.11,
+        0.0,
+        -0.11,
+        0.22,
+        0.165,
+        -0.165,
+        -0.11
+      ],
+      "final_theta_same_as_seed11": false,
+      "final_dem_score": 0.13344798389880452,
+      "final_dem_score_implied_gain_pct": 16.751290721573287
+    }
+  },
+  "seed11_final_dem_score": 0.129868076328421,
+  "dem_score_spread_final_design_pct": 3.725978265269562
+}

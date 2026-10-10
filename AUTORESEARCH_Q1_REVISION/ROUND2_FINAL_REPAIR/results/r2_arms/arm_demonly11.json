@@ -1,0 +1,290 @@
+{
+  "arm": "demonly11",
+  "policy": "demonly",
+  "seed": 11,
+  "plan": "ROUND2_PLAN.md (frozen 2026-09-13T14:41:05Z sha256=e56fdf7f882a45d39c57a921b2c1be6c8f3377dc55ee93eec5f15995947d9cb5)",
+  "theta_final": [
+    -0.11,
+    -0.22,
+    0.22,
+    0.0,
+    0.22,
+    -0.22,
+    0.22,
+    -0.11,
+    -0.22,
+    0.11000000000000001,
+    0.22,
+    -0.22
+  ],
+  "C_final_64": 0.09994209919,
+  "C_final_96": 0.1005281454,
+  "G26_pct": -5.071327055114994,
+  "G_confirm96_pct": -4.9135383089691675,
+  "calls_in_budget": 0,
+  "raw_query_invocations": 4,
+  "unique_problems_queried": 3,
+  "new_solves": 2,
+  "accepted": 0,
+  "rejected": 0,
+  "harmful_rejected": [],
+  "timing_s": {
+    "score_s": 69.43,
+    "bisect_s": 480.51,
+    "mesh_s": 2.41,
+    "solve_s": 18.3,
+    "cache_s": 1.19,
+    "scorer_init_s": 0.01
+  },
+  "wall_s": 669.5,
+  "calls": [
+    {
+      "N": 64,
+      "key": "4f7b73e28d20ae26",
+      "purpose": "baseline_uniform",
+      "theta": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "shift": 0.002362779155373573,
+      "value": 0.10528125601,
+      "source": "legacy",
+      "newly_solved": false,
+      "cache_s": 1.1911821000394411,
+      "mesh_s": 1.184607999981381,
+      "reason": "hit"
+    },
+    {
+      "N": 64,
+      "key": "76930588ce82aa78",
+      "purpose": "winner_64_read",
+      "theta": [
+        -0.11,
+        -0.22,
+        0.22,
+        0.0,
+        0.22,
+        -0.22,
+        0.22,
+        -0.11,
+        -0.22,
+        0.11000000000000001,
+        0.22,
+        -0.22
+      ],
+      "shift": -0.01585123501718044,
+      "value": 0.09994209919,
+      "source": "round2_new",
+      "newly_solved": true,
+      "mesh_s": 1.2284789999830537,
+      "solve_s": 18.300497899996117,
+      "docker_digest": "simvia/code_aster@sha256:d8d19ea91989eac0d38195bc5795c54c69f530f7196f53d67697ffa57c9106d5"
+    },
+    {
+      "N": 96,
+      "key": "f722bb54f66f9b58",
+      "purpose": "demonly_endpoint_96",
+      "theta": [
+        -0.11,
+        -0.22,
+        0.22,
+        0.0,
+        0.22,
+        -0.22,
+        0.22,
+        -0.11,
+        -0.22,
+        0.11000000000000001,
+        0.22,
+        -0.22
+      ],
+      "shift": -0.01700116954743862,
+      "value": 0.1005281454,
+      "source": "round2_new",
+      "newly_solved": true,
+      "mesh_s": 4.379931500006933,
+      "solve_s": 78.5600729000289,
+      "docker_digest": "simvia/code_aster@sha256:d8d19ea91989eac0d38195bc5795c54c69f530f7196f53d67697ffa57c9106d5"
+    }
+  ],
+  "log": [
+    {
+      "sweep": 0,
+      "mode": 0,
+      "dem_pick": -0.22,
+      "dem_score_selected": 0.12452213923097588,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 0,
+      "mode": 1,
+      "dem_pick": -0.22,
+      "dem_score_selected": 0.1267405241378583,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 0,
+      "mode": 2,
+      "dem_pick": 0.22,
+      "dem_score_selected": 0.1301218981097918,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 0,
+      "mode": 3,
+      "dem_pick": 0.0,
+      "dem_score_selected": 0.1301218981097918,
+      "action": "STAY"
+    },
+    {
+      "sweep": 0,
+      "mode": 4,
+      "dem_pick": 0.22,
+      "dem_score_selected": 0.13133771062712185,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 0,
+      "mode": 5,
+      "dem_pick": -0.22,
+      "dem_score_selected": 0.13170420061214827,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 0,
+      "mode": 6,
+      "dem_pick": 0.165,
+      "dem_score_selected": 0.13227561794337817,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 0,
+      "mode": 7,
+      "dem_pick": -0.11,
+      "dem_score_selected": 0.13303622836247087,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 0,
+      "mode": 8,
+      "dem_pick": -0.05499999999999999,
+      "dem_score_selected": 0.13306653272593394,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 0,
+      "mode": 9,
+      "dem_pick": 0.22,
+      "dem_score_selected": 0.13533565834222827,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 0,
+      "mode": 10,
+      "dem_pick": 0.05500000000000002,
+      "dem_score_selected": 0.1357196015305817,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 0,
+      "mode": 11,
+      "dem_pick": -0.165,
+      "dem_score_selected": 0.1357637665932998,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 1,
+      "mode": 0,
+      "dem_pick": -0.11,
+      "dem_score_selected": 0.13643571946886368,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 1,
+      "mode": 1,
+      "dem_pick": -0.22,
+      "dem_score_selected": 0.13643571946886368,
+      "action": "STAY"
+    },
+    {
+      "sweep": 1,
+      "mode": 2,
+      "dem_pick": 0.22,
+      "dem_score_selected": 0.13643571946886368,
+      "action": "STAY"
+    },
+    {
+      "sweep": 1,
+      "mode": 3,
+      "dem_pick": 0.0,
+      "dem_score_selected": 0.13643571946886368,
+      "action": "STAY"
+    },
+    {
+      "sweep": 1,
+      "mode": 4,
+      "dem_pick": 0.22,
+      "dem_score_selected": 0.13643571946886368,
+      "action": "STAY"
+    },
+    {
+      "sweep": 1,
+      "mode": 5,
+      "dem_pick": -0.22,
+      "dem_score_selected": 0.13643571946886368,
+      "action": "STAY"
+    },
+    {
+      "sweep": 1,
+      "mode": 6,
+      "dem_pick": 0.22,
+      "dem_score_selected": 0.13648893400386441,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 1,
+      "mode": 7,
+      "dem_pick": -0.11,
+      "dem_score_selected": 0.13648893400386441,
+      "action": "STAY"
+    },
+    {
+      "sweep": 1,
+      "mode": 8,
+      "dem_pick": -0.22,
+      "dem_score_selected": 0.13707862308365293,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 1,
+      "mode": 9,
+      "dem_pick": 0.11000000000000001,
+      "dem_score_selected": 0.13726981705985963,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 1,
+      "mode": 10,
+      "dem_pick": 0.22,
+      "dem_score_selected": 0.13757906344835646,
+      "action": "DEMMOVE"
+    },
+    {
+      "sweep": 1,
+      "mode": 11,
+      "dem_pick": -0.22,
+      "dem_score_selected": 0.1377858734485926,
+      "action": "DEMMOVE"
+    }
+  ]
+}

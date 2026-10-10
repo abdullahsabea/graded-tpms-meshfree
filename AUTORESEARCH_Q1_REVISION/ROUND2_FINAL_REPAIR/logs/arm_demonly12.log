@@ -1,0 +1,64 @@
+s0 m 0: dem -0.220 (DEMMOVE)
+s0 m 1: dem -0.220 (DEMMOVE)
+s0 m 2: dem +0.220 (DEMMOVE)
+s0 m 3: dem -0.055 (DEMMOVE)
+s0 m 4: dem +0.220 (DEMMOVE)
+s0 m 5: dem -0.055 (DEMMOVE)
+s0 m 6: dem -0.220 (DEMMOVE)
+s0 m 7: dem -0.220 (DEMMOVE)
+s0 m 8: dem +0.165 (DEMMOVE)
+s0 m 9: dem +0.110 (DEMMOVE)
+s0 m10: dem +0.000 (STAY)
+s0 m11: dem +0.000 (STAY)
+s1 m 0: dem -0.165 (DEMMOVE)
+s1 m 1: dem -0.220 (STAY)
+s1 m 2: dem +0.220 (STAY)
+s1 m 3: dem -0.110 (DEMMOVE)
+s1 m 4: dem +0.220 (STAY)
+s1 m 5: dem +0.000 (DEMMOVE)
+s1 m 6: dem -0.220 (STAY)
+s1 m 7: dem -0.220 (STAY)
+s1 m 8: dem +0.165 (STAY)
+s1 m 9: dem +0.110 (STAY)
+s1 m10: dem +0.000 (STAY)
+s1 m11: dem +0.000 (STAY)
+{
+  "arm": "demonly12",
+  "policy": "demonly",
+  "seed": 12,
+  "plan": "ROUND2_PLAN.md (frozen 2026-09-13T14:41:05Z sha256=e56fdf7f882a45d39c57a921b2c1be6c8f3377dc55ee93eec5f15995947d9cb5)",
+  "theta_final": [
+    -0.165,
+    -0.22,
+    0.22,
+    -0.11,
+    0.22,
+    0.0,
+    -0.22,
+    -0.22,
+    0.165,
+    0.11000000000000001,
+    0.0,
+    0.0
+  ],
+  "C_final_64": 0.098293693738,
+  "C_final_96": 0.098748305752,
+  "G26_pct": -6.63704303768593,
+  "G_confirm96_pct": -6.597033551344644,
+  "calls_in_budget": 0,
+  "raw_query_invocations": 4,
+  "unique_problems_queried": 3,
+  "new_solves": 2,
+  "accepted": 0,
+  "rejected": 0,
+  "harmful_rejected": [],
+  "timing_s": {
+    "score_s": 37.6,
+    "bisect_s": 355.56,
+    "mesh_s": 1.77,
+    "solve_s": 15.93,
+    "cache_s": 0.93,
+    "scorer_init_s": 0.01
+  },
+  "wall_s": 495.1
+}

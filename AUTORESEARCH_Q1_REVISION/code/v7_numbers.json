@@ -1,0 +1,71 @@
+{
+  "_note": "Single source for numbers printed inside v7 figures. Body-fitted values: research/n3/conforming/conf_summary.json (N48 M96 rc). Update pbc_* after the N72 solves.",
+  "resolution": "N48",
+  "Vf_meshed": {
+    "uniform": 0.19389,
+    "band": 0.1951,
+    "vgmm": 0.1935,
+    "fullfe": 0.19344,
+    "graded": 0.19366
+  },
+  "C_kubc": {
+    "uniform": 0.10765,
+    "band": 0.11028,
+    "vgmm": 0.11329,
+    "fullfe": 0.11411,
+    "graded": 0.10293
+  },
+  "C_pbc": {
+    "uniform": 0.09802,
+    "band": 0.09514,
+    "vgmm": 0.0919,
+    "fullfe": 0.08967,
+    "graded": 0.0805
+  },
+  "gain_voxel_kubc": {
+    "uniform": 0.0,
+    "band": 1.6,
+    "vgmm": 5.8,
+    "fullfe": 6.6,
+    "graded": -4.4
+  },
+  "gain_kubc": {
+    "uniform": 0.0,
+    "band": 1.7,
+    "vgmm": 5.5,
+    "fullfe": 6.3,
+    "graded": -4.2
+  },
+  "gain_pbc": {
+    "uniform": 0.0,
+    "band": -3.7,
+    "vgmm": -6.0,
+    "fullfe": -8.3,
+    "graded": -17.8
+  },
+  "score_hard": {
+    "uniform": 0.11389,
+    "band": 0.12326,
+    "graded": 0.13381
+  },
+  "score_se": {
+    "uniform": null,
+    "band": 0.0007,
+    "graded": 0.0007
+  },
+  "voxel_mean": {
+    "uniform": 0.10554,
+    "band": 0.10721,
+    "graded": 0.10093
+  },
+  "voxel_half_pct": {
+    "uniform": 0.2,
+    "band": 0.5,
+    "graded": 0.4
+  },
+  "external_uniform_pbc": {
+    "fisher2023_voxel_nu030_at_Vf_mesh": 0.095,
+    "mele2025_tet_nu033_at_Vf_mesh": 0.1001
+  },
+  "_note_score": "hard-domain float64 audits: uniform/band from _deep_review/wpa/a3_a4_score_audit_f32draws.json (archived protocol), graded = archived e3_hard_audit.json"
+}

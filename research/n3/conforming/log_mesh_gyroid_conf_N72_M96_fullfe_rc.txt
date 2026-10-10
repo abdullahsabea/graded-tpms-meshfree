@@ -1,0 +1,4 @@
+fullfe: continuum shift -0.028247, V_f 0.19328
+parsing switches
+success
+{"design": "fullfe", "N_surface": 72, "interior_M": 96, "free_caps": false, "refined_caps": true, "nodes": 153026, "tets": 761932, "cap_triangles": {"X0": 3134, "X1": 3140, "Y0": 3083, "Y1": 3079, "Z0": 2940, "Z1": 2942}, "solid_volume": 0.1934109044100578, "surface_triangles": 122452}

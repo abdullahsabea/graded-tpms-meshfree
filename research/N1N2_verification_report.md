@@ -36,6 +36,14 @@ w.r.t. thickness t (and later grading fields t(x), k(x)).
 - FEM pure tension vs analytic: 0.9938 vs 1.0000 (0.6%).
 - (An earlier Timoshenko formula in dem_cantilever.py had a 2× shear-term error — caught and
   corrected during this audit. This is why independent checks matter.)
+- **2026-08-25 correction:** the "corrected" formula described above was itself never applied to
+  the shipped `dem_cantilever.py::d_beam` line (it still used the uncorrected 6/5 coefficient,
+  giving tip=35.12/energy=17.56 instead of 38.24/19.12); `n2_metrics.json::tip_beam` therefore
+  disagreed with this report and with the manuscript's Table 2 caption (19.12). Fixed at the
+  source line (6/5 -> 12/5, kappa=5/6 rectangular shear correction) and `n2_metrics.json`
+  patched to tip_beam=-38.24; this is a closed-form recomputation only, independent of P,
+  L, E, NU, H (all fixed problem constants) and does not touch U_dem/U_fem, which are DEM/FEM
+  results and remain byte-identical to the archived run quoted in the manuscript.
 
 ### DEM results
 | Case | DEM | Reference | Error |

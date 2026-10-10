@@ -1,0 +1,16 @@
+{
+ "N_surface": 72,
+ "interior_M": 96,
+ "nodes": 144998,
+ "tets": 736645,
+ "cap_triangles": {
+  "X0": 910,
+  "X1": 904,
+  "Y0": 882,
+  "Y1": 876,
+  "Z0": 921,
+  "Z1": 921
+ },
+ "solid_volume": 0.1936421990167058,
+ "surface_triangles": 109440
+}

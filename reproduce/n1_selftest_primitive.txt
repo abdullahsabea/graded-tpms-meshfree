@@ -1,0 +1,7 @@
+T1 grad  |analytic - FD|_inf = 4.75e-10  -> PASS
+T2 Hess  |analytic - FD|_inf = 2.43e-09  -> PASS
+T3a VF(t=0.3): voxel=0.1716 vs MC=0.1720  -> PASS
+T4 VF(t) = [0.0, 0.172, 0.343, 0.516]  monotone -> PASS
+T5 shell sampler: phi in (-0.05, 0) for all 2000 pts -> PASS
+T6 max|F| on dense 255^3 grid = 3.000000  (bound 3.000000, ratio 1.0000)  -> PASS
+N1 module self-tests complete.

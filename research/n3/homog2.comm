@@ -1,0 +1,49 @@
+# KUBC homogenization reporting BOTH evaluations of the apparent modulus.
+#
+#   C1111_X1FACE : summed reaction on the loaded face / applied strain.
+#   C1111_ENERGY : 2 U / (V eps^2), U the total elastic energy.
+#
+# For a homogeneous body the two agree exactly. For a heterogeneous cell they
+# do not: <sigma_11> = (1/V) * closed-surface integral of t_1 x_1, and the
+# lateral faces contribute a shear-traction moment that the loaded-face sum
+# omits. The energy form is the Hill-Mandel-consistent apparent modulus and is
+# the quantity the mesh-free solver computes, so it is the like-for-like
+# reference. Both are printed so the difference can be reported.
+from code_aster.Commands import *
+
+DEBUT()
+
+EPS = 1.0e-3
+
+mesh = LIRE_MAILLAGE(FORMAT='ASTER', UNITE=20)
+
+model = AFFE_MODELE(MAILLAGE=mesh,
+                    AFFE=_F(MODELISATION='3D', PHENOMENE='MECANIQUE', TOUT='OUI'))
+
+mat = DEFI_MATERIAU(ELAS=_F(E=1.0, NU=0.3))
+chmat = AFFE_MATERIAU(MAILLAGE=mesh, AFFE=_F(TOUT='OUI', MATER=mat))
+
+ux = FORMULE(VALE='0.001*X', NOM_PARA=('X', 'Y', 'Z'))
+f0 = FORMULE(VALE='0.0', NOM_PARA=('X', 'Y', 'Z'))
+
+bc_f = AFFE_CHAR_MECA_F(MODELE=model,
+                        DDL_IMPO=_F(GROUP_NO='BOUND', DX=ux, DY=f0, DZ=f0))
+
+res = MECA_STATIQUE(MODELE=model, CHAM_MATER=chmat, EXCIT=_F(CHARGE=bc_f))
+res = CALC_CHAMP(reuse=res, RESULTAT=res, FORCE='REAC_NODA')
+
+tab = POST_RELEVE_T(ACTION=_F(OPERATION='EXTRACTION', INTITULE='reacX1',
+                              RESULTAT=res, NOM_CHAM='REAC_NODA',
+                              GROUP_NO='X1', NOM_CMP=('DX',), TOUT_ORDRE='OUI'))
+import numpy as np
+arr = np.asarray(tab.EXTR_TABLE().values()['DX'], dtype=float)
+reac = float(arr.sum()) if arr.size > 24 else float(arr[-1])
+print('C1111_X1FACE = %.10e' % (reac / EPS))
+
+ener = POST_ELEM(RESULTAT=res, ENER_ELAS=_F(TOUT='OUI'))
+vals = ener.EXTR_TABLE().values()
+U = float(np.asarray(vals['TOTALE'], dtype=float)[-1])
+print('U_ELASTIC    = %.10e' % U)
+print('C1111_ENERGY = %.10e' % (2.0 * U / EPS**2))   # V_macro = 1
+
+FIN()

@@ -1,5 +1,10 @@
-numpy>=1.26
-torch>=2.1
-matplotlib>=3.8
-scipy>=1.11
-scikit-image>=0.22
+# Python packages used for the results (Python 3.11). code_aster runs in Docker; see ENVIRONMENT.md.
+numpy==2.3.5
+scipy==1.16.3
+torch==2.5.1
+matplotlib==3.10.7
+pandas==2.3.3
+pillow==12.2.0
+pyvista==0.46.4
+tetgen==0.8.3
+scikit-image==0.26.0

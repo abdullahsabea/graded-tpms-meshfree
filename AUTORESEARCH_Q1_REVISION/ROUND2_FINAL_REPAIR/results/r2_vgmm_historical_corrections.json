@@ -1,0 +1,302 @@
+{
+  "purpose": "PI finding 4: historical dem_score field recorded the overall top score, not the score of the actually selected non-incumbent proposal; corrections below preserve the historical values and add the corrected ones",
+  "picks_reproduced": "24/24",
+  "actions_reproduced": "24/24",
+  "checkpoints_with_wrong_recorded_dem_score": [
+    {
+      "checkpoint": "s0_m6",
+      "historical_recorded_dem_score": 0.13156486602383666,
+      "corrected_selected_dem_score": 0.13131909327057656,
+      "overall_top_dem_score": 0.13156486602383666,
+      "incumbent_coeff": 0.0
+    },
+    {
+      "checkpoint": "s1_m2",
+      "historical_recorded_dem_score": 0.13171202226658352,
+      "corrected_selected_dem_score": 0.13070006389170885,
+      "overall_top_dem_score": 0.13171202226658352,
+      "incumbent_coeff": 0.22
+    },
+    {
+      "checkpoint": "s1_m3",
+      "historical_recorded_dem_score": 0.13070006389170885,
+      "corrected_selected_dem_score": 0.12969946510565933,
+      "overall_top_dem_score": 0.13070006389170885,
+      "incumbent_coeff": -0.22
+    },
+    {
+      "checkpoint": "s1_m4",
+      "historical_recorded_dem_score": 0.13070006389170885,
+      "corrected_selected_dem_score": 0.129868076328421,
+      "overall_top_dem_score": 0.13070006389170885,
+      "incumbent_coeff": 0.22
+    }
+  ],
+  "checkpoint_rows": [
+    {
+      "sweep": 0,
+      "mode": 0,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.12452213923097588,
+      "top_coeff": -0.22,
+      "selected_coeff": -0.22,
+      "selected_dem_score": 0.12452213923097588,
+      "historical_dem_score": 0.12452213923097588,
+      "historical_pick": -0.22
+    },
+    {
+      "sweep": 0,
+      "mode": 1,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.12325874195084907,
+      "top_coeff": -0.22,
+      "selected_coeff": -0.22,
+      "selected_dem_score": 0.12325874195084907,
+      "historical_dem_score": 0.12325874195084907,
+      "historical_pick": -0.22
+    },
+    {
+      "sweep": 0,
+      "mode": 2,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.12998259080632124,
+      "top_coeff": 0.22,
+      "selected_coeff": 0.22,
+      "selected_dem_score": 0.12998259080632124,
+      "historical_dem_score": 0.12998259080632124,
+      "historical_pick": 0.22
+    },
+    {
+      "sweep": 0,
+      "mode": 3,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.1312228323513409,
+      "top_coeff": -0.22,
+      "selected_coeff": -0.22,
+      "selected_dem_score": 0.1312228323513409,
+      "historical_dem_score": 0.1312228323513409,
+      "historical_pick": -0.22
+    },
+    {
+      "sweep": 0,
+      "mode": 4,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.13156486602383666,
+      "top_coeff": 0.22,
+      "selected_coeff": 0.22,
+      "selected_dem_score": 0.13156486602383666,
+      "historical_dem_score": 0.13156486602383666,
+      "historical_pick": 0.22
+    },
+    {
+      "sweep": 0,
+      "mode": 5,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.13175527783459984,
+      "top_coeff": 0.05500000000000002,
+      "selected_coeff": 0.05500000000000002,
+      "selected_dem_score": 0.13175527783459984,
+      "historical_dem_score": 0.13175527783459984,
+      "historical_pick": 0.05500000000000002
+    },
+    {
+      "sweep": 0,
+      "mode": 6,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.13156486602383666,
+      "top_coeff": 0.0,
+      "selected_coeff": 0.05500000000000002,
+      "selected_dem_score": 0.13131909327057656,
+      "historical_dem_score": 0.13156486602383666,
+      "historical_pick": 0.05500000000000002
+    },
+    {
+      "sweep": 0,
+      "mode": 7,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.1323016385867959,
+      "top_coeff": -0.165,
+      "selected_coeff": -0.165,
+      "selected_dem_score": 0.1323016385867959,
+      "historical_dem_score": 0.1323016385867959,
+      "historical_pick": -0.165
+    },
+    {
+      "sweep": 0,
+      "mode": 8,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.13170901183912065,
+      "top_coeff": 0.11000000000000001,
+      "selected_coeff": 0.11000000000000001,
+      "selected_dem_score": 0.13170901183912065,
+      "historical_dem_score": 0.13170901183912065,
+      "historical_pick": 0.11000000000000001
+    },
+    {
+      "sweep": 0,
+      "mode": 9,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.13344703802431468,
+      "top_coeff": -0.22,
+      "selected_coeff": -0.22,
+      "selected_dem_score": 0.13344703802431468,
+      "historical_dem_score": 0.13344703802431468,
+      "historical_pick": -0.22
+    },
+    {
+      "sweep": 0,
+      "mode": 10,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.13193704944569618,
+      "top_coeff": 0.11000000000000001,
+      "selected_coeff": 0.11000000000000001,
+      "selected_dem_score": 0.13193704944569618,
+      "historical_dem_score": 0.13193704944569618,
+      "historical_pick": 0.11000000000000001
+    },
+    {
+      "sweep": 0,
+      "mode": 11,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.13171202226658352,
+      "top_coeff": 0.05500000000000002,
+      "selected_coeff": 0.05500000000000002,
+      "selected_dem_score": 0.13171202226658352,
+      "historical_dem_score": 0.13171202226658352,
+      "historical_pick": 0.05500000000000002
+    },
+    {
+      "sweep": 1,
+      "mode": 0,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.13210524230089504,
+      "top_coeff": -0.11,
+      "selected_coeff": -0.11,
+      "selected_dem_score": 0.13210524230089504,
+      "historical_dem_score": 0.13210524230089504,
+      "historical_pick": -0.11
+    },
+    {
+      "sweep": 1,
+      "mode": 1,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.13421672520053107,
+      "top_coeff": -0.22,
+      "selected_coeff": -0.22,
+      "selected_dem_score": 0.13421672520053107,
+      "historical_dem_score": 0.13421672520053107,
+      "historical_pick": -0.22
+    },
+    {
+      "sweep": 1,
+      "mode": 2,
+      "incumbent_coeff": 0.22,
+      "top_dem_score": 0.13171202226658352,
+      "top_coeff": 0.22,
+      "selected_coeff": 0.165,
+      "selected_dem_score": 0.13070006389170885,
+      "historical_dem_score": 0.13171202226658352,
+      "historical_pick": 0.165
+    },
+    {
+      "sweep": 1,
+      "mode": 3,
+      "incumbent_coeff": -0.22,
+      "top_dem_score": 0.13070006389170885,
+      "top_coeff": -0.22,
+      "selected_coeff": 0.22,
+      "selected_dem_score": 0.12969946510565933,
+      "historical_dem_score": 0.13070006389170885,
+      "historical_pick": 0.22
+    },
+    {
+      "sweep": 1,
+      "mode": 4,
+      "incumbent_coeff": 0.22,
+      "top_dem_score": 0.13070006389170885,
+      "top_coeff": 0.22,
+      "selected_coeff": 0.165,
+      "selected_dem_score": 0.129868076328421,
+      "historical_dem_score": 0.13070006389170885,
+      "historical_pick": 0.165
+    },
+    {
+      "sweep": 1,
+      "mode": 5,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.13065568964520935,
+      "top_coeff": 0.165,
+      "selected_coeff": 0.165,
+      "selected_dem_score": 0.13065568964520935,
+      "historical_dem_score": 0.13065568964520935,
+      "historical_pick": 0.165
+    },
+    {
+      "sweep": 1,
+      "mode": 6,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.13006250810576603,
+      "top_coeff": 0.22,
+      "selected_coeff": 0.22,
+      "selected_dem_score": 0.13006250810576603,
+      "historical_dem_score": 0.13006250810576603,
+      "historical_pick": 0.22
+    },
+    {
+      "sweep": 1,
+      "mode": 7,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.1301663269259734,
+      "top_coeff": -0.11,
+      "selected_coeff": -0.11,
+      "selected_dem_score": 0.1301663269259734,
+      "historical_dem_score": 0.1301663269259734,
+      "historical_pick": -0.11
+    },
+    {
+      "sweep": 1,
+      "mode": 8,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.1300312487728661,
+      "top_coeff": 0.05500000000000002,
+      "selected_coeff": 0.05500000000000002,
+      "selected_dem_score": 0.1300312487728661,
+      "historical_dem_score": 0.1300312487728661,
+      "historical_pick": 0.05500000000000002
+    },
+    {
+      "sweep": 1,
+      "mode": 9,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.1311943560722284,
+      "top_coeff": -0.165,
+      "selected_coeff": -0.165,
+      "selected_dem_score": 0.1311943560722284,
+      "historical_dem_score": 0.1311943560722284,
+      "historical_pick": -0.165
+    },
+    {
+      "sweep": 1,
+      "mode": 10,
+      "incumbent_coeff": 0.0,
+      "top_dem_score": 0.13024704458075576,
+      "top_coeff": 0.11000000000000001,
+      "selected_coeff": 0.11000000000000001,
+      "selected_dem_score": 0.13024704458075576,
+      "historical_dem_score": 0.13024704458075576,
+      "historical_pick": 0.11000000000000001
+    },
+    {
+      "sweep": 1,
+      "mode": 11,
+      "incumbent_coeff": 0.05500000000000002,
+      "top_dem_score": 0.1300962958339369,
+      "top_coeff": 0.0,
+      "selected_coeff": 0.0,
+      "selected_dem_score": 0.1300962958339369,
+      "historical_dem_score": 0.1300962958339369,
+      "historical_pick": 0.0
+    }
+  ],
+  "note": "no FE calls; frozen scorer replay only"
+}

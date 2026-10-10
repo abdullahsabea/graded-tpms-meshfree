@@ -1,0 +1,17 @@
+{
+ "design": "graded",
+ "N_surface": 60,
+ "interior_M": 96,
+ "nodes": 102646,
+ "tets": 533373,
+ "cap_triangles": {
+  "X0": 362,
+  "X1": 362,
+  "Y0": 366,
+  "Y1": 366,
+  "Z0": 362,
+  "Z1": 362
+ },
+ "solid_volume": 0.19371948393176916,
+ "surface_triangles": 70576
+}

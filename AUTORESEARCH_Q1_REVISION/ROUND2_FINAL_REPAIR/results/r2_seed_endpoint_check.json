@@ -1,0 +1,104 @@
+{
+  "uniform_64": 0.10528125601,
+  "uniform_96": 0.10572287959,
+  "round1_seed_endpoints": {
+    "12": {
+      "key": "776bb0b3e21607d8",
+      "claimed_value": 0.098439502287,
+      "verified": {
+        "source": "C:\\Users\\Admin\\Desktop\\Abdullah\\Topology_Optimisaiton_AI\\AUTORESEARCH_Q1_REVISION\\results\\febase_vgmm",
+        "value": 0.098439502287,
+        "matches_claim": true
+      },
+      "gain_vs_uniform64_pct": -6.498548727752773,
+      "historical_gain_pct": -6.498548727752773,
+      "denominator": "uniform64 C1111 = 0.10528125601 (archived)"
+    },
+    "13": {
+      "key": "751c174012ba218d",
+      "claimed_value": 0.099623405811,
+      "verified": {
+        "source": "C:\\Users\\Admin\\Desktop\\Abdullah\\Topology_Optimisaiton_AI\\AUTORESEARCH_Q1_REVISION\\results\\febase_vgmm",
+        "value": 0.099623405811,
+        "matches_claim": true
+      },
+      "gain_vs_uniform64_pct": -5.3740337201738875,
+      "historical_gain_pct": -5.3740337201738875,
+      "denominator": "uniform64 C1111 = 0.10528125601 (archived)"
+    }
+  },
+  "round2_demonly_endpoints": {
+    "demonly11": {
+      "winner_64_read": {
+        "key": "76930588ce82aa78",
+        "N": 64,
+        "claimed_value": 0.09994209919,
+        "verified": {
+          "source": "C:\\Users\\Admin\\Desktop\\Abdullah\\Topology_Optimisaiton_AI\\AUTORESEARCH_Q1_REVISION\\ROUND2_FINAL_REPAIR\\results\\febase_r2",
+          "value": 0.09994209919,
+          "matches_claim": true
+        },
+        "gain_pct": -5.071327055114994
+      },
+      "demonly_endpoint_96": {
+        "key": "f722bb54f66f9b58",
+        "N": 96,
+        "claimed_value": 0.1005281454,
+        "verified": {
+          "source": "C:\\Users\\Admin\\Desktop\\Abdullah\\Topology_Optimisaiton_AI\\AUTORESEARCH_Q1_REVISION\\ROUND2_FINAL_REPAIR\\results\\febase_r2",
+          "value": 0.1005281454,
+          "matches_claim": true
+        },
+        "gain_pct": -4.9135383089691675
+      }
+    },
+    "demonly12": {
+      "winner_64_read": {
+        "key": "007b26659195b628",
+        "N": 64,
+        "claimed_value": 0.098293693738,
+        "verified": {
+          "source": "C:\\Users\\Admin\\Desktop\\Abdullah\\Topology_Optimisaiton_AI\\AUTORESEARCH_Q1_REVISION\\ROUND2_FINAL_REPAIR\\results\\febase_r2",
+          "value": 0.098293693738,
+          "matches_claim": true
+        },
+        "gain_pct": -6.63704303768593
+      },
+      "demonly_endpoint_96": {
+        "key": "498975a41b116b28",
+        "N": 96,
+        "claimed_value": 0.098748305752,
+        "verified": {
+          "source": "C:\\Users\\Admin\\Desktop\\Abdullah\\Topology_Optimisaiton_AI\\AUTORESEARCH_Q1_REVISION\\ROUND2_FINAL_REPAIR\\results\\febase_r2",
+          "value": 0.098748305752,
+          "matches_claim": true
+        },
+        "gain_pct": -6.597033551344644
+      }
+    },
+    "demonly13": {
+      "winner_64_read": {
+        "key": "51aaafddf3537ef0",
+        "N": 64,
+        "claimed_value": 0.10340650766,
+        "verified": {
+          "source": "C:\\Users\\Admin\\Desktop\\Abdullah\\Topology_Optimisaiton_AI\\AUTORESEARCH_Q1_REVISION\\ROUND2_FINAL_REPAIR\\results\\febase_r2",
+          "value": 0.10340650766,
+          "matches_claim": true
+        },
+        "gain_pct": -1.7807047721979496
+      },
+      "demonly_endpoint_96": {
+        "key": "f15af6398f2eec6e",
+        "N": 96,
+        "claimed_value": 0.10372176,
+        "verified": {
+          "source": "C:\\Users\\Admin\\Desktop\\Abdullah\\Topology_Optimisaiton_AI\\AUTORESEARCH_Q1_REVISION\\ROUND2_FINAL_REPAIR\\results\\febase_r2",
+          "value": 0.10372176,
+          "matches_claim": true
+        },
+        "gain_pct": -1.8927970915666226
+      }
+    }
+  }
+}

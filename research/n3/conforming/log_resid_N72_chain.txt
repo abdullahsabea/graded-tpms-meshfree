@@ -1,0 +1,16 @@
+[18:29:44] PBC + DEPL export gyroid_conf_N72_M96_rc
+gyroid_conf_N72_M96_rc: SOLID_VOLUME = 1.9364219902e-01 C1111_PBC    = 9.7888412206e-02 C1111_PBC_EN = 9.7888412206e-02  --- DIAGNOSTIC JOB : <A>_ALARM
+[21:04:06] residual done gyroid_conf_N72_M96_rc:  "overall_max_over_epsL": 7.102314290431601e-06,  "overall_max_over_maxw": 6.348244627698211e-05 } 
+[21:04:06] PBC + DEPL export gyroid_conf_N72_M96_printable_rc
+gyroid_conf_N72_M96_printable_rc: SOLID_VOLUME = 1.9485381568e-01 C1111_PBC    = 9.4987683872e-02 C1111_PBC_EN = 9.4987683872e-02  --- DIAGNOSTIC JOB : <A>_ALARM
+[23:36:30] residual done gyroid_conf_N72_M96_printable_rc:  "overall_max_over_epsL": 6.5479676000498505e-06,  "overall_max_over_maxw": 2.7671414664743263e-05 } 
+[23:36:30] PBC + DEPL export gyroid_conf_N72_M96_vgmm_rc
+gyroid_conf_N72_M96_vgmm_rc: SOLID_VOLUME = 1.9342476969e-01 C1111_PBC    = 9.1898763202e-02 C1111_PBC_EN = 9.1898763202e-02  --- DIAGNOSTIC JOB : <A>_ALARM
+[01:53:44] residual done gyroid_conf_N72_M96_vgmm_rc:  "overall_max_over_epsL": 3.49076165768619e-05,  "overall_max_over_maxw": 0.00015560447915228092 } 
+[01:53:44] PBC + DEPL export gyroid_conf_N72_M96_fullfe_rc
+gyroid_conf_N72_M96_fullfe_rc: SOLID_VOLUME = 1.9341090441e-01 C1111_PBC    = 8.9737333332e-02 C1111_PBC_EN = 8.9737333332e-02  --- DIAGNOSTIC JOB : <A>_ALARM
+[04:18:29] residual done gyroid_conf_N72_M96_fullfe_rc:  "overall_max_over_epsL": 2.0042925166945412e-05,  "overall_max_over_maxw": 8.75359725294672e-05 } 
+[04:18:30] PBC + DEPL export gyroid_conf_N72_M96_graded_rc
+gyroid_conf_N72_M96_graded_rc: SOLID_VOLUME = 1.9363152463e-01 C1111_PBC    = 8.0625347861e-02 C1111_PBC_EN = 8.0625347861e-02  --- DIAGNOSTIC JOB : <A>_ALARM
+[06:37:19] residual done gyroid_conf_N72_M96_graded_rc:  "overall_max_over_epsL": 3.8396649048524164e-05,  "overall_max_over_maxw": 0.00012939718128548143 } 
+[06:37:19] ALL DONE

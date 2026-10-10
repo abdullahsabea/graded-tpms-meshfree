@@ -1,0 +1,7 @@
+P actions make_etude
+P memory_limit 16000
+P time_limit 3600
+P mpi_nbcpu 1
+F comm /shared/homog2.comm D 1
+F mail /shared/solidcube_N24.mail D 20
+F mess /shared/oute_test.mess R 6

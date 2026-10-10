@@ -1,0 +1,82 @@
+{
+ "gyroid_conf_N48_M96_rc": {
+  "n_tet": 516986,
+  "n_bad": 36,
+  "frac_bad": 6.963438081495436e-05,
+  "vol_share_bad": 5.7227688590688935e-08,
+  "min_ratio": 0.00043571772106991104,
+  "n_below_0p01": 687
+ },
+ "gyroid_conf_N48_M96_printable_rc": {
+  "n_tet": 509631,
+  "n_bad": 45,
+  "frac_bad": 8.829918117225992e-05,
+  "vol_share_bad": 1.707309707203281e-07,
+  "min_ratio": 0.00017176699738392034,
+  "n_below_0p01": 566
+ },
+ "gyroid_conf_N48_M96_vgmm_rc": {
+  "n_tet": 488881,
+  "n_bad": 87,
+  "frac_bad": 0.0001779574170401386,
+  "vol_share_bad": 1.883186485244473e-07,
+  "min_ratio": 1.9068630539302463e-05,
+  "n_below_0p01": 736
+ },
+ "gyroid_conf_N48_M96_fullfe_rc": {
+  "n_tet": 487933,
+  "n_bad": 108,
+  "frac_bad": 0.00022134186455927352,
+  "vol_share_bad": 2.1219881465269936e-07,
+  "min_ratio": 1.9068630539302463e-05,
+  "n_below_0p01": 759
+ },
+ "gyroid_conf_N48_M96_graded_rc": {
+  "n_tet": 485343,
+  "n_bad": 39,
+  "frac_bad": 8.035554236900501e-05,
+  "vol_share_bad": 8.775705735829138e-08,
+  "min_ratio": 1.9068630539302463e-05,
+  "n_below_0p01": 737
+ },
+ "gyroid_conf_N72_M96_rc": {
+  "n_tet": 778632,
+  "n_bad": 163,
+  "frac_bad": 0.000209341511779634,
+  "vol_share_bad": 5.262831247589964e-08,
+  "min_ratio": 9.441368275805758e-05,
+  "n_below_0p01": 1714
+ },
+ "gyroid_conf_N72_M96_printable_rc": {
+  "n_tet": 775974,
+  "n_bad": 119,
+  "frac_bad": 0.0001533556536688085,
+  "vol_share_bad": 1.4890729867919834e-07,
+  "min_ratio": 4.800205140531814e-05,
+  "n_below_0p01": 1231
+ },
+ "gyroid_conf_N72_M96_vgmm_rc": {
+  "n_tet": 761416,
+  "n_bad": 103,
+  "frac_bad": 0.00013527427844962542,
+  "vol_share_bad": 8.695920290072043e-08,
+  "min_ratio": 2.781953381250525e-05,
+  "n_below_0p01": 1406
+ },
+ "gyroid_conf_N72_M96_fullfe_rc": {
+  "n_tet": 761932,
+  "n_bad": 112,
+  "frac_bad": 0.00014699474493786848,
+  "vol_share_bad": 5.231204919336933e-08,
+  "min_ratio": 3.9413858162279794e-05,
+  "n_below_0p01": 1387
+ },
+ "gyroid_conf_N72_M96_graded_rc": {
+  "n_tet": 761354,
+  "n_bad": 126,
+  "frac_bad": 0.0001654946319320579,
+  "vol_share_bad": 5.0931450944958035e-08,
+  "min_ratio": 1.064898540176849e-05,
+  "n_below_0p01": 1306
+ }
+}

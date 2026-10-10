@@ -1,0 +1,12 @@
+family,seed,G26_pct
+VG-MM (cloud seeds 11/12/13),11,5.828121198912339
+VG-MM (cloud seeds 11/12/13),12,5.648265080951509
+VG-MM (cloud seeds 11/12/13),13,5.547714209873433
+RANDOM proposals (RNG seeds 11/12/13),11,4.632319716566413
+RANDOM proposals (RNG seeds 11/12/13),12,5.232970500918688
+RANDOM proposals (RNG seeds 11/12/13),13,5.213329929763244
+DETERMINISTIC cyclic (no seed),det,1.8827555588923905
+DEM-only greedy (cloud seeds),11,-5.071327055114994
+DEM-only greedy (cloud seeds),12,-6.63704303768593
+DEM-only greedy (cloud seeds),13,-1.7807047721979496
+FULL-FE truncated,26u,4.928520818090498

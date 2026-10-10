@@ -1,0 +1,32 @@
+tie_impact_analysis: replay of frozen demonly11/12/13 trajectories under OLD vs STRICT tie policy
+
+seed 11:
+  n_steps: 24
+  old_replay_matches_frozen_log: True
+  any_exact_tie: False
+  any_reversal: False
+  any_decision_divergence: False
+  diverged_at_step: None
+  theta_final_identical: True
+  frozen_theta_final_matches_old_replay: True
+
+seed 12:
+  n_steps: 24
+  old_replay_matches_frozen_log: True
+  any_exact_tie: False
+  any_reversal: False
+  any_decision_divergence: False
+  diverged_at_step: None
+  theta_final_identical: True
+  frozen_theta_final_matches_old_replay: True
+
+seed 13:
+  n_steps: 24
+  old_replay_matches_frozen_log: True
+  any_exact_tie: False
+  any_reversal: False
+  any_decision_divergence: False
+  diverged_at_step: None
+  theta_final_identical: True
+  frozen_theta_final_matches_old_replay: True
+

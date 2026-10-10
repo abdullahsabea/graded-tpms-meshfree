@@ -55,9 +55,43 @@ def build_graded(N, theta, mid):
     }
     return nodes, elems, groups, solid.mean()
 
+def solve_shift_for_vf(N, theta, vf_target, tol=1e-6):
+    """Re-solve the uniform offset delta-t0 so the DISCRETE voxel volume
+    fraction of the graded cell equals vf_target at resolution N. This is the
+    same volume-compensation bisection the optimizer runs on the continuum
+    volume; applying it per mesh makes the FE comparison against the uniform
+    baseline exactly iso-volume at every resolution."""
+    h = 1.0 / N
+    c = (np.arange(N) + 0.5) * h
+    X, Y, Z = np.meshgrid(c, c, c, indexing="ij")
+    absF = np.abs(gyroid_F(X, Y, Z))
+    lo, hi = -0.3, 0.3
+    for _ in range(60):
+        mid = 0.5 * (lo + hi)
+        vf = ((absF - t_of(X, Y, Z, theta, mid)) < 0).mean()
+        if vf < vf_target:
+            lo = mid
+        else:
+            hi = mid
+        if hi - lo < tol:
+            break
+    return 0.5 * (lo + hi)
+
+
 if __name__ == "__main__":
     theta, mid = theta_field()
     print(f"theta={np.round(theta,3).tolist()}  t0shift={mid:+.4f}")
+    if len(sys.argv) > 1 and sys.argv[1] == "--vf":
+        # python make_mesh_graded.py --vf <vf_target> <N1,N2,...>
+        vf_target = float(sys.argv[2])
+        for N in [int(x) for x in sys.argv[3].split(",")]:
+            shift = solve_shift_for_vf(N, theta, vf_target)
+            nodes, elems, groups, vf = build_graded(N, theta, shift)
+            write_mail(f"gyroid_graded_N{N}_vf{vf_target}.mail", nodes, elems,
+                       groups, vf, N, -1)
+            print(f"   calibrated t0shift={shift:+.6f} -> discrete VF={vf:.6f} "
+                  f"(target {vf_target})")
+        sys.exit(0)
     Ns = [int(x) for x in sys.argv[1].split(",")] if len(sys.argv) > 1 else [64, 96]
     for N in Ns:
         nodes, elems, groups, vf = build_graded(N, theta, mid)
