@@ -3,11 +3,27 @@
   "upload_type": "software",
   "description": "<p>Code, solver inputs, search records, finite-element solver summaries and raw coupon records behind every number in the article \"Surrogate and boundary-condition errors in graded gyroid-sheet optimization: an independent verification study\", submitted to Structural and Multidisciplinary Optimization.</p><p><code>python reproduce/check_tables.py</code> recomputes every table entry (500 cells); <code>python reproduce/regenerate_figures.py</code> rebuilds the nine data figures and compares them with the published files. MANIFEST.sha256 lists every file. See README.md and CLAIM_MAP.md.</p>",
   "creators": [
-    {"name": "El Sabea, Abdullah", "affiliation": "Opole University of Technology"},
-    {"name": "Moj, Kevin", "affiliation": "Opole University of Technology"},
-    {"name": "Kurek, Andrzej", "affiliation": "Opole University of Technology"}
+    {
+      "name": "El Sabea, Abdullah",
+      "affiliation": "Opole University of Technology"
+    },
+    {
+      "name": "Moj, Kevin",
+      "affiliation": "Opole University of Technology"
+    },
+    {
+      "name": "Kurek, Andrzej",
+      "affiliation": "Opole University of Technology"
+    }
   ],
   "license": "MIT",
-  "keywords": ["gyroid", "graded lattice", "deep energy method", "homogenization", "periodic boundary conditions", "verification"],
-  "version": "1.0.1"
+  "keywords": [
+    "gyroid",
+    "graded lattice",
+    "deep energy method",
+    "homogenization",
+    "periodic boundary conditions",
+    "verification"
+  ],
+  "version": "1.0.2"
 }

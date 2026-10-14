@@ -24,15 +24,15 @@ Volume target for all searches: V_f* = 0.19328 (Monte Carlo estimate; analytic v
 
 | Quantity (where reported) | Solver | Boundary condition | Mesh | Volume handling | Record |
 |---|---|---|---|---|---|
-| Score C1111 (Tables 1, 4; Fig. 5) | frozen conditional deep-energy network `research/n3/e3_cond.pt`, local thickness, float64 hard-domain audit | KUBC (affine displacement on the cell boundary) | 5×10⁴-point cloud, seed 11 (search); 2×10⁵ points for volume | design at V_f* | `_deep_review/wpa/a3_a4_score_audit*.json`, `research/n3/paper_numbers.json` (`e3.*.dem`) |
-| Voxel C1111, ladders (Tables 3, 4, A1, S4; Figs. 5, S3, S4) | code_aster 17.4, `research/n3/homog2.comm`, Hill–Mandel energy basis | KUBC | voxel 48³, 64³, 96³, 128³; generators `make_mesh*.py` | each mesh volume-calibrated to its target | `research/n3/energy_ladder.json`, `paper_numbers.json`, logs `loge_*.txt` |
-| Voxel C1111, searches (Tables S5, S6, S7; Figs. 6, S5, S6) | as above | KUBC | 64³ search, 96³ confirmation | calibrated to V_f* | arm records; all 598 cached solves in `fe_cache_summary.csv` |
-| Body-fitted KUBC (Table 2) | code_aster, `research/n3/conforming/homog_conf.comm`, quadratic tetrahedra | KUBC | `make_conforming_mesh.py`, N = 48, M = 96 | raw meshed V_f, then C ∝ V_f^1.21 to 0.19328 | `research/n3/conforming/conf_summary.json` (`kubc`) |
-| Body-fitted periodic (Tables 2, B1, B2; Fig. 3) | `homog_conf_pbc.comm` (LIAISON_MAIL ties, Lagrange multipliers, MUMPS RESI_RELA 1e-6) | periodic | N = 48 and N = 72, M = 96 | as above | `conf_summary.json` (`pbc`), `wpa1_N72_results.json`, logs `log_pbc_*.txt` |
-| Periodicity residual (Table B1) | `homog_conf_pbc_resid.comm` (same solve + DEPL export), `periodicity_residual.py` | periodic | as above | — | `resid_*_residual.json`, `resid_*_report.txt` |
-| Uniform at ν = 0.33 (App. B) | `homog_conf_pbc_nu033.comm` | periodic | N = 48 | raw | `wpa2_nu033.log` |
-| External benchmarks (App. B) | Fisher et al. 2023 (voxel), Mele et al. 2025 (tetrahedral) | periodic | — | quadratic log–log interpolation to V_f = 0.19389 | `_deep_review/wpa/a2_external/a2_results.json` (source data not redistributed; see README) |
-| Coupon E*, R (Tables 6, S8, S9; Figs. 8, S7) | crosshead slope, 150–600 N, L₀ = 100 mm, A₀ = 450 mm² | tensile test, one PETG build | — | mass adjustment E*/(m/m̄)² | raw `TO_AI-results_instron/TO_AI/U_1_Exports/*.csv`, `paper/verify_experiment_stats.py`, masses `reproduce/coupon_masses.csv` |
+| Score C1111 (Tables 3, S10; Fig. 4) | frozen conditional deep-energy network `research/n3/e3_cond.pt`, local thickness, float64 hard-domain audit | KUBC (affine displacement on the cell boundary) | 5×10⁴-point cloud, seed 11 (search); 2×10⁵ points for volume | design at V_f* | `_deep_review/wpa/a3_a4_score_audit*.json`, `research/n3/paper_numbers.json` (`e3.*.dem`) |
+| Voxel C1111, ladders (Tables 2, 3, S4, S13; Figs. 4, S3, S4) | code_aster 17.4, `research/n3/homog2.comm`, Hill–Mandel energy basis | KUBC | voxel 48³, 64³, 96³, 128³; generators `make_mesh*.py` | each mesh volume-calibrated to its target | `research/n3/energy_ladder.json`, `paper_numbers.json`, logs `loge_*.txt` |
+| Voxel C1111, searches (Tables S5–S7; Figs. 5, S5, S6) | as above | KUBC | 64³ search, 96³ confirmation | calibrated to V_f* | arm records; all 598 cached solves in `fe_cache_summary.csv` |
+| Body-fitted KUBC (Table 1) | code_aster, `research/n3/conforming/homog_conf.comm`, quadratic tetrahedra | KUBC | `make_conforming_mesh.py`, N = 48, M = 96 | raw meshed V_f, then C ∝ V_f^1.21 to 0.19328 | `research/n3/conforming/conf_summary.json` (`kubc`) |
+| Body-fitted periodic (Tables 1, A1, S11; Fig. 3) | `homog_conf_pbc.comm` (LIAISON_MAIL ties, Lagrange multipliers, MUMPS RESI_RELA 1e-6) | periodic | N = 48 and N = 72, M = 96 | as above | `conf_summary.json` (`pbc`), `wpa1_N72_results.json`, logs `log_pbc_*.txt` |
+| Periodicity residual (Table S11) | `homog_conf_pbc_resid.comm` (same solve + DEPL export), `periodicity_residual.py` | periodic | as above | — | `resid_*_residual.json`, `resid_*_report.txt` |
+| Uniform at ν = 0.33 (App. A) | `homog_conf_pbc_nu033.comm` | periodic | N = 48 | raw | `wpa2_nu033.log` |
+| External benchmarks (App. A) | Fisher et al. 2023 (voxel), Mele et al. 2025 (tetrahedral) | periodic | — | quadratic log–log interpolation to V_f = 0.19389 | `_deep_review/wpa/a2_external/a2_results.json` (source data not redistributed; see README) |
+| Coupon E*, R (Tables 4, S8, S9; Figs. S7, S12) | crosshead slope, 150–600 N, L₀ = 100 mm, A₀ = 450 mm² | tensile test, one PETG build | — | mass adjustment E*/(m/m̄)² | raw `TO_AI-results_instron/TO_AI/U_1_Exports/*.csv`, `paper/verify_experiment_stats.py`, masses `reproduce/coupon_masses.csv` |
 
 ## Seeds
 

@@ -412,7 +412,7 @@ def tab_geometrynumbers():
 
 
 def text_numbers():
-    """Benchmark numbers quoted in Appendix B and Section 2.5."""
+    """Benchmark numbers quoted in Appendix A and Section 2.5."""
     a2 = J(WPA / "a2_external/a2_results.json")
     T = "text"
     results.append((T, "Fisher interp.", "-", "0.0950", f(a2["fisher"]["C11_over_E_at_our_Vf"], 4),
